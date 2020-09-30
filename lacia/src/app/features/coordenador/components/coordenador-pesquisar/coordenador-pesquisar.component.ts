@@ -11,7 +11,7 @@ import { MatTableDataSource } from '@angular/material/table';
 export class CoordenadorPesquisarComponent implements OnInit {
 
   coordenadorForm: FormGroup;
-  colunasTable: string[] = ['idCoordenador', 'dsCoordenador', 'dsEmail'];
+  colunasTable: string[] = ['idCoordenador', 'dsCoordenador', 'dsEmail', 'acoes'];
   coordenadores: MatTableDataSource<Coordenador> = new MatTableDataSource();
 
   constructor(private fb: FormBuilder) {
