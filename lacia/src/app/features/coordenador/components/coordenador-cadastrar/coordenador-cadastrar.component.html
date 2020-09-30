@@ -14,13 +14,19 @@
               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <mat-form-field>
                   <mat-label>Nome coordenador</mat-label>
-                  <input matInput formControlName="dsCoordenador">
+                  <input matInput formControlName="dsCoordenador" required>
                 </mat-form-field>
               </div>
               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <mat-form-field>
                   <mat-label>E-mail</mat-label>
-                  <input matInput formControlName="dsEmail">
+                  <input matInput formControlName="dsEmail" [errorStateMatcher]="matcher" required>
+                  <mat-error *ngIf="coordenadorForm.get('dsEmail').hasError('email') && !coordenadorForm.get('dsEmail').hasError('required')">
+                    Por favor, entre com um e-mail válido!
+                  </mat-error>
+                  <mat-error *ngIf="coordenadorForm.get('dsEmail').hasError('required')">
+                    E-mail é <strong>obrigatório</strong>
+                  </mat-error>
                 </mat-form-field>
               </div>
             </div>

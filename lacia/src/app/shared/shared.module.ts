@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTabsModule } from '@angular/material/tabs';
 import { RouterModule } from '@angular/router';
 import {MatTableModule} from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 
@@ -26,6 +27,7 @@ import {MatTableModule} from '@angular/material/table';
     MatTabsModule,
     MatTableModule,
     MatDividerModule,
+    MatFormFieldModule,
     FormsModule,
     MatInputModule,
     ReactiveFormsModule
@@ -40,6 +42,7 @@ import {MatTableModule} from '@angular/material/table';
     MatTableModule,
     MatDividerModule,
     FormsModule,
+    MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule
   ]

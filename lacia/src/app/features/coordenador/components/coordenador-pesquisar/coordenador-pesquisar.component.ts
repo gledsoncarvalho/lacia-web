@@ -21,6 +21,7 @@ export class CoordenadorPesquisarComponent implements OnInit {
   ngOnInit(): void {
     this.criarForm();
     this.coordenadores.data.push({ idCoordenador: 1, dsCoordenador: "Fábio Gomes", dsEmail: "fabio.gomes@souunit.com.br" } as Coordenador);
+    this.coordenadores.data.push({ idCoordenador: 2, dsCoordenador: "Roberto Carlos", dsEmail: "roberto.carlos@souunit.com.br" } as Coordenador);
   }
 
   criarForm() {

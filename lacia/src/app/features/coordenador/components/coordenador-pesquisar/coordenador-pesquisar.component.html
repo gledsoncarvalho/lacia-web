@@ -52,7 +52,7 @@
         <mat-divider></mat-divider>
         <div class="card-content">
           <div class="row">
-            <table mat-table [dataSource]="coordenadores">
+            <table mat-table [dataSource]="coordenadores" class="mat-elevation-z8">
               <ng-container matColumnDef="idCoordenador">
                 <th mat-header-cell *matHeaderCellDef> Nº </th>
                 <td mat-cell *matCellDef="let element"> {{element.idCoordenador}} </td>
