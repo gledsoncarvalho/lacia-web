@@ -3,13 +3,15 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { RouterModule } from '@angular/router';
-import {MatTableModule} from '@angular/material/table';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MaskDirective } from './directives/mask';
 
 
 
@@ -17,7 +19,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [MaskDirective],
   imports: [
     CommonModule,
     RouterModule,
@@ -27,6 +29,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatTabsModule,
     MatTableModule,
     MatDividerModule,
+    MatDialogModule,
     MatFormFieldModule,
     FormsModule,
     MatInputModule,
@@ -37,6 +40,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     RouterModule,
     MatCardModule,
     MatButtonModule,
+    MatDialogModule,
     MatIconModule,
     MatTabsModule,
     MatTableModule,
@@ -44,7 +48,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     FormsModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    MaskDirective
   ]
 })
 export class SharedModule { }

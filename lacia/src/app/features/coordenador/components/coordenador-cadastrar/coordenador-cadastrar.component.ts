@@ -28,9 +28,11 @@ export class CoordenadorCadastrarComponent implements OnInit {
 
   criarForm() {
     this.coordenadorForm = this.fb.group({
-      dsCoordenador: [null, Validators.required],
-      dsEmail: [null, [Validators.required, Validators.email]]
-    })
-
+      nome: [null, Validators.required],
+      dsEmail: [null, [Validators.required, Validators.email]],
+      telefone: [null, Validators.required],
+      dtNascimento: [null, Validators.required],
+      cpf: [null, Validators.required]
+    });
   }
 }

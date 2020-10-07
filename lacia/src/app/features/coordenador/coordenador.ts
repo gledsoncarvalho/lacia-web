@@ -1,7 +1,10 @@
 export interface Coordenador {
 
   idCoordenador: number;
-  dsCoordenador: string;
-  dsEmail: string;
+  nomeCoordenador: string;
+  telefoneCoordenador: string;
+  dtNascimentoCoordenador: Date;
+  emailCoordenador: string;
+  cpf: string;
 
 }

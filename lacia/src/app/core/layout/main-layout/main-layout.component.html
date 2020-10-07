@@ -13,9 +13,17 @@
 </mat-toolbar>
 <mat-sidenav-container>
   <mat-sidenav #sidenav [mode]="mode">
-    <!-- <p><button mat-button>Toggle</button></p> -->
+    <div class="quadro_usuario">
+      <mat-icon class="icone_usuario">account_circle</mat-icon>
+      <div class="descricao_usuario">
+        Administrador
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <ng-material-multilevel-menu [items]="appitems">
+    </ng-material-multilevel-menu>
   </mat-sidenav>
-  <mat-sidenav-content>
+  <mat-sidenav-content class="conteudo">
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

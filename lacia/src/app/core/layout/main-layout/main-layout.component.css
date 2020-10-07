@@ -1,3 +1,25 @@
 .example-spacer {
   flex: 1 1 auto;
 }
+.quadro_usuario {
+  height: 20%;
+  justify-content: center;
+  justify-items: center;
+  display: grid;
+}
+
+.icone_usuario {
+  margin-top: 15%;
+  margin-bottom: 1%;
+  font-size: 5em;
+  margin-right: 34%;
+}
+
+.descricao_usuario {
+  margin-top: 20%;
+  font-size: 18px;
+}
+
+.conteudo {
+  height: 40em !important;
+}
