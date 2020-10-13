@@ -12,12 +12,12 @@ body {
 .btnAcao {
   background-color: green;
   color: #fff;
-  margin-left: 1% !important;
 }
 
 .btnLimpar {
   background-color: gray;
   color: #fff;
+  margin-left: 1% !important;
 }
 
 .mat-form-field {
@@ -76,7 +76,7 @@ table {
 .card-footer {
   background-color: #f0f3f5;
   display: block;
-  margin: 0;
+  margin: 1;
 }
 
 .divider {
