@@ -20,52 +20,23 @@ export class MainLayoutComponent implements OnInit {
         },
         {
           label: 'Avaliação',
-          faIcon: 'fab fa-accessible-icon',
-          items: [
-            {
-              label: 'Item 1.2.1',
-              link: '/item-1-2-1',
-              faIcon: 'fas fa-allergies'
-            },
-            {
-              label: 'Item 1.2.2',
-              faIcon: 'fas fa-ambulance',
-              items: [
-                {
-                  label: 'Item 1.2.2.1',
-                  link: 'item-1-2-2-1',
-                  faIcon: 'fas fa-anchor'
-                }
-              ]
-            }
-          ]
+          faIcon: 'fab fa-accessible-icon'
         }
       ]
     },
     {
       label: 'Coordenadores',
       icon: 'engineering',
-      items: [
-        {
-          label: 'Item 2.1',
-          link: '/item-2-1',
-          icon: 'favorite'
-        },
-        {
-          label: 'Item 2.2',
-          link: '/item-2-2',
-          icon: 'favorite_border'
-        }
-      ]
+      link: '/coordenador'
     },
     {
       label: 'Pesquisadores',
-      link: '/item-3',
+      link: '/pesquisador',
       icon: 'biotech'
     },
     {
       label: 'Alunos',
-      link: '/item-4',
+      link: '/alunos',
       icon: 'perm_contact_calendar',
     }
   ];

@@ -1,1 +1,3 @@
-<app-main-layout></app-main-layout>
+<app-main-layout *ngIf="autenticado"></app-main-layout>
+<router-outlet *ngIf="!autenticado" (deactivate)="autenticado = true">
+</router-outlet>
