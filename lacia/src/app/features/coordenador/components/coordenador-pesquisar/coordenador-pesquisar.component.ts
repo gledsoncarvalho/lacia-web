@@ -58,5 +58,4 @@ export class CoordenadorPesquisarComponent implements OnInit {
       }
     })
   }
-
 }

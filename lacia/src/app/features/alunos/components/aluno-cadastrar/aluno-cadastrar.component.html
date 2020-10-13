@@ -9,23 +9,23 @@
         </div>
         <mat-divider></mat-divider>
         <div class="card-content">
-          <form [formGroup]="coordenadorForm">
+          <form [formGroup]="alunosForm">
             <div class="row">
               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <mat-form-field>
-                  <mat-label>Nome coordenador</mat-label>
-                  <input matInput formControlName="nome" required>
+                  <mat-label>Nome aluno</mat-label>
+                  <input matInput formControlName="nomeAluno" required>
                 </mat-form-field>
               </div>
               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <mat-form-field>
                   <mat-label>E-mail</mat-label>
-                  <input matInput formControlName="dsEmail" [errorStateMatcher]="matcher" required>
+                  <input matInput formControlName="emailAluno" [errorStateMatcher]="matcher" required>
                   <mat-error
-                    *ngIf="coordenadorForm.get('dsEmail').hasError('email') && !coordenadorForm.get('dsEmail').hasError('required')">
+                    *ngIf="alunosForm.get('emailAluno').hasError('email') && !alunosForm.get('emailAluno').hasError('required')">
                     Por favor, entre com um e-mail válido!
                   </mat-error>
-                  <mat-error *ngIf="coordenadorForm.get('dsEmail').hasError('required')">
+                  <mat-error *ngIf="alunosForm.get('emailAluno').hasError('required')">
                     E-mail é <strong>obrigatório</strong>
                   </mat-error>
                 </mat-form-field>
@@ -35,21 +35,21 @@
               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <mat-form-field>
                   <mat-label>Telefone</mat-label>
-                  <input matInput Mask type="text" formControlName="telefone" mask="celular" maxLength="15" required>
+                  <input matInput  Mask  type="text" formControlName="telefoneAluno"  mask="celular" maxLength="15" required>
                 </mat-form-field>
               </div>
               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <mat-form-field>
                   <mat-label>Data Nascimento</mat-label>
-                  <input matInput type="date" formControlName="dtNascimento" required>
+                  <input matInput type="date" formControlName="dtNascimentoAluno" required>
                 </mat-form-field>
               </div>
             </div>
-            <div class="row">
+              <div class="row">
               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <mat-form-field>
                   <mat-label>CPF</mat-label>
-                  <input matInput formControlName="cpf" required>
+                  <input matInput formControlName="cpfAluno" required>
                 </mat-form-field>
               </div>
             </div>
@@ -58,7 +58,7 @@
         <mat-divider></mat-divider>
         <div class="card-footer">
           <button mat-raised-button class="btnAcao">
-            <mat-icon>search</mat-icon>&nbsp; Pesquisar
+            <mat-icon>add</mat-icon>&nbsp; Salvar
           </button>
           <button mat-raised-button class="btnLimpar">
             <mat-icon>delete_sweep</mat-icon>&nbsp; Limpar

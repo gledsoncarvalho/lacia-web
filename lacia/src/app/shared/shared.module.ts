@@ -12,6 +12,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { RouterModule } from '@angular/router';
 import { MaskDirective } from './directives/mask';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 
 
@@ -33,7 +34,8 @@ import { MaskDirective } from './directives/mask';
     MatFormFieldModule,
     FormsModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDatepickerModule
   ],
   exports: [
     CommonModule,
@@ -49,7 +51,8 @@ import { MaskDirective } from './directives/mask';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule,
-    MaskDirective
+    MaskDirective,
+    MatDatepickerModule
   ]
 })
 export class SharedModule { }
