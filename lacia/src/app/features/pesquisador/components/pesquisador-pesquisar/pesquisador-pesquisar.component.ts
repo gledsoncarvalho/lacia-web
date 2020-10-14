@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { PesquisadorEditarModalComponent } from '../pesquisador-editar-modal/pesquisador-editar-modal.component';
 import Swal from 'sweetalert2';
+import { AlertComponent } from 'src/app/shared/components/alert/alert.component';
 
 @Component({
   selector: 'app-pesquisador-pesquisar',
@@ -17,7 +18,7 @@ export class PesquisadorPesquisarComponent implements OnInit {
   colunasTable: string[] = ['idPesquisador', 'nomePesquisador', 'emailPesquisador', 'acoes'];
   pesquisadores: MatTableDataSource<Pesquisador> = new MatTableDataSource();
 
-  constructor(private fb: FormBuilder, private dialog: MatDialog) { }
+  constructor(private fb: FormBuilder, private dialog: MatDialog, private alert: AlertComponent) { }
 
   ngOnInit(): void {
     this.criarForm();
@@ -40,23 +41,6 @@ export class PesquisadorPesquisarComponent implements OnInit {
   }
 
   excluirPesquisador() {
-    Swal.fire({
-      title: 'Você deseja realmente fazer isso?',
-      text: "Você pode reverter isso!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Confirmar!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire(
-          'Deletado!',
-          'O pesquisador foi excluído.',
-          'success'
-        );
-      }
-    })
+    this.alert.confirmacao("Você deseja realmente fazer isso?", "Você pode reverter isso!", "Confirmar", "O pesquisador foi excluído.");
   }
-
 }

@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MyErrorStateMatcher } from '../aluno-cadastrar/aluno-cadastrar.component';
 import Swal from 'sweetalert2';
+import { AlertComponent } from 'src/app/shared/components/alert/alert.component';
 
 @Component({
   selector: 'app-aluno-editar-modal',
@@ -18,6 +19,7 @@ export class AlunoEditarModalComponent implements OnInit {
   constructor(
     private fb : FormBuilder,
     private dialogRef: MatDialogRef<AlunoEditarModalComponent>,
+    private alert: AlertComponent,
     @Inject(MAT_DIALOG_DATA) aluno: Alunos){
       this.criarForm(aluno);
     }
@@ -35,11 +37,7 @@ export class AlunoEditarModalComponent implements OnInit {
     });
   }
   atualizarAluno(){
-    Swal.fire(
-      'Atualizado!',
-      'O aluno foi atualizado com sucesso!',
-      'success'
-    );
+    this.alert.show("Atualizado!", "O aluno foi atualizado com sucesso!", "success");
     this.dialogRef.close();
   }
 

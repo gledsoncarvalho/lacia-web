@@ -13,6 +13,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { RouterModule } from '@angular/router';
 import { MaskDirective } from './directives/mask';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AlertComponent } from './components/alert/alert.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 
@@ -32,7 +33,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     FormsModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     CommonModule,
@@ -50,6 +52,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     ReactiveFormsModule,
     MatInputModule,
     MaskDirective,
+    MatDatepickerModule,
+    MatProgressSpinnerModule,
     MatDatepickerModule
   ],
   providers: [

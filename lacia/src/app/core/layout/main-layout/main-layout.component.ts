@@ -17,12 +17,12 @@ export class MainLayoutComponent implements OnInit {
       icon: 'design_services',
       items: [
         {
-          label: 'Submissão',
+          label: 'Item 1',
           link: '/item-1-1',
           faIcon: 'fab fa-accusoft'
         },
         {
-          label: 'Avaliação',
+          label: 'Item 2',
           faIcon: 'fab fa-accessible-icon'
         }
       ]

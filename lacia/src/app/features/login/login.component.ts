@@ -24,6 +24,8 @@ export class LoginComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
   login: FormGroup;
 
+  loading = false;
+
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -41,12 +43,13 @@ export class LoginComponent implements OnInit {
   }
 
   logar() {
+    this.loading = true;
     if (this.login.valid) {
       this.router.navigateByUrl("/main/coordenador");
       this.autenticado.emit();
     } else {
       this.alert.show("Aviso", "Favor preencher os campos obrigatórios", "warning");
+      this.loading = false;
     }
   }
-
 }
