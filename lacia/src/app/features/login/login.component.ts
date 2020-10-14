@@ -1,8 +1,8 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { Router } from '@angular/router';
-import Swal from 'sweetalert2';
+import { AlertComponent } from './../../shared/components/alert/alert.component';
 
 
 /** Error when invalid control is dirty, touched, or submitted. */
@@ -24,7 +24,10 @@ export class LoginComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
   login: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) { }
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private alert: AlertComponent) { }
 
   ngOnInit(): void {
     this.criarForm();
@@ -42,11 +45,7 @@ export class LoginComponent implements OnInit {
       this.router.navigateByUrl("/coordenador");
       this.autenticado.emit();
     } else {
-      Swal.fire(
-        'Aviso',
-        'Favor preencher os campos obrigatórios',
-        'warning'
-      )
+      this.alert.show("Aviso", "Favor preencher os campos obrigatórios", "warning");
     }
   }
 

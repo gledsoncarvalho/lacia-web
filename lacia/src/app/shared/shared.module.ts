@@ -13,9 +13,10 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { RouterModule } from '@angular/router';
 import { MaskDirective } from './directives/mask';
+import { AlertComponent } from './components/alert/alert.component';
 
 @NgModule({
-  declarations: [MaskDirective],
+  declarations: [MaskDirective, AlertComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -48,6 +49,9 @@ import { MaskDirective } from './directives/mask';
     MatInputModule,
     MaskDirective,
     MatDatepickerModule
+  ],
+  providers: [
+    AlertComponent
   ]
 })
 export class SharedModule { }
