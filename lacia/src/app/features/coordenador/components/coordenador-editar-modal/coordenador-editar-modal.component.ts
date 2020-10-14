@@ -4,6 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Coordenador } from '../../coordenador';
 import { MyErrorStateMatcher } from '../coordenador-cadastrar/coordenador-cadastrar.component';
 import Swal from 'sweetalert2';
+import { AlertComponent } from 'src/app/shared/components/alert/alert.component';
 
 @Component({
   selector: 'app-coordenador-editar-modal',
@@ -18,6 +19,7 @@ export class CoordenadorEditarModalComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<CoordenadorEditarModalComponent>,
+    private alert: AlertComponent,
     @Inject(MAT_DIALOG_DATA) coordenador: Coordenador) {
     this.criarForm(coordenador);
   }
@@ -35,11 +37,7 @@ export class CoordenadorEditarModalComponent implements OnInit {
   }
 
   atualizarCoordenador() {
-    Swal.fire(
-      'Atualizado!',
-      'O coordenador foi atualizado com sucesso!',
-      'success'
-    );
+    this.alert.show("Atualizado!", "O coordenador foi atualizado com sucesso!", "success");
     this.dialogRef.close();
   }
 

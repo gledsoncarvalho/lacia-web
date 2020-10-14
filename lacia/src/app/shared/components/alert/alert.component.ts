@@ -36,13 +36,8 @@ export class AlertComponent implements OnInit {
       heightAuto: false
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          'Excluído!',
-          textSuccess,
-          'success'
-        )
+        this.show('Excluido', textSuccess, 'success')
       }
     })
   }
-
 }

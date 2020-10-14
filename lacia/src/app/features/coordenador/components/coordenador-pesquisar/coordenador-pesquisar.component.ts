@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { CoordenadorEditarModalComponent } from './../coordenador-editar-modal/coordenador-editar-modal.component';
 import Swal from 'sweetalert2';
+import { AlertComponent } from 'src/app/shared/components/alert/alert.component';
 
 @Component({
   selector: 'app-coordenador-pesquisar',
@@ -17,7 +18,7 @@ export class CoordenadorPesquisarComponent implements OnInit {
   colunasTable: string[] = ['idCoordenador', 'dsCoordenador', 'dsEmail', 'acoes'];
   coordenadores: MatTableDataSource<Coordenador> = new MatTableDataSource();
 
-  constructor(private fb: FormBuilder, private dialog: MatDialog) { }
+  constructor(private fb: FormBuilder, private dialog: MatDialog, private alert: AlertComponent) { }
 
   ngOnInit(): void {
     this.criarForm();
@@ -40,22 +41,6 @@ export class CoordenadorPesquisarComponent implements OnInit {
   }
 
   excluirCoordenador() {
-    Swal.fire({
-      title: 'Você deseja realmente fazer isso?',
-      text: "Você pode reverter isso!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Confirmar!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire(
-          'Deletado!',
-          'O coordenador foi excluído.',
-          'success'
-        );
-      }
-    })
+    this.alert.confirmacao("Você deseja realmente fazer isso?", "Você pode reverter isso!", "Confirmar", "O coordenador foi excluído.");
   }
 }

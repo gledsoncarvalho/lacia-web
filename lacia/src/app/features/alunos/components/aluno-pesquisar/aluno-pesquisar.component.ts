@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import{FormBuilder, FormGroup, Validators} from'@angular/forms';
 import { AlunoEditarModalComponent } from './../aluno-editar-modal/aluno-editar-modal.component';
 import Swal from 'sweetalert2';
+import { AlertComponent } from 'src/app/shared/components/alert/alert.component';
 
 @Component({
   selector: 'app-aluno-pesquisar',
@@ -18,7 +19,7 @@ export class AlunoPesquisarComponent implements OnInit {
   alunos: MatTableDataSource<Alunos> = new MatTableDataSource();
 
 
-  constructor(private fb: FormBuilder, private dialog: MatDialog) { }
+  constructor(private fb: FormBuilder, private dialog: MatDialog, private alert: AlertComponent) { }
 
   ngOnInit(): void {
     this.criarForm();
@@ -33,29 +34,15 @@ export class AlunoPesquisarComponent implements OnInit {
       emailAluno:[null]
     })
   }
+
   atualizarAluno(aluno: Alunos){
     let dialogRef = this.dialog.open(AlunoEditarModalComponent, {data: aluno});
     dialogRef.afterClosed().subscribe(resposta => {
       //ATUALIZAR GRID
     })
   }
+
   excluirAluno(){
-    Swal.fire({
-      title:'Voce deseja realmente fazer isso?',
-      text:"Voce pode reverter isso!",
-      icon:'warning',
-      showCancelButton:true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor:'#d33',
-      confirmButtonText:'Confirmar!'
-    }).then((result) =>{
-      if(result.isConfirmed){
-        Swal.fire(
-          'Deletado!',
-          'O aluno foi excluido.',
-          'success'
-        );
-      }
-    })
+    this.alert.confirmacao("Você deseja realmente fazer isso?", "Você pode reverter isso!", "Confirmar", "O aluno foi excluído.");
   }
 }

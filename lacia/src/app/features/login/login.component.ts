@@ -49,6 +49,7 @@ export class LoginComponent implements OnInit {
       this.autenticado.emit();
     } else {
       this.alert.show("Aviso", "Favor preencher os campos obrigatórios", "warning");
+      this.loading = false;
     }
   }
 }

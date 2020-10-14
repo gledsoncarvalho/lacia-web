@@ -4,6 +4,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MyErrorStateMatcher } from '../pesquisador-cadastrar/pesquisador-cadastrar.component';
 import { Pesquisador } from '../../pesquisador';
 import Swal from 'sweetalert2';
+import { AlertComponent } from 'src/app/shared/components/alert/alert.component';
 
 @Component({
   selector: 'app-pesquisador-editar-modal',
@@ -18,6 +19,7 @@ export class PesquisadorEditarModalComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<PesquisadorEditarModalComponent>,
+    private alert: AlertComponent,
     @Inject(MAT_DIALOG_DATA) pesquisador: Pesquisador) {
     this.criarForm(pesquisador);
   }
@@ -35,11 +37,7 @@ export class PesquisadorEditarModalComponent implements OnInit {
   }
 
   atualizarPesquisador() {
-    Swal.fire(
-      'Atualizado!',
-      'O pesquisador foi atualizado com sucesso!',
-      'success'
-    );
+    this.alert.show("Atualizado!", "O pesquisador foi atualizado com sucesso!", "success");
     this.dialogRef.close();
   }
 
