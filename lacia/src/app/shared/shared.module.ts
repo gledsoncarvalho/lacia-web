@@ -14,9 +14,10 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { RouterModule } from '@angular/router';
 import { MaskDirective } from './directives/mask';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { AlertComponent } from './components/alert/alert.component';
 
 @NgModule({
-  declarations: [MaskDirective],
+  declarations: [MaskDirective, AlertComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -51,6 +52,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MaskDirective,
     MatDatepickerModule,
     MatProgressSpinnerModule
+    MatDatepickerModule
+  ],
+  providers: [
+    AlertComponent
   ]
 })
 export class SharedModule { }
