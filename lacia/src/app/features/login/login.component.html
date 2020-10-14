@@ -33,9 +33,10 @@
       </div>
       <div class="row" align="center">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <button type="submit" mat-raised-button class="btnLogin">
-            <mat-icon>login</mat-icon>&nbsp; Entrar
-          </button>
+          <div style="text-align:center">
+            <button mat-raised-button color="primary" type="submit" class="btnLogin" [class.spinner]="loading" [disabled]="loading" (click)="logar()">
+              <mat-icon>login</mat-icon>&nbsp; Entrar</button>
+          </div>
         </div>
       </div>
     </form>

@@ -13,6 +13,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { RouterModule } from '@angular/router';
 import { MaskDirective } from './directives/mask';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [MaskDirective],
@@ -30,7 +31,8 @@ import { MaskDirective } from './directives/mask';
     FormsModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     CommonModule,
@@ -47,7 +49,8 @@ import { MaskDirective } from './directives/mask';
     ReactiveFormsModule,
     MatInputModule,
     MaskDirective,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatProgressSpinnerModule
   ]
 })
 export class SharedModule { }

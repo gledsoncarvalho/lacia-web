@@ -19,7 +19,7 @@ import {AlunoPesquisarComponent} from './components/aluno-pesquisar/aluno-pesqui
     ]
 })
 
-export class AlunosModule{ }
+export class AlunosModule { }
 
 
 

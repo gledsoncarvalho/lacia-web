@@ -24,6 +24,8 @@ export class LoginComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
   login: FormGroup;
 
+  loading = false;
+
   constructor(private fb: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
@@ -38,6 +40,7 @@ export class LoginComponent implements OnInit {
   }
 
   logar() {
+    this.loading = true;
     if (this.login.valid) {
       this.router.navigateByUrl("/coordenador");
       this.autenticado.emit();
@@ -49,5 +52,4 @@ export class LoginComponent implements OnInit {
       )
     }
   }
-
 }
