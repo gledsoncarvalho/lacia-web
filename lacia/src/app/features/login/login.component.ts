@@ -24,6 +24,8 @@ export class LoginComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
   login: FormGroup;
 
+  loading = false;
+
   constructor(
     private fb: FormBuilder,
     private router: Router,

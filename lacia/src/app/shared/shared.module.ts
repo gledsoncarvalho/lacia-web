@@ -51,7 +51,7 @@ import { AlertComponent } from './components/alert/alert.component';
     MatInputModule,
     MaskDirective,
     MatDatepickerModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
     MatDatepickerModule
   ],
   providers: [
