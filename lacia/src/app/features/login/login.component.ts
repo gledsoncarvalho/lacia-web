@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
 
   logar() {
     if (this.login.valid) {
-      this.router.navigateByUrl("/coordenador");
+      this.router.navigateByUrl("/main/coordenador");
       this.autenticado.emit();
     } else {
       this.alert.show("Aviso", "Favor preencher os campos obrigatórios", "warning");

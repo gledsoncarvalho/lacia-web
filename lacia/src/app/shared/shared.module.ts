@@ -14,11 +14,12 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { RouterModule } from '@angular/router';
 import { MaskDirective } from './directives/mask';
 import { AlertComponent } from './components/alert/alert.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [MaskDirective, AlertComponent],
   imports: [
-    CommonModule,
+  CommonModule,
     RouterModule,
     MatCardModule,
     MatButtonModule,
@@ -39,6 +40,7 @@ import { AlertComponent } from './components/alert/alert.component';
     MatCardModule,
     MatButtonModule,
     MatDialogModule,
+    MatSidenavModule,
     MatIconModule,
     MatTabsModule,
     MatTableModule,

@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" class="toolbar">
   <button mat-icon-button (click)="sidenav.toggle()">
     <mat-icon>menu</mat-icon>
   </button>
@@ -11,7 +11,7 @@
     <mat-icon>share</mat-icon>
   </button>
 </mat-toolbar>
-<mat-sidenav-container>
+<mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav [mode]="mode">
     <div class="quadro_usuario">
       <mat-icon class="icone_usuario">account_circle</mat-icon>
@@ -20,10 +20,10 @@
       </div>
     </div>
     <mat-divider></mat-divider>
-    <ng-material-multilevel-menu [items]="appitems">
+    <ng-material-multilevel-menu [items]="appitems" (selectedItem)="selecionarItem($event)">
     </ng-material-multilevel-menu>
   </mat-sidenav>
-  <mat-sidenav-content class="conteudo">
-    <router-outlet></router-outlet>
+  <mat-sidenav-content class="container-fluid">
+    <ng-content></ng-content>
   </mat-sidenav-content>
 </mat-sidenav-container>

@@ -23,3 +23,11 @@
 .conteudo {
   height: 100% !important;
 }
+
+.toolbar {
+  height: 10%;
+}
+
+.sidenav-container {
+  height: 90%;
+}

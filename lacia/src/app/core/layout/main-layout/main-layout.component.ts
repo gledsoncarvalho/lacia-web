@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-main-layout',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main-layout.component.css']
 })
 export class MainLayoutComponent implements OnInit {
+
+  @ViewChild('sidenav') side: MatSidenav;
 
   mode: string = "push";
   appitems = [
@@ -27,16 +30,16 @@ export class MainLayoutComponent implements OnInit {
     {
       label: 'Coordenadores',
       icon: 'engineering',
-      link: '/coordenador'
+      link: '/main/coordenador'
     },
     {
       label: 'Pesquisadores',
-      link: '/pesquisador',
+      link: '/main/pesquisador',
       icon: 'biotech'
     },
     {
       label: 'Alunos',
-      link: '/alunos',
+      link: '/main/alunos',
       icon: 'perm_contact_calendar',
     }
   ];
@@ -44,6 +47,10 @@ export class MainLayoutComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  selecionarItem(event: any) {
+    this.side.toggle();
   }
 
 }
