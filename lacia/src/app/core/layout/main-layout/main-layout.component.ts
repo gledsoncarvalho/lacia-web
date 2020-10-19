@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-layout',
@@ -9,7 +10,6 @@ import { MatSidenav } from '@angular/material/sidenav';
 export class MainLayoutComponent implements OnInit {
 
   @ViewChild('sidenav') side: MatSidenav;
-
   mode: string = "push";
   appitems = [
     {
@@ -44,13 +44,19 @@ export class MainLayoutComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  constructor(   private router: Router) {
+ 
+   }
 
   ngOnInit(): void {
   }
 
   selecionarItem(event: any) {
     this.side.toggle();
+  }
+  entrarMeuPerfil(){
+    this.router.navigateByUrl("/main/meu-perfil");
+
   }
 
 }
