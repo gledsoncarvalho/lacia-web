@@ -31,3 +31,10 @@
 .sidenav-container {
   height: 90%;
 }
+
+button#botao_meu_perfil{
+  margin-left: 85%;
+  background-color: white;
+color:#3f51b5;  
+
+}
