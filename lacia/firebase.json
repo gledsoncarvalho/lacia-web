@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/lacia",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

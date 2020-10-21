@@ -15,7 +15,7 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
     AppRoutingModule,
     RouterModule,
-    MatNativeDateModule
+    MatNativeDateModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
