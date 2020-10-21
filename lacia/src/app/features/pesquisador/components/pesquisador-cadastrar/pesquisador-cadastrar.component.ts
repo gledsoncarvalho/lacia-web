@@ -32,7 +32,7 @@ export class PesquisadorCadastrarComponent implements OnInit {
       dsEmail: [null, [Validators.required, Validators.email]],
       telefone: [null, Validators.required],
       dtNascimento: [null, Validators.required],
-      cpf: [null, Validators.required]
+      cpf: [null]
     });
   }
 }

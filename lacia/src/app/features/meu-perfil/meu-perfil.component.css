@@ -1,0 +1,27 @@
+mat-icon#icone-usuario-anonimo{
+    margin-bottom: 10%;
+    font-size: 15em;
+    margin-left: 42%;
+  }
+
+h1#nome_embaixo_do_icone_perfil{
+    margin-left: 38%;
+    margin-top: 1%;
+}
+div#barra-meu-perfil{
+  padding: 1.5rem 1.25rem;
+  background-color: #3f51b5;
+  color: white;
+  height: 50%;
+}
+
+img{
+  border-radius: 50%;
+  margin-left: 42.3%;
+}
+div#tabela_principal{
+  margin-top: 2%;
+}
+.botao_de_edicao{
+  margin-left: 97%;
+}

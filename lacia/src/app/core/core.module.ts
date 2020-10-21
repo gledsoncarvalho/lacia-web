@@ -2,11 +2,13 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { NgMaterialMultilevelMenuModule } from 'ng-material-multilevel-menu';
 import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
+
 
 
 
@@ -19,7 +21,9 @@ import { MainLayoutComponent } from './layout/main-layout/main-layout.component'
     MatIconModule,
     MatSidenavModule,
     MatToolbarModule,
-    RouterModule
+    RouterModule,
+    MatMenuModule
+
   ],
   exports: [MainLayoutComponent],
   declarations: [MainLayoutComponent]
