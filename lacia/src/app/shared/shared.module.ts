@@ -17,6 +17,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AlertComponent } from './components/alert/alert.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 
+
+
+
 @NgModule({
   declarations: [MaskDirective, AlertComponent],
   imports: [
@@ -35,6 +38,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     ReactiveFormsModule,
     MatDatepickerModule,
     MatProgressSpinnerModule
+   
   ],
   exports: [
     CommonModule,

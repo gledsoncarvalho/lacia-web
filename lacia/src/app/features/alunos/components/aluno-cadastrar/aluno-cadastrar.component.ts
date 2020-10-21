@@ -34,7 +34,7 @@ export class AlunoCadastrarComponent implements OnInit {
       emailAluno: [null,[Validators.required,Validators.email]],
       telefoneAluno: [null, Validators.required],
       dtNascimentoAluno: [null, Validators.required],
-      cpf: [null, Validators.required]
+      cpf: [null]
 
     });
   }

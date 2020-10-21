@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatMenuTrigger } from '@angular/material/menu';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 
@@ -54,9 +55,19 @@ export class MainLayoutComponent implements OnInit {
   selecionarItem(event: any) {
     this.side.toggle();
   }
+
   entrarMeuPerfil(){
     this.router.navigateByUrl("/main/meu-perfil");
-
   }
+
+  sairSistema(){
+    this.router.navigateByUrl("/");
+  }
+
+  /*@ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
+
+  someMethod() {
+    this.trigger.openMenu();
+  }*/
 
 }

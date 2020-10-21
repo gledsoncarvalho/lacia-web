@@ -7,6 +7,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { NgMaterialMultilevelMenuModule } from 'ng-material-multilevel-menu';
 import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 
@@ -19,7 +20,8 @@ import { MainLayoutComponent } from './layout/main-layout/main-layout.component'
     MatIconModule,
     MatSidenavModule,
     MatToolbarModule,
-    RouterModule
+    RouterModule,
+    MatMenuModule
   ],
   exports: [MainLayoutComponent],
   declarations: [MainLayoutComponent]
