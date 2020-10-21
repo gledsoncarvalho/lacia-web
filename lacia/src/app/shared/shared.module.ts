@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+  import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -16,6 +16,7 @@ import { MaskDirective } from './directives/mask';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AlertComponent } from './components/alert/alert.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 
@@ -37,7 +38,11 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatInputModule,
     ReactiveFormsModule,
     MatDatepickerModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatMenuModule
+    
+    
+    
    
   ],
   exports: [
@@ -58,7 +63,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MaskDirective,
     MatDatepickerModule,
     MatProgressSpinnerModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatMenuModule
+   
   ],
   providers: [
     AlertComponent

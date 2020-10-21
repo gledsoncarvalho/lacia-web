@@ -13,7 +13,8 @@ import { MainComponent } from './main.component';
     CoreModule,
     CommonModule,
     MainRoutingModule,
-    SharedModule
+    SharedModule,
+    
   ]
 })
 export class MainModule { }

@@ -5,7 +5,7 @@ mat-icon#icone-usuario-anonimo{
   }
 
 h1#nome_embaixo_do_icone_perfil{
-    margin-left: 42.5%;
+    margin-left: 38%;
     margin-top: 1%;
 }
 div#barra-meu-perfil{
@@ -22,6 +22,6 @@ img{
 div#tabela_principal{
   margin-top: 2%;
 }
-button#botao_de_edicao{
-  margin-left: 53%;
+.botao_de_edicao{
+  margin-left: 97%;
 }

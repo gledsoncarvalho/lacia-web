@@ -57,7 +57,6 @@ export class MaskDirective implements ControlValueAccessor, AfterViewInit {
         v = v.replace(/^(\d\d)(\d)/g, '($1) $2');
         v = v.replace(/(\d{5})(\d)/, '$1-$2');
         val.nativeElement.value = v;
-        console.log(v);
         break;
       }
       case 'cpf': {
