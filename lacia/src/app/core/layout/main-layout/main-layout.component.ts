@@ -12,6 +12,7 @@ export class MainLayoutComponent implements OnInit {
 
   @ViewChild('sidenav') side: MatSidenav;
   mode: string = "push";
+  menuIsOpen: boolean = false;
   appitems = [
     {
       label: 'Projetos',
@@ -46,7 +47,7 @@ export class MainLayoutComponent implements OnInit {
   ];
 
   constructor(   private router: Router) {
- 
+
    }
 
   ngOnInit(): void {
@@ -62,6 +63,14 @@ export class MainLayoutComponent implements OnInit {
 
   sairSistema(){
     this.router.navigateByUrl("/");
+  }
+
+  menuOpened(evt) {
+    this.menuIsOpen = true;
+  }
+
+  menuClosed(evt) {
+    this.menuIsOpen = false;
   }
 
   /*@ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;

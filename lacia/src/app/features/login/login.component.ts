@@ -1,8 +1,10 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AlertComponent } from './../../shared/components/alert/alert.component';
+import { SolicitarAcessoPesquisadorModalComponent } from './components/solicitar-acesso-pesquisador-modal/solicitar-acesso-pesquisador-modal.component';
 
 
 /** Error when invalid control is dirty, touched, or submitted. */
@@ -29,7 +31,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private alert: AlertComponent) { }
+    private alert: AlertComponent,
+    private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.criarForm();
@@ -51,5 +54,9 @@ export class LoginComponent implements OnInit {
       this.alert.show("Aviso", "Favor preencher os campos obrigatórios", "warning");
       this.loading = false;
     }
+  }
+
+  solicitarAcessoPesquisador() {
+    this.dialog.open(SolicitarAcessoPesquisadorModalComponent);
   }
 }
