@@ -65,11 +65,11 @@ export class MainLayoutComponent implements OnInit {
     this.router.navigateByUrl("/");
   }
 
-  menuOpened(evt) {
+  menuOpened() {
     this.menuIsOpen = true;
   }
 
-  menuClosed(evt) {
+  menuClosed() {
     this.menuIsOpen = false;
   }
 
