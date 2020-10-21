@@ -13,7 +13,7 @@ import { MeuPerfilEditarModalComponent } from './components/meu-perfil-editar-mo
   styleUrls: ['./meu-perfil.component.css']
 })
 export class MeuPerfilComponent implements OnInit {
- 
+
   MeuPerfilForm: FormGroup;
   colunasTable: string[] = ['idMeuPerfil', 'nomeMeuPerfil', 'emailMeuPerfil', 'acoes'];
   dados_perfil: MatTableDataSource<MeuPerfil> = new MatTableDataSource();
@@ -34,8 +34,9 @@ export class MeuPerfilComponent implements OnInit {
   atualizarMeuPerfil(){
     let dialogRef = this.dialog.open(MeuPerfilEditarModalComponent, {data: this.perfil});
     dialogRef.afterClosed().subscribe(resposta => {
-      this.perfil = resposta;
-      console.log(resposta);
+      if (resposta) {
+        this.perfil = resposta;
+      }
     })
-  } 
+  }
 }
