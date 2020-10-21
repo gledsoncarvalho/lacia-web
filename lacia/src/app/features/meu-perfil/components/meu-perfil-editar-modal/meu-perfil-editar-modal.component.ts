@@ -42,8 +42,12 @@ export class MeuPerfilEditarModalComponent implements OnInit {
 
   }
   atualizarMeuPerfil() {
-    this.alert.show("Atualizado!", "O dados foram atualizados com sucesso!", "success");
-    this.perfil = this.MeuPerfilForm.value;
-    this.dialogRef.close(this.perfil);
+    if (this.MeuPerfilForm.valid) {
+      this.alert.show("Atualizado!", "O dados foram atualizados com sucesso!", "success");
+      this.perfil = this.MeuPerfilForm.value;
+      this.dialogRef.close(this.perfil);
+    } else {
+      this.alert.show("Aviso", "Favor preencher os campos obrigatórios", "warning");
+    }
   }
 }
