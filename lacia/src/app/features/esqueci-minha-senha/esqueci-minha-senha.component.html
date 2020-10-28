@@ -1,0 +1,55 @@
+<div class="container-fluid">
+    <mat-card class="card_login">
+      <div class="row titulo_login">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <mat-icon class="icone_cadeado_tela_esqueci_meu_perfil">lock</mat-icon>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <h3><b>Esqueci minha senha</b></h3>
+          <h4 class="campo_texto_esqueci_minha_senha">Insira o seu email e enviaremos um link para você voltar a acessar a sua conta.</h4>
+        </div>
+        <br />
+      </div>
+      <form [formGroup]="esqueci_minha_senha" (ngSubmit)="enviar_senha()">
+        <div class="row">
+          <div id="campo-esqueci-minha-senha" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <mat-form-field appearance="outline">
+              <mat-label>E-mail</mat-label>
+              <input matInput formControlName="email" [errorStateMatcher]="matcher" required>
+              <mat-icon matSuffix>email</mat-icon>
+              <mat-error *ngIf="esqueci_minha_senha.get('email').hasError('email') && !esqueci_minha_senha.get('email').hasError('required')">
+                Por favor, entre com um e-mail válido!
+              </mat-error>
+              <mat-error *ngIf="esqueci_minha_senha.get('email').hasError('required')">
+                E-mail é <strong>obrigatório</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div id="botar-atualizar-senha" class="row" align="center">
+          <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div style="text-align:center">
+              <button color="primary" mat-raised-button (click)="AtualizarSenha()" class="btnAcao">
+                <mat-icon>send</mat-icon>&nbsp; Enviar
+              </button>
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="voltar_ao_login">
+        <mat-divider ></mat-divider>
+        <br/>
+        <mat-card-footer >
+          <div class="pV7Qt tHaIX Igw0E IwRSH J0Xm8 _4EzTm" style="height: 44px;">
+            <a class="sqdOP yWX7d _8A5w5 ZIAjV" href="/" tabindex="0">Voltar ao login</a>
+          </div>
+          
+        </mat-card-footer>
+      </div>
+      </form>
+   
+      
+    </mat-card>
+    
+  </div>
+  

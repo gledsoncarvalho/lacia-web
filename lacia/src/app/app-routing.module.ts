@@ -5,6 +5,9 @@ const routes: Routes = [
   { path: '', loadChildren: () => import('./features/login/login.module').then(m => m.LoginModule) },
   {
     path: 'main', loadChildren: () => import('./features/main/main.module').then(m => m.MainModule)
+  },
+  {
+    path: 'esqueci-minha-senha', loadChildren: () => import('./features/esqueci-minha-senha/esqueci-minha-senha.module').then(m => m.EsqueciMinhaSenhaModule)
   }
 ];
 

@@ -10,7 +10,9 @@ const routes: Routes = [
       { path: 'coordenador', loadChildren: () => import('../coordenador/coordenador.module').then(m => m.CoordenadorModule) },
       { path: 'pesquisador', loadChildren: () => import('../pesquisador/pesquisador.module').then(m => m.PesquisadorModule) },
       { path: 'alunos', loadChildren: () => import('../alunos/alunos.module').then(m => m.AlunosModule) },
-      { path: 'meu-perfil', loadChildren: () => import('../meu-perfil/meu-perfil.module').then(m => m.MeuPerfilModule) }
+      { path: 'meu-perfil', loadChildren: () => import('../meu-perfil/meu-perfil.module').then(m => m.MeuPerfilModule) },
+      { path: 'esqueci-minha-senha', loadChildren: () => import('../esqueci-minha-senha/esqueci-minha-senha.module').then(m => m.EsqueciMinhaSenhaModule) }
+
     ]
   }
 ];

@@ -55,6 +55,9 @@ export class LoginComponent implements OnInit {
       this.loading = false;
     }
   }
+  entrar_esqueci_minha_senha(){
+    this.router.navigateByUrl("/esqueci-minha-senha");
+  }
 
   solicitarAcessoPesquisador() {
     this.dialog.open(SolicitarAcessoPesquisadorModalComponent);

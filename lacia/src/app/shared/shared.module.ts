@@ -17,6 +17,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { RouterModule } from '@angular/router';
 import { AlertComponent } from './components/alert/alert.component';
 import { MaskDirective } from './directives/mask';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [MaskDirective, AlertComponent],
@@ -36,8 +37,8 @@ import { MaskDirective } from './directives/mask';
     ReactiveFormsModule,
     MatDatepickerModule,
     MatProgressSpinnerModule,
-    MatMenuModule
-  ],
+    MatMenuModule,
+    MatExpansionModule],
   exports: [
     CommonModule,
     RouterModule,
@@ -57,7 +58,8 @@ import { MaskDirective } from './directives/mask';
     MatDatepickerModule,
     MatProgressSpinnerModule,
     MatDatepickerModule,
-    MatMenuModule
+    MatMenuModule,
+    MatExpansionModule
   ],
   providers: [
     AlertComponent
