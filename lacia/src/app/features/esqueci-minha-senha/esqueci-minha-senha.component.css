@@ -1,0 +1,142 @@
+.card_login {
+    width: 30%;
+    height: 95%;
+    margin-left: 35%;
+    margin-right: 35%;
+  }
+  
+  @media (max-width: 479px) {
+    .card_login {
+      width: 80%;
+      height: 80%;
+      margin-left: 10%;
+      margin-right: 10%;
+    }
+  }
+  
+  @media (min-width: 480px) and (max-width: 800px) {
+    .card_login {
+      width: 50%;
+      height: 85%;
+      margin-left: 25%;
+      margin-right: 25%;
+    }
+  }
+  
+  @media (min-width: 801px) and (max-width: 1000px) {
+    .card_login {
+      width: 40%;
+      height: 95%;
+      margin-left: 30%;
+      margin-right: 30%;
+    }
+  }
+  
+  .card_login .titulo_login {
+    font-size: 14px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+  }
+  .img_login {
+    height: 80px;
+  }
+  
+  .btnLogin {
+    background-color: #3f51b5;
+    color: white;
+    margin-top: 13%;
+  }
+  
+  .container-fluid {
+    background-color: #3f51b5 !important;
+    height: 100%;
+    width: 100%;
+    padding-top: 10%;
+  }
+  
+  @keyframes spinner {
+    to {transform: rotate(360deg);}
+  }
+  
+  .spinner:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    margin-left: -10px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    border-top-color: #000000;
+    animation: spinner .8s linear infinite;
+  }
+
+div#campo-esqueci-minha-senha{
+  margin-top: 10%;
+}
+
+div#botar-atualizar-senha{
+  margin-top: 10%;
+}
+  
+.yWX7d._8A5w5, a.yWX7d._8A5w5, a.yWX7d._8A5w5:visited {
+  color: #262626;
+  color: rgba(var(--f75,38,38,38),1);
+}
+.yWX7d, .yWX7d:visited, a.yWX7d, a.yWX7d:visited {
+  border: 0;
+  color: #0095f6;
+  color: rgba(var(--d69,0,149,246),1);
+  display: inline;
+  padding: 0;
+  position: relative;
+}
+
+
+a, a:visited {
+  color: #00376b;
+  color: rgba(var(--fe0,0,55,107),1);
+  text-decoration: none;
+}
+.ZIAjV {
+  -webkit-user-select: auto;
+  -moz-user-select: auto;
+  -ms-user-select: auto;
+  user-select: auto;
+}
+.sqdOP {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: 0 0;
+  border: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: block;
+  font-weight: 800;
+  padding: 5px 9px;
+  text-align: center;
+  text-transform: inherit;
+  text-overflow: ellipsis;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: auto;
+  font-size: 12pt;
+}
+.voltar_ao_login{
+  margin-top: 40%;
+  margin-left: 43.5%;
+}
+.icone_cadeado_tela_esqueci_meu_perfil{ 
+  font-size: 5em;
+  margin-left: -10%;
+
+}
+
+

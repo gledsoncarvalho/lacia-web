@@ -73,3 +73,7 @@
   border-top-color: #000000;
   animation: spinner .8s linear infinite;
 }
+.btnEsqueciMinhaSenha{
+  cursor: pointer;
+  color: #3f51b5;
+}
