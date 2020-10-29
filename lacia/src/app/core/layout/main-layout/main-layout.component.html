@@ -4,8 +4,8 @@
   </button>
   <span>LACIA</span>
   <span class="example-spacer"></span>
-  <button mat-flat-button [matMenuTriggerFor]="appMenu" (menuOpened)="menuOpened()" (menuClosed)="menuClosed()">
-    <mat-icon>account_circle</mat-icon>&nbsp;
+  <button mat-flat-button [matMenuTriggerFor]="appMenu" (menuOpened)="menuOpened()" (menuClosed)="menuClosed()" class="menu-perfil">
+    <img class="avatar mr-0 mr-sm-16" src="assets/images/Reyna.jpg">
     Francisco José&nbsp;
     <mat-icon>{{ menuIsOpen ? 'expand_less' : 'expand_more' }}</mat-icon>
   </button>
