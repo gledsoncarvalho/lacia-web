@@ -6,6 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -15,9 +16,10 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { RouterModule } from '@angular/router';
+import { NgBrazil } from 'ng-brazil';
 import { AlertComponent } from './components/alert/alert.component';
 import { MaskDirective } from './directives/mask';
-import {MatExpansionModule} from '@angular/material/expansion';
+
 
 @NgModule({
   declarations: [MaskDirective, AlertComponent],
@@ -38,7 +40,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatDatepickerModule,
     MatProgressSpinnerModule,
     MatMenuModule,
-    MatExpansionModule],
+    MatExpansionModule,
+    NgBrazil],
   exports: [
     CommonModule,
     RouterModule,
@@ -59,7 +62,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatProgressSpinnerModule,
     MatDatepickerModule,
     MatMenuModule,
-    MatExpansionModule
+    MatExpansionModule,
+    NgBrazil
   ],
   providers: [
     AlertComponent

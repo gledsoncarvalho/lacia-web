@@ -56,14 +56,14 @@
                             <br>
                             <h3>
                                 <mat-panel-title class="itens-dados-pessoais">
-                                    <b> CPF</b>: {{ perfil.cpfMeuPerfil }}
+                                    <b> CPF</b>: {{ perfil.cpfMeuPerfil | cpf }}
                                 </mat-panel-title>
                             </h3>
                             <br>
                             <h3>
                                 <mat-panel-title class="itens-dados-pessoais">
-                                    <b> Número de Celular</b>: {{ perfil.telefoneMeuPerfil }}
-                                </mat-panel-title>
+                                    <b> Número de Celular</b>: {{ perfil.telefoneMeuPerfil | telefone}}
+                            </mat-panel-title>
                             </h3>
                         </div>
                     </div>
