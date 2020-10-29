@@ -53,3 +53,14 @@ div#cor_informacoes_descricao{
   color: white;
 }
 
+button#botao-de-edicao{
+  background-color: white;
+  color:#3f51b5;
+}
+
+.icone_meu_perfil{
+  margin-left: 42.5%;
+  margin-top: 0%;
+  font-size: 200px;
+  
+}

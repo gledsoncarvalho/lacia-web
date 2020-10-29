@@ -6,27 +6,28 @@
     </div>
 </div>
 <!--mat-icon id="icone-usuario-anonimo" class="icone_usuario">account_circle</mat-icon-->
-<img src="../../../assets/images/foto-meu-perfil-2.jpg" class="img_meu-perfil-2">
+<mat-icon class="icone_meu_perfil">account_circle</mat-icon>
 <h1 id="nome_embaixo_do_icone_perfil">Francisco José dos Santos Santana</h1>
 <div id="tabela_principal" class="row">
     <div class="col-lg-12">
         <div [@fadeInOutTranslate] class="m-t-15">
             <!-- personal card start -->
             <div class="card">
-                <mat-expansion-panel>
+                <mat-expansion-panel hideToggle [expanded]="true"> 
                     <mat-expansion-panel-header class="card-header">
                         
                         <mat-panel-title class="titulo-card">
                             Dados Pessoais
                         </mat-panel-title>
+                        <button mat-raised-button id="botao-de-edicao"class="btnAcao" (click)="atualizarMeuPerfil();$event.stopPropagation()">
+                            <mat-icon>edit</mat-icon>&nbsp; Editar dados
+                          </button>
 
                     </mat-expansion-panel-header>
 
                     <div id="cor_informacoes_descricao" class="row">
-                        <button class="botao_de_edicao" mat-icon-button (click)="atualizarMeuPerfil()">
-                            <mat-icon>edit</mat-icon>
-                        </button>
                         <div class="col-lg-12 col-xl-6">
+                            <br>
 
                             <h3>
                                 <mat-panel-title class="itens-dados-pessoais">
@@ -47,7 +48,7 @@
                             </h3>
                         </div>
                         <div class="col-lg-12 col-xl-6">
-
+                            <br>
                             <h3>
                                 <mat-panel-title class="itens-dados-pessoais">
                                     <b> Função</b>: Coordenador

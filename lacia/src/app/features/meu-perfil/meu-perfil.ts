@@ -6,6 +6,5 @@ export interface MeuPerfil {
     dtNascimentoMeuPerfil: Date;
     emailMeuPerfil: string;
     cpfMeuPerfil: string;
-  
   }
   
