@@ -19,12 +19,13 @@ export class MainLayoutComponent implements OnInit {
       icon: 'design_services',
       items: [
         {
-          label: 'Item 1',
-          link: '/item-1-1',
+          label: 'Submeter Projeto',
+          link: '/main/submeter-projeto',
           faIcon: 'fab fa-accusoft'
         },
         {
-          label: 'Item 2',
+          label: 'Meus Projetos',
+          link: '/main/meu-projeto',
           faIcon: 'fab fa-accessible-icon'
         }
       ]

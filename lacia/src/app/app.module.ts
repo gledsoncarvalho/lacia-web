@@ -6,6 +6,10 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 
 
 @NgModule({
@@ -18,7 +22,11 @@ import {MatExpansionModule} from '@angular/material/expansion';
     AppRoutingModule,
     RouterModule,
     MatNativeDateModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatTableModule,
+    MatPaginatorModule,
+    Ng2SearchPipeModule,
+    
     
   ],
   providers: [],

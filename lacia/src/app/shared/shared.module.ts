@@ -19,6 +19,11 @@ import { RouterModule } from '@angular/router';
 import { NgBrazil } from 'ng-brazil';
 import { AlertComponent } from './components/alert/alert.component';
 import { MaskDirective } from './directives/mask';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { CurrencyMaskModule } from "ng2-currency-mask";
+import { AngularFileUploaderModule } from "angular-file-uploader";
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 
 
 @NgModule({
@@ -41,7 +46,11 @@ import { MaskDirective } from './directives/mask';
     MatProgressSpinnerModule,
     MatMenuModule,
     MatExpansionModule,
-    NgBrazil],
+    NgBrazil,
+    MatPaginatorModule,
+    CurrencyMaskModule,
+    AngularFileUploaderModule,
+    Ng2SearchPipeModule],
   exports: [
     CommonModule,
     RouterModule,
@@ -63,7 +72,11 @@ import { MaskDirective } from './directives/mask';
     MatDatepickerModule,
     MatMenuModule,
     MatExpansionModule,
-    NgBrazil
+    NgBrazil,
+    MatPaginatorModule,
+    CurrencyMaskModule,
+    AngularFileUploaderModule,
+    Ng2SearchPipeModule
   ],
   providers: [
     AlertComponent

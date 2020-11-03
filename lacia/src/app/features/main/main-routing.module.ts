@@ -13,6 +13,7 @@ const routes: Routes = [
       { path: 'meu-perfil', loadChildren: () => import('../meu-perfil/meu-perfil.module').then(m => m.MeuPerfilModule) },
       { path: 'esqueci-minha-senha', loadChildren: () => import('../esqueci-minha-senha/esqueci-minha-senha.module').then(m => m.EsqueciMinhaSenhaModule) },
       { path: 'submeter-projeto', loadChildren: () => import('../submeter-projeto/submeter-projeto.module').then(m => m.SubmeterProjetoModule) },
+      { path: 'meu-projeto', loadChildren: () => import('../meu-projeto/meu-projeto.module').then(m => m.MeuProjetoModule) }
 
     ]
   }
