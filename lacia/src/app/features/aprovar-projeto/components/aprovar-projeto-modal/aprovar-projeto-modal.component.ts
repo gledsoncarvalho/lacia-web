@@ -1,8 +1,17 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AlertComponent } from 'src/app/shared/components/alert/alert.component';
 import { AprovarProjeto } from './../../aprovar-projeto'
+import { ErrorStateMatcher } from '@angular/material/core';
+
+export class MyErrorStateMatcher implements ErrorStateMatcher{
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null):boolean{
+    const isSubmitted = form && form.submitted;
+    return !! (control && control.invalid && (control.dirty || control.touched || isSubmitted))
+  }
+}
+
 
 @Component({
   selector: 'app-aprovar-projeto-modal',
@@ -10,8 +19,9 @@ import { AprovarProjeto } from './../../aprovar-projeto'
   styleUrls: ['./aprovar-projeto-modal.component.css']
 })
 export class AprovarProjetoModalComponent implements OnInit {
-
+  
   aprovarProjetoForm: FormGroup;
+  matcher = new MyErrorStateMatcher();
 
   constructor(
     private fb : FormBuilder,

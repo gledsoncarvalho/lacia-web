@@ -54,7 +54,7 @@ export class SubmeterProjetoComponent implements OnInit {
   }*/
  
 
-  inputFileChange(event){
+  adicionarArquivo(event){
     if(event.target.files && event.target.files[0]){
       const foto = event.target.files[0];
 

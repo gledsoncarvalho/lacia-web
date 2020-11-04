@@ -16,13 +16,12 @@ const ELEMENT_DATA: MeuProjeto[] = [
   templateUrl: './meu-projeto.component.html',
   styleUrls: ['./meu-projeto.component.css']
 })
+
 export class MeuProjetoComponent implements OnInit {
   displayedColumns: string[] = ['idMeuProjeto', 'nomeMeuProjeto', 'orcamentoMeuProjeto', 'dt_inicio_MeuProjeto', 'dt_fim_MeuProjeto', 'situacaoMeuProjeto', 'acoes'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   status = Status; 
- 
-
-
+  
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -34,11 +33,11 @@ export class MeuProjetoComponent implements OnInit {
 
   filtrarProjetos(status: Status.APROVADO | Status.REPROVADO | Status.AGUARDANDO) {
     console.log(status);
+    this.dataSource.data = ELEMENT_DATA;
     this.dataSource.data = this.dataSource.data.filter(projeto => projeto.situacaoMeuProjeto === status);
     this.dataSource._updateChangeSubscription();
   }
   recarregarTela(){
-    location.reload();
+    this.dataSource.data = ELEMENT_DATA;
   }
-
 }
