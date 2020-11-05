@@ -13,22 +13,18 @@
         <div [@fadeInOutTranslate] class="m-t-15">
             <!-- personal card start -->
             <div class="card">
-                <mat-expansion-panel hideToggle [expanded]="true"> 
-                    <mat-expansion-panel-header class="card-header">
-                        
+                <mat-expansion-panel hideToggle [expanded]="true" > 
+                    <mat-expansion-panel-header class="card-header" #panelH (click)="panelH._toggle()">
                         <mat-panel-title class="titulo-card">
                             Dados Pessoais
                         </mat-panel-title>
                         <button mat-raised-button id="botao-de-edicao"class="btnAcao" (click)="atualizarMeuPerfil();$event.stopPropagation()">
                             <mat-icon>edit</mat-icon>&nbsp; Editar dados
                           </button>
-
                     </mat-expansion-panel-header>
-
                     <div id="cor_informacoes_descricao" class="row">
                         <div class="col-lg-12 col-xl-6">
                             <br>
-
                             <h3>
                                 <mat-panel-title class="itens-dados-pessoais">
                                     <b>Nome Completo</b>: {{ perfil.nomeMeuPerfil }}

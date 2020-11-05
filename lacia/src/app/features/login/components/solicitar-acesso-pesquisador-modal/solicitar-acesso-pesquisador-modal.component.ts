@@ -19,6 +19,7 @@ export class SolicitarAcessoPesquisadorModalComponent implements OnInit {
     private alert: AlertComponent,
     private dialogRef: MatDialogRef<SolicitarAcessoPesquisadorModalComponent>) { }
 
+
   ngOnInit(): void {
     this.criarForm();
   }
@@ -42,5 +43,8 @@ export class SolicitarAcessoPesquisadorModalComponent implements OnInit {
       this.alert.show("Aviso", "Favor preencher os campos obrigatórios", "warning");
     }
   }
+  
+}    
 
-}
+
+

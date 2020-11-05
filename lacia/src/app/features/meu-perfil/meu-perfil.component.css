@@ -21,7 +21,7 @@ div#tabela_principal{
   margin-top: 2%;
 }
 .botao_de_edicao{
-  margin-left: 97%;
+  margin-left: -97%;
   color:black;
 }
 

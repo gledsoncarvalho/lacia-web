@@ -1,11 +1,9 @@
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { Alunos } from './../../alunos';
-import { Component, OnInit } from '@angular/core';
-import{FormBuilder, FormGroup, Validators} from'@angular/forms';
-import { AlunoEditarModalComponent } from './../aluno-editar-modal/aluno-editar-modal.component';
-import Swal from 'sweetalert2';
 import { AlertComponent } from 'src/app/shared/components/alert/alert.component';
+import { Alunos } from './../../alunos';
 
 @Component({
   selector: 'app-aluno-pesquisar',
@@ -15,7 +13,7 @@ import { AlertComponent } from 'src/app/shared/components/alert/alert.component'
 export class AlunoPesquisarComponent implements OnInit {
 
   alunosForm: FormGroup;
-  colunasTable: string[] = ['idAluno', 'nomeAluno', 'emailAluno', 'acoes'];
+  colunasTable: string[] = ['idAluno', 'nomeAluno', 'emailAluno','telefoneAluno','dtNascimentoAluno', 'acoes'];
   alunos: MatTableDataSource<Alunos> = new MatTableDataSource();
 
 
@@ -23,7 +21,7 @@ export class AlunoPesquisarComponent implements OnInit {
 
   ngOnInit(): void {
     this.criarForm();
-    this.alunos.data.push({ idAluno: 1, nomeAluno:"ChicoJ",emailAluno:"chicoj@frombrazil.com.br", telefoneAluno:"79998414129",dtNascimentoAluno: new Date(),cpfAluno:"111.111.111-11"} as Alunos);
+    this.alunos.data.push({ idAluno: 1, nomeAluno:"ChicoJ",emailAluno:"chicoj@frombrazil.com.br", telefoneAluno:"7999841412",dtNascimentoAluno: new Date(),cpfAluno:"111.111.111-11"} as Alunos);
     this.alunos.data.push({ idAluno: 2, nomeAluno:"BrennoJ",emailAluno:"brennoj@frombrazil.com.br", telefoneAluno:"7999526188",dtNascimentoAluno: new Date(),cpfAluno:"111.111.111-11"} as Alunos);
 
   }
@@ -31,14 +29,7 @@ export class AlunoPesquisarComponent implements OnInit {
   criarForm(){
     this.alunosForm = this.fb.group({
       nomeAluno: [null],
-      emailAluno:[null]
-    })
-  }
-
-  atualizarAluno(aluno: Alunos){
-    let dialogRef = this.dialog.open(AlunoEditarModalComponent, {data: aluno});
-    dialogRef.afterClosed().subscribe(resposta => {
-      //ATUALIZAR GRID
+      emailAluno:[null],
     })
   }
 
