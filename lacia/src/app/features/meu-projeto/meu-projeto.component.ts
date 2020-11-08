@@ -6,9 +6,9 @@ import { MeuProjeto } from './meu-projeto';
 
 
 const ELEMENT_DATA: MeuProjeto[] = [
-  { idMeuProjeto: 3, nomeMeuProjeto: "Lacia", orcamentoMeuProjeto: "500,50", dt_inicio_MeuProjeto: new Date(), dt_fim_MeuProjeto: new Date(), situacaoMeuProjeto: "Aprovado" },
-  { idMeuProjeto: 4, nomeMeuProjeto: "Composto V", orcamentoMeuProjeto: "50000,33", dt_inicio_MeuProjeto: new Date(), dt_fim_MeuProjeto: new Date(), situacaoMeuProjeto: "Não aprovado" },
-  { idMeuProjeto: 5, nomeMeuProjeto: "Projeto Chico", orcamentoMeuProjeto: "2000,90", dt_inicio_MeuProjeto: new Date(), dt_fim_MeuProjeto: new Date(), situacaoMeuProjeto: "Em espera" },
+  {  nomeMeuProjeto: "Lacia", orcamentoMeuProjeto: "500,50", dt_inicio_MeuProjeto: new Date(), dt_fim_MeuProjeto: new Date(), situacaoMeuProjeto: "Aprovado" },
+  {  nomeMeuProjeto: "Composto V", orcamentoMeuProjeto: "50000,33", dt_inicio_MeuProjeto: new Date(), dt_fim_MeuProjeto: new Date(), situacaoMeuProjeto: "Não aprovado" },
+  { nomeMeuProjeto: "Projeto Chico", orcamentoMeuProjeto: "2000,90", dt_inicio_MeuProjeto: new Date(), dt_fim_MeuProjeto: new Date(), situacaoMeuProjeto: "Em espera" },
 ];
 
 @Component({
@@ -18,7 +18,7 @@ const ELEMENT_DATA: MeuProjeto[] = [
 })
 
 export class MeuProjetoComponent implements OnInit {
-  displayedColumns: string[] = ['idMeuProjeto', 'nomeMeuProjeto', 'orcamentoMeuProjeto', 'dt_inicio_MeuProjeto', 'dt_fim_MeuProjeto', 'situacaoMeuProjeto', 'acoes'];
+  displayedColumns: string[] = [ 'nomeMeuProjeto', 'orcamentoMeuProjeto', 'dt_inicio_MeuProjeto', 'dt_fim_MeuProjeto', 'situacaoMeuProjeto', 'acoes'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   status = Status; 
   

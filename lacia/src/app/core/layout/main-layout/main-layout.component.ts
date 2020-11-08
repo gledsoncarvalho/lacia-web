@@ -47,7 +47,15 @@ export class MainLayoutComponent implements OnInit {
     {
       label: 'Pesquisadores',
       link: '/main/pesquisador',
-      icon: 'biotech'
+      icon: 'biotech',
+      items: [
+        {
+          label: 'Aprovar Pesquisador',
+          link: '/main/aprovar-pesquisador'
+
+          
+        }
+      ]
     },
     {
       label: 'Alunos',

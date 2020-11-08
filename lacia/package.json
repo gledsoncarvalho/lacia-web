@@ -28,6 +28,7 @@
     "jquery": "^3.5.1",
     "js-brasil": "^2.3.8",
     "moment": "^2.29.1",
+    "move-file": "^2.0.0",
     "ng-brazil": "^2.2.2",
     "ng-material-multilevel-menu": "^4.12.2",
     "ng2-currency-mask": "^9.0.2",

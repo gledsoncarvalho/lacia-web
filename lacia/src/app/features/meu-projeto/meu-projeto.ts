@@ -1,6 +1,5 @@
 export interface MeuProjeto {
 
-    idMeuProjeto: number;
     nomeMeuProjeto: string;
     orcamentoMeuProjeto: string;    
     dt_inicio_MeuProjeto: Date;

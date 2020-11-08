@@ -28,10 +28,10 @@ import { AppComponent } from './app.component';
     MatTableModule,
     MatPaginatorModule,
     Ng2SearchPipeModule,
-    
-    
+
+
   ],
-  providers: [{provide: MAT_DATE_LOCALE, useValue: 'pt-BR'},],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
