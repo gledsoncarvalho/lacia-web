@@ -58,10 +58,10 @@
         </div>
         <mat-divider></mat-divider>
         <div class="card-footer">
-          <button mat-raised-button class="btnAcao">
+          <button (click)="cadastrarAluno()" mat-raised-button class="btnAcao">
             <mat-icon>add</mat-icon>&nbsp; Cadastrar
           </button>
-          <button mat-raised-button class="btnLimpar">
+          <button (click)="limparDados()" mat-raised-button class="btnLimpar">
             <mat-icon>delete_sweep</mat-icon>&nbsp; Limpar
           </button>
         </div>

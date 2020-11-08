@@ -26,7 +26,7 @@ export class MeuProjetoComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-  constructor(private router: Router ){ }
+  constructor(private router: Router){ }
 
 
   ngOnInit(): void { }

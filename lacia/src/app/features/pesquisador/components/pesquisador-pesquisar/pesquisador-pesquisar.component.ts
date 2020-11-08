@@ -18,6 +18,12 @@ export class PesquisadorPesquisarComponent implements OnInit {
   colunasTable: string[] = ['idPesquisador', 'nomePesquisador', 'emailPesquisador', 'acoes'];
   pesquisadores: MatTableDataSource<Pesquisador> = new MatTableDataSource();
 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.pesquisadores.filter = filterValue.trim().toLowerCase();
+  }
+
+
   constructor(private fb: FormBuilder, private dialog: MatDialog, private alert: AlertComponent) { }
 
   ngOnInit(): void {

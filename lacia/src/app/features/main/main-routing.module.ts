@@ -14,7 +14,8 @@ const routes: Routes = [
       { path: 'esqueci-minha-senha', loadChildren: () => import('../esqueci-minha-senha/esqueci-minha-senha.module').then(m => m.EsqueciMinhaSenhaModule) },
       { path: 'submeter-projeto', loadChildren: () => import('../submeter-projeto/submeter-projeto.module').then(m => m.SubmeterProjetoModule) },
       { path: 'meu-projeto', loadChildren: () => import('../meu-projeto/meu-projeto.module').then(m => m.MeuProjetoModule) },
-      { path: 'aprovar-projeto', loadChildren: () => import('../aprovar-projeto/aprovar-projeto.module').then(m => m.AprovarProjetoModule) }
+      { path: 'aprovar-projeto', loadChildren: () => import('../aprovar-projeto/aprovar-projeto.module').then(m => m.AprovarProjetoModule) },
+      { path: 'projeto-cadastrado', loadChildren: () => import('../projeto-cadastrado/projeto-cadastrado.module').then(m => m.ProjetoCadastradoModule) }
     ]
   }
 ];

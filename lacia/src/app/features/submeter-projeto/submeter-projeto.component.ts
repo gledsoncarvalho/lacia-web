@@ -1,9 +1,11 @@
+import { MatDialogRef } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { SubmeterProjeto } from './submeter-projeto';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { HttpClient} from '@angular/common/http'
 import { Subscriber } from 'rxjs';
+import { AlertComponent } from 'src/app/shared/components/alert/alert.component';
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher{
@@ -23,7 +25,7 @@ export class SubmeterProjetoComponent implements OnInit {
  
   submeterProjetoForm: FormGroup;
   matcher = new MyErrorStateMatcher();
-  constructor(private fb: FormBuilder, private http: HttpClient) {}
+  constructor(private fb: FormBuilder, private http: HttpClient, private alert: AlertComponent) {}
 
   ngOnInit(): void {
     this.criarForm();
@@ -39,33 +41,12 @@ export class SubmeterProjetoComponent implements OnInit {
 
     });
   }
-  /*onChange(event){
-    console.log(event);
-
-  const selectFiles = <FileList>event.srcElement.files;
-  //document.getElementById('customFileLabel').innerHTML = selectFiles[0].name;
-
-  const fileNames = [];
-  for(let i=0; i<selectFiles.length;i++){
-    fileNames.push(selectFiles[i].name);
-  }
-  document.getElementById('customFileLabel').innerHTML = fileNames.join(', ' );
-
-  }*/
- 
-
-  adicionarArquivo(event){
-    if(event.target.files && event.target.files[0]){
-      const foto = event.target.files[0];
-
-      const formData = new FormData();
-      formData.append('foto',foto);
-
-      this.http.post('', formData).
-      subscribe(resposta => console.log('upload ok'));
-    }
-
+  submeterProjeto() {
+    this.alert.show("Submetido!", "O projeto foi submetido com sucesso!", "success");
   }
 
+  limparDados(){
+    this.submeterProjetoForm.reset();
+  }
 
 }

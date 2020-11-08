@@ -9,7 +9,6 @@ import { RouterModule } from '@angular/router';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProjetoCadastradoComponent } from './features/projeto-cadastrado/projeto-cadastrado.component';
 
 
 
@@ -18,7 +17,6 @@ import { ProjetoCadastradoComponent } from './features/projeto-cadastrado/projet
 @NgModule({
   declarations: [
     AppComponent,
-    ProjetoCadastradoComponent,
   ],
   imports: [
     BrowserModule,

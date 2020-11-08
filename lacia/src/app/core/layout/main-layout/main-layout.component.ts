@@ -31,6 +31,10 @@ export class MainLayoutComponent implements OnInit {
         {
           label: 'Aprovar Projeto',
           link: '/main/aprovar-projeto',
+          faIcon: 'fab fa-accessible-icon'},
+        {
+          label: 'Projetos Cadastrados',
+          link: '/main/projeto-cadastrado',
           faIcon: 'fab fa-accessible-icon'
         }
       ]

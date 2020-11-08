@@ -17,12 +17,17 @@ export class AlunoPesquisarComponent implements OnInit {
   alunos: MatTableDataSource<Alunos> = new MatTableDataSource();
 
 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.alunos.filter = filterValue.trim().toLowerCase();
+  }
+
   constructor(private fb: FormBuilder, private dialog: MatDialog, private alert: AlertComponent) { }
 
   ngOnInit(): void {
     this.criarForm();
-    this.alunos.data.push({ idAluno: 1, nomeAluno:"ChicoJ",emailAluno:"chicoj@frombrazil.com.br", telefoneAluno:"7999841412",dtNascimentoAluno: new Date(),cpfAluno:"111.111.111-11"} as Alunos);
-    this.alunos.data.push({ idAluno: 2, nomeAluno:"BrennoJ",emailAluno:"brennoj@frombrazil.com.br", telefoneAluno:"7999526188",dtNascimentoAluno: new Date(),cpfAluno:"111.111.111-11"} as Alunos);
+    this.alunos.data.push({ idAluno: 1, nomeAluno:"Chico",emailAluno:"chico@gmail.com.br", telefoneAluno:"7999841412",dtNascimentoAluno: new Date(),cpfAluno:"111.111.111-11"} as Alunos);
+    this.alunos.data.push({ idAluno: 2, nomeAluno:"Brenno",emailAluno:"brenno@gmail.com.br", telefoneAluno:"7999526188",dtNascimentoAluno: new Date(),cpfAluno:"111.111.111-11"} as Alunos);
 
   }
   

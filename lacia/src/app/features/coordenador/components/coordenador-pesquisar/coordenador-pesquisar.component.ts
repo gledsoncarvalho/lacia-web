@@ -18,6 +18,11 @@ export class CoordenadorPesquisarComponent implements OnInit {
   colunasTable: string[] = ['idCoordenador', 'dsCoordenador', 'dsEmail', 'acoes'];
   coordenadores: MatTableDataSource<Coordenador> = new MatTableDataSource();
 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.coordenadores.filter = filterValue.trim().toLowerCase();
+  }
+
   constructor(private fb: FormBuilder, private dialog: MatDialog, private alert: AlertComponent) { }
 
   ngOnInit(): void {

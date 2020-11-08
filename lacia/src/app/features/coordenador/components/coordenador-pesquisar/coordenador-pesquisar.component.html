@@ -14,27 +14,18 @@
             <div class="row">
               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <mat-form-field>
-                  <mat-label>Nome</mat-label>
-                  <input matInput formControlName="dsCoordenador">
+                  <mat-label>Filtro por nome do coordenador</mat-label>
+                  <input matInput matInput (keyup)="applyFilter($event)" placeholder="Ex. 	Fábio Gomes" #input>
                 </mat-form-field>
               </div>
               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <mat-form-field>
-                  <mat-label>E-mail</mat-label>
-                  <input matInput formControlName="dsEmail">
+                  <mat-label>Filtro por e-mail do coordenador</mat-label>
+                  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. fabio.gomes@souunit.com.br" #input>
                 </mat-form-field>
               </div>
             </div>
           </form>
-        </div>
-        <mat-divider></mat-divider>
-        <div class="card-footer">
-          <button mat-raised-button class="btnAcao">
-            <mat-icon>search</mat-icon>&nbsp; Pesquisar
-          </button>
-          <button mat-raised-button class="btnLimpar">
-            <mat-icon>delete_sweep</mat-icon>&nbsp; Limpar
-          </button>
         </div>
       </div>
     </div>
