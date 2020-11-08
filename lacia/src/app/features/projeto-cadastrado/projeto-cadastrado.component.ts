@@ -32,6 +32,9 @@ export class ProjetoCadastradoComponent implements OnInit {
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   status = Status; 
   columnsToDisplay = ['nome', 'orcamento', 'data inicio', 'data fim'];
+  dicionarioColunas: { [coluna: string]: string };
+  mapColunas = new Map<string,string>(); 
+  
 
 
   applyFilter(event: Event) {
@@ -39,9 +42,15 @@ export class ProjetoCadastradoComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
   
-  constructor(private router: Router) { }
+  constructor(private router: Router) { 
+    this.mapColunas.set('nomeProjetoCadastrado', 'Nome');
+    this.mapColunas.set('orcamentoProjetoCadastrado', 'Orcamento');
+    this.mapColunas.set('dt_inicio_ProjetoCadastrado', 'Data inicio');
+    this.mapColunas.set('dt_fim_ProjetoCadastrado', 'Data fim');
+  }
 
   ngOnInit(): void {
   }
 
+  
 }

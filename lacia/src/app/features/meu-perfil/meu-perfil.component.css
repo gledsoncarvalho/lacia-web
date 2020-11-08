@@ -5,9 +5,10 @@ mat-icon#icone-usuario-anonimo{
 }
 
 h1#nome_embaixo_do_icone_perfil{
-  margin-left: 38%;
+  margin-left: 39%;
   margin-top: 1%;
 }
+
 .card-header{
   background-color: #3f51b5;
 }
@@ -16,6 +17,7 @@ img{
 border-radius: 50%;
 margin-left: 42.3%;
 }
+
 div#tabela_principal{
 margin-top: 2%;
 }
@@ -51,6 +53,7 @@ html, body {
   margin: 0px;
   padding: 0;
 }
+
 .box {
   display: flex;
   width: 100px;
@@ -58,8 +61,10 @@ html, body {
   position: relative;
   margin-left: 40.5%;
   margin-top: 0%;
+  margin-bottom: 6%;
 
 }
+
 .avatar::after {
   opacity: 0;
   font-family: FontAwesome;
@@ -82,32 +87,20 @@ html, body {
   margin-left: 43%;
   margin-top: 3.2%;
 }
+
 .avatar:hover::after {
   opacity: 1;
 }
 
-.menu {
-  position: absolute;
-  opacity: 0;
-  width: 100px;
-  height: auto;
-  background-color: #fff;
-  box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
-  box-sizing: border-box;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  top: 60%;
-  left: 60%;
-  z-index: -1;
-  transition: 350ms ease-in-out;
-}
 .box input {
   display: none;
 }
+
 .box input:checked + div.menu {
   opacity: 1;
   z-index: 999;
 }
+
 input#coloca-imagem-perfil{
   margin-left: 45%;
   margin-top: 6.2%;

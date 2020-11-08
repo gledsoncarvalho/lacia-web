@@ -13,7 +13,7 @@ import { Alunos } from './../../alunos';
 export class AlunoPesquisarComponent implements OnInit {
 
   alunosForm: FormGroup;
-  colunasTable: string[] = ['idAluno', 'nomeAluno', 'emailAluno','telefoneAluno','dtNascimentoAluno', 'acoes'];
+  colunasTable: string[] = ['nomeAluno', 'emailAluno','telefoneAluno','dtNascimentoAluno', 'acoes'];
   alunos: MatTableDataSource<Alunos> = new MatTableDataSource();
 
 
@@ -26,8 +26,8 @@ export class AlunoPesquisarComponent implements OnInit {
 
   ngOnInit(): void {
     this.criarForm();
-    this.alunos.data.push({ idAluno: 1, nomeAluno:"Chico",emailAluno:"chico@gmail.com.br", telefoneAluno:"7999841412",dtNascimentoAluno: new Date(),cpfAluno:"111.111.111-11"} as Alunos);
-    this.alunos.data.push({ idAluno: 2, nomeAluno:"Brenno",emailAluno:"brenno@gmail.com.br", telefoneAluno:"7999526188",dtNascimentoAluno: new Date(),cpfAluno:"111.111.111-11"} as Alunos);
+    this.alunos.data.push({nomeAluno:"Chico",emailAluno:"chico@gmail.com.br", telefoneAluno:"7999841412",dtNascimentoAluno: new Date(),cpfAluno:"111.111.111-11"} as Alunos);
+    this.alunos.data.push({nomeAluno:"Brenno",emailAluno:"brenno@gmail.com.br", telefoneAluno:"7999526188",dtNascimentoAluno: new Date(),cpfAluno:"111.111.111-11"} as Alunos);
 
   }
   

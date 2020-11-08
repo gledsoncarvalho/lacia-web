@@ -1,10 +1,8 @@
 import { MatDialogRef } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
-import { SubmeterProjeto } from './submeter-projeto';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { HttpClient} from '@angular/common/http'
-import { Subscriber } from 'rxjs';
 import { AlertComponent } from 'src/app/shared/components/alert/alert.component';
 
 
@@ -41,8 +39,21 @@ export class SubmeterProjetoComponent implements OnInit {
     });
   }
   submeterProjeto() {
+   if(this.submeterProjetoForm.valid){
     this.alert.show("Submetido!", "O projeto foi submetido com sucesso!", "success");
+   }else{
+     this.alert.show("Aviso", "Favor preencher os campos obrigatórios", "warning");
+   }
+   this.submeterProjetoForm.reset();
   }
+  /*solicitarProjeto() {
+    if (this.submeterProjetoForm.valid) {
+      this.dialogRef.close();
+      this.alert.show("Submetido!", "Soliciação efetuada com sucesso", "success");
+    } else {
+      this.alert.show("Aviso", "Favor preencher os campos obrigatórios", "warning");
+    }
+  }*/
 
   limparDados(){
     this.submeterProjetoForm.reset();

@@ -41,6 +41,7 @@ export class AlunoCadastrarComponent implements OnInit {
   }
   cadastrarAluno() {
     this.alert.show("Cadastrado!", "O aluno foi cadastrado com sucesso!", "success");
+    this.alunosForm.reset();
   }
 
   limparDados(){
