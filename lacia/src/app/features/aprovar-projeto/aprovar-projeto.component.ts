@@ -26,7 +26,7 @@ export class AprovarProjetoComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  visualizarProjeto(projeto: AprovarProjeto){
+  analisarProjeto(projeto: AprovarProjeto){
     let dialogRef = this.dialog.open(AprovarProjetoModalComponent, {data: projeto});
     dialogRef.afterClosed().subscribe(resposta => { })
   }

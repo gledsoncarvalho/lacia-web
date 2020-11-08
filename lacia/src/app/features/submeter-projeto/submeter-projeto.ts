@@ -5,7 +5,6 @@ export interface SubmeterProjeto {
     descricaoSubmeterProjeto: string;
     dt_inicio_SubmeterProjeto: Date;
     dt_fim_SubmeterProjeto: Date;
-    sloganSubmeterProjeto: string;
     orcamentoSubmeterProjeto: string;
   }
   

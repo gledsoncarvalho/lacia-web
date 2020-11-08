@@ -36,7 +36,6 @@ export class SubmeterProjetoComponent implements OnInit {
       descricaoSubmeterProjeto: [null,[Validators.required]],
       dt_inicio_SubmeterProjeto: [null, Validators.required],
       dt_fim_SubmeterProjeto: [null, Validators.required],
-      sloganSubmeterProjeto: [null],
       orcamentoSubmeterProjeto: [null,Validators.required]
 
     });
