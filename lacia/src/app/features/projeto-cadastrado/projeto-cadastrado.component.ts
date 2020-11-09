@@ -7,9 +7,9 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 
 
 const ELEMENT_DATA: ProjetoCadastrado[] = [
-  { idProjetoCadastrado: 3, nomeProjetoCadastrado: "Lacia", orcamentoProjetoCadastrado: "500,50", dt_inicio_ProjetoCadastrado: new Date(), dt_fim_ProjetoCadastrado: new Date(), descricaoProjetoCadastrado: "Projeto voltado para gestao de projetos" },
-  { idProjetoCadastrado: 4, nomeProjetoCadastrado: "Composto V", orcamentoProjetoCadastrado: "50000,33", dt_inicio_ProjetoCadastrado: new Date(), dt_fim_ProjetoCadastrado: new Date(), descricaoProjetoCadastrado: "Um projeto para mudar o mundo como conhecemos" },
-  { idProjetoCadastrado: 5, nomeProjetoCadastrado: "Projeto Chico", orcamentoProjetoCadastrado: "2000,90", dt_inicio_ProjetoCadastrado: new Date(), dt_fim_ProjetoCadastrado: new Date(), descricaoProjetoCadastrado: "Um projeto basicamente impossivel de resolver" },
+  { idProjetoCadastrado: 3, nomeProjetoCadastrado: "Lacia", orcamentoProjetoCadastrado: "500,50", dtInicioProjetoCadastrado: new Date(), dtFimProjetoCadastrado: new Date(), descricaoProjetoCadastrado: "Projeto voltado para gestao de projetos" },
+  { idProjetoCadastrado: 4, nomeProjetoCadastrado: "Composto V", orcamentoProjetoCadastrado: "50000,33", dtInicioProjetoCadastrado: new Date(), dtFimProjetoCadastrado: new Date(), descricaoProjetoCadastrado: "Um projeto para mudar o mundo como conhecemos" },
+  { idProjetoCadastrado: 5, nomeProjetoCadastrado: "Projeto Chico", orcamentoProjetoCadastrado: "2000,90", dtInicioProjetoCadastrado: new Date(), dtFimProjetoCadastrado: new Date(), descricaoProjetoCadastrado: "Um projeto basicamente impossivel de resolver" },
 ];
 
 
@@ -28,7 +28,7 @@ const ELEMENT_DATA: ProjetoCadastrado[] = [
 
 export class ProjetoCadastradoComponent implements OnInit {
 
-  displayedColumns: string[] = ['nomeProjetoCadastrado', 'orcamentoProjetoCadastrado', 'dt_inicio_ProjetoCadastrado', 'dt_fim_ProjetoCadastrado'];
+  displayedColumns: string[] = ['nomeProjetoCadastrado', 'orcamentoProjetoCadastrado', 'dtInicioProjetoCadastrado', 'dtFimProjetoCadastrado'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   status = Status; 
   columnsToDisplay = ['nome', 'orcamento', 'data inicio', 'data fim'];
@@ -43,10 +43,10 @@ export class ProjetoCadastradoComponent implements OnInit {
   }
   
   constructor(private router: Router) { 
-    this.mapColunas.set('nomeProjetoCadastrado', 'Nome');
-    this.mapColunas.set('orcamentoProjetoCadastrado', 'Orcamento');
-    this.mapColunas.set('dt_inicio_ProjetoCadastrado', 'Data inicio');
-    this.mapColunas.set('dt_fim_ProjetoCadastrado', 'Data fim');
+    this.mapColunas.set('nomeProjetoCadastrado', 'Nome Projeto');
+    this.mapColunas.set('orcamentoProjetoCadastrado', 'Orçamento');
+    this.mapColunas.set('dtInicioProjetoCadastrado', 'Data inicio');
+    this.mapColunas.set('dtFimProjetoCadastrado', 'Data fim');
   }
 
   ngOnInit(): void {

@@ -35,19 +35,19 @@
 
   <!-- Weight Column -->
   <ng-container matColumnDef="orcamentoMeuProjeto">
-    <th mat-header-cell *matHeaderCellDef> Orcamento </th>
+    <th mat-header-cell *matHeaderCellDef> Orçamento </th>
     <td mat-cell *matCellDef="let element"> {{element.orcamentoMeuProjeto | currencyBrazil }} </td>
   </ng-container>
 
   <!-- Symbol Column -->
-  <ng-container matColumnDef="dt_inicio_MeuProjeto">
+  <ng-container matColumnDef="dtInicioMeuProjeto">
     <th mat-header-cell *matHeaderCellDef> Data inicio </th>
-    <td mat-cell *matCellDef="let element"> {{element.dt_inicio_MeuProjeto | date:"dd/MM/yyyy"}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.dtInicioMeuProjeto | date:"dd/MM/yyyy"}} </td>
   </ng-container>
 
-  <ng-container matColumnDef="dt_fim_MeuProjeto">
+  <ng-container matColumnDef="dtFimMeuProjeto">
     <th mat-header-cell *matHeaderCellDef> Data fim </th>
-    <td mat-cell *matCellDef="let element"> {{element.dt_fim_MeuProjeto | date:"dd/MM/yyyy"}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.dtFimMeuProjeto | date:"dd/MM/yyyy"}} </td>
   </ng-container>
 
   <ng-container matColumnDef="situacaoMeuProjeto">

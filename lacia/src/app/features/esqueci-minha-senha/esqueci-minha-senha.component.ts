@@ -45,7 +45,7 @@ export class EsqueciMinhaSenhaComponent implements OnInit {
     });
   }
   
-  enviar_senha(){
+  enviarSenha(){
     this.loading =true;
     if(this.esqueci_minha_senha.valid){
       /*this.router.navigateByUrl("/main/coordenador");*/
@@ -55,6 +55,7 @@ export class EsqueciMinhaSenhaComponent implements OnInit {
       this.loading = false;
     }
   }
+  
   AtualizarSenha() {
     if (this.esqueci_minha_senha.valid) {
       this.alert.show("Email enviado!", "Email foi enviado com sucesso!", "success");

@@ -26,8 +26,8 @@ export class AlunoPesquisarComponent implements OnInit {
 
   ngOnInit(): void {
     this.criarForm();
-    this.alunos.data.push({nomeAluno:"Chico",emailAluno:"chico@gmail.com.br", telefoneAluno:"7999841412",dtNascimentoAluno: new Date(),cpfAluno:"111.111.111-11"} as Alunos);
-    this.alunos.data.push({nomeAluno:"Brenno",emailAluno:"brenno@gmail.com.br", telefoneAluno:"7999526188",dtNascimentoAluno: new Date(),cpfAluno:"111.111.111-11"} as Alunos);
+    this.alunos.data.push({nomeAluno:"Chico",emailAluno:"chico@gmail.com.br", telefoneAluno:"79 9 9999-9999",dtNascimentoAluno: new Date(),cpfAluno:"111.111.111-11"} as Alunos);
+    this.alunos.data.push({nomeAluno:"Brenno",emailAluno:"brenno@gmail.com.br", telefoneAluno:"79 9 9999-9999",dtNascimentoAluno: new Date(),cpfAluno:"111.111.111-11"} as Alunos);
 
   }
   

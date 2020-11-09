@@ -19,7 +19,7 @@
     <th mat-header-cell *matHeaderCellDef> {{ mapColunas.get(column) }} </th>
     <td style="cursor: pointer;" mat-cell *matCellDef="let element">
       <div
-        *ngIf="column === 'dt_inicio_ProjetoCadastrado' || column === 'dt_fim_ProjetoCadastrado'; else colunaSemData">
+        *ngIf="column === 'dtInicioProjetoCadastrado' || column === 'dtFimProjetoCadastrado'; else colunaSemData">
         {{ element[column] | date: 'dd/MM/yyyy'}}
       </div>
       <ng-template #colunaSemData>
@@ -31,7 +31,7 @@
     <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
       <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
         <div class="example-element-description">
-          <b>Descricao: </b> {{element.descricaoProjetoCadastrado}}
+          <b>Descrição: </b> {{element.descricaoProjetoCadastrado}}
         </div>
       </div>
     </td>

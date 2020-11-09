@@ -40,7 +40,11 @@ export class AlunoCadastrarComponent implements OnInit {
     });
   }
   cadastrarAluno() {
-    this.alert.show("Cadastrado!", "O aluno foi cadastrado com sucesso!", "success");
+    if(this.alunosForm.valid){
+      this.alert.show("Cadastrado!", "O aluno foi cadastrado com sucesso!", "success");
+    }else{
+      this.alert.show("Aviso", "Favor preencher os campos obrigatórios", "warning");
+    }
     this.alunosForm.reset();
   }
 

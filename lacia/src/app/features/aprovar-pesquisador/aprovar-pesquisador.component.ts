@@ -4,7 +4,7 @@ import { AlertComponent } from 'src/app/shared/components/alert/alert.component'
 import { MatDialog } from '@angular/material/dialog';
 
 const ELEMENT_DATA: AprovarPesquisador[] = [
-  { nome: 'Diego Alves Ribeiro', email: 'diego@souunit.com.br', telefone: '(79) 9 9999-9999', data: new Date(1999, 9, 19), acao: 'H'},
+  { nome: 'Diego Alves Ribeiro', email: 'diego@souunit.com.br', telefone: '(79) 9 9999-9999', data: new Date(1999, 9, 19), acao: ''},
   { nome: 'Francisco Carvalho', email: 'Francisco@souunit.com.br', telefone:'(79) 9 9999-9999', data: new Date(2001, 5, 30), acao: ''},
   { nome: 'Gledson Carvalho', email: 'Gledson@souunit.com.br', telefone:'(79) 9 9999-9999', data: new Date(1900, 4, 20), acao: ''},
 

@@ -1,4 +1,3 @@
-import { MatDialogRef } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
@@ -28,14 +27,14 @@ export class SubmeterProjetoComponent implements OnInit {
   ngOnInit(): void {
     this.criarForm();
   }
+  
   criarForm(){
     this.submeterProjetoForm = this.fb.group({
       nomeSubmeterProjeto: [null, Validators.required],
       descricaoSubmeterProjeto: [null,[Validators.required]],
-      dt_inicio_SubmeterProjeto: [null, Validators.required],
-      dt_fim_SubmeterProjeto: [null, Validators.required],
+      dtInicioSubmeterProjeto: [null, Validators.required],
+      dtFimSubmeterProjeto: [null, Validators.required],
       orcamentoSubmeterProjeto: [null,Validators.required]
-
     });
   }
   submeterProjeto() {
@@ -46,14 +45,6 @@ export class SubmeterProjetoComponent implements OnInit {
    }
    this.submeterProjetoForm.reset();
   }
-  /*solicitarProjeto() {
-    if (this.submeterProjetoForm.valid) {
-      this.dialogRef.close();
-      this.alert.show("Submetido!", "Soliciação efetuada com sucesso", "success");
-    } else {
-      this.alert.show("Aviso", "Favor preencher os campos obrigatórios", "warning");
-    }
-  }*/
 
   limparDados(){
     this.submeterProjetoForm.reset();
