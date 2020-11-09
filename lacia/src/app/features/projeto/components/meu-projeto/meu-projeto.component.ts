@@ -1,7 +1,7 @@
+import { Status } from './../../../../shared/enums/status.enum';
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { Status } from './../../shared/enums/status.enum';
 import { MeuProjeto } from './meu-projeto';
 
 

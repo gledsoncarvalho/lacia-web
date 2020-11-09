@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Valida
 import { ErrorStateMatcher } from '@angular/material/core'
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { AlertComponent } from './../../shared/components/alert/alert.component';
+import { AlertComponent } from 'src/app/shared/components/alert/alert.component';
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {

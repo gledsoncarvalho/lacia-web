@@ -51,7 +51,7 @@ export class MainLayoutComponent implements OnInit {
       items: [
         {
           label: 'Aprovar Pesquisador',
-          link: '/main/aprovar-pesquisador'
+          link: 'aprovar-pesquisador'
 
           
         }

@@ -7,7 +7,7 @@ const routes: Routes = [
     path: 'main', loadChildren: () => import('./features/main/main.module').then(m => m.MainModule)
   },
   {
-    path: 'esqueci-minha-senha', loadChildren: () => import('./features/esqueci-minha-senha/esqueci-minha-senha.module').then(m => m.EsqueciMinhaSenhaModule)
+    path: 'esqueci-minha-senha', loadChildren: () => import('./features/login/components/esqueci-minha-senha/esqueci-minha-senha.module').then(m => m.EsqueciMinhaSenhaModule)
   }
 ];
 

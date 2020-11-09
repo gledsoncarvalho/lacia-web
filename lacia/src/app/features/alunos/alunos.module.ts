@@ -9,7 +9,7 @@ import {AlunoPesquisarComponent} from './components/aluno-pesquisar/aluno-pesqui
 
 
 @NgModule({
-    declarations: [AlunosComponent, AlunoCadastrarComponent,AlunoPesquisarComponent],
+    declarations: [AlunosComponent, AlunoCadastrarComponent, AlunoPesquisarComponent],
     imports: [
         SharedModule,
         AlunosRoutingModule
