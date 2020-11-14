@@ -1,0 +1,23 @@
+<div class="container">
+    <div fxLayout="column">
+        <div fxFlex>
+            <h2 class="titulo">
+                Aluno
+            </h2>
+        </div>
+        <mat-tab-group mat-align-tabs="center" fxFlex fx>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <mat-icon>search</mat-icon>&nbsp; Pesquisar
+                </ng-template>
+                <app-aluno-pesquisar></app-aluno-pesquisar>
+            </mat-tab>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <mat-icon>add</mat-icon>&nbsp;Cadastrar
+                </ng-template>
+                <app-aluno-cadastrar></app-aluno-cadastrar>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+<br>
+<div fxLayout="row">
+    <div fxFlex="100%">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    Cadastrar Aluno
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="card-content">
+                <form [formGroup]="alunosForm">
+                    <div fxLayout="row" fxLayoutGap="2rem">
+                        <div fxFlex="1 1 calc(50% - 2rem)" fxFlex.lt-md="100%">
+                            <mat-form-field>
+                                <mat-label>Nome</mat-label>
+                                <input matInput formControlName="nomeAluno" required>
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="1 1 calc(50% - 2rem)" fxFlex.lt-md="100%">
+                            <mat-form-field>
+                                <mat-label>E-mail</mat-label>
+                                <input matInput formControlName="emailAluno" [errorStateMatcher]="matcher" required>
+                                <mat-error
+                                    *ngIf="alunosForm.get('emailAluno').hasError('email') && !alunosForm.get('emailAluno').hasError('required')">
+                                    Por favor, entre com um e-mail válido!
+                                </mat-error>
+                                <mat-error *ngIf="alunosForm.get('emailAluno').hasError('required')">
+                                    E-mail é <strong>obrigatório</strong>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <mat-form-field>
+                                <mat-label>Telefone</mat-label>
+                                <input matInput Mask type="text" formControlName="telefoneAluno" mask="celular"
+                                    maxLength="15" required>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <mat-form-field>
+                                <mat-label>Data Nascimento</mat-label>
+                                <input matInput type="date" formControlName="dtNascimentoAluno" required>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <mat-form-field>
+                                <mat-label>CPF</mat-label>
+                                <input matInput Mask formControlName="cpf" mask="cpf" maxlength="14">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="card-footer">
+                <button (click)="cadastrarAluno()" mat-raised-button class="btnAcao">
+                    <mat-icon>add</mat-icon>&nbsp; Cadastrar
+                </button>
+                <button (click)="limparDados()" mat-raised-button class="btnLimpar">
+                    <mat-icon>delete_sweep</mat-icon>&nbsp; Limpar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
