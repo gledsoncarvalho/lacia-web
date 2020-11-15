@@ -1,7 +1,17 @@
+th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+  padding: 0;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  text-align-last: center;
+}
+div#coluna-dados-pessoais{
+  margin-top: 2%;
+}
+
 
 h1#nome_embaixo_do_icone_perfil{
-  margin-left: 39%;
-  margin-top: 1%;
+  margin-left: 35%;
+  margin-top: 0%;
 }
 
 .card-header{
@@ -10,7 +20,8 @@ h1#nome_embaixo_do_icone_perfil{
 
 img{
 border-radius: 50%;
-margin-left: 42.3%;
+margin-left: 48%;
+
 }
 
 div#tabela_principal{
@@ -35,12 +46,6 @@ button#botao-de-edicao{
   margin-left: 80%;
 }
 
-.icone_meu_perfil{
-  margin-left: 45.5%;
-  margin-top: 0%;
-  font-size: 200px;
-  
-}
 
 html, body {
   width: 100%;
@@ -51,16 +56,16 @@ html, body {
 
 .box {
   display: flex;
-  width: 100px;
-  height: 100px;
+  width: 162px;
+  height: 162px;
   position: relative;
-  margin-left: 40.5%;
-  margin-top: 0%;
-  margin-bottom: 6%;
+  margin-left: 37%;
+  margin-top: 2%;
+  margin-bottom: 2%;
 
 }
 
-.avatar::after {
+.avatar-perfil::after {
   opacity: 0;
   font-family: FontAwesome;
   content: "\f040";
@@ -71,7 +76,7 @@ html, body {
   justify-content: center;
   align-items: center;
   left:25px;
-  top: 1px;
+  top: 0px;
   width: 162px;
   height: 162px;
   z-index: 2;
@@ -79,11 +84,11 @@ html, body {
   border-radius: 50%;
   cursor: pointer;
   transition: 350ms ease-in-out;
-  margin-left: 43%;
+  margin-left: 32%;
   margin-top: 0.2%;
 }
 
-.avatar:hover::after {
+.avatar-perfil:hover::after {
   opacity: 1;
 }
 
@@ -96,8 +101,7 @@ html, body {
   z-index: 999;
 }
 
-input#coloca-imagem-perfil{
-  margin-left: 45%;
-  margin-top: 6.2%;
-  color: white;
+
+.card{
+  margin-right: 40%;
 }

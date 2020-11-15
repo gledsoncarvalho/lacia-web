@@ -1,7 +1,5 @@
-<div class="container-fluid">
-  <br /><br />
-  <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<div fxLayout="row">
+  <div fxFlex="100%">
       <div class="card">
         <div class="card-header">
           <div class="card-title">
@@ -11,14 +9,14 @@
         <mat-divider></mat-divider>
         <div class="card-content">
           <form [formGroup]="coordenadorForm">
-            <div class="row">
-              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div fxLayout="row" fxLayoutGap="2rem">
+              <div fxFlex="1 1 calc(50% - 2rem)" fxFlex.lt-md="100%">
                 <mat-form-field>
                   <mat-label>Filtro por nome do coordenador</mat-label>
                   <input matInput matInput (keyup)="applyFilter($event)" placeholder="Ex. 	Fábio Gomes" #input>
                 </mat-form-field>
               </div>
-              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <div fxFlex="1 1 calc(50% - 2rem)" fxFlex.lt-md="100%">
                 <mat-form-field>
                   <mat-label>Filtro por e-mail do coordenador</mat-label>
                   <input matInput (keyup)="applyFilter($event)" placeholder="Ex. fabio.gomes@souunit.com.br" #input>
@@ -27,12 +25,11 @@
             </div>
           </form>
         </div>
-      </div>
     </div>
   </div>
-  <br /><br />
-  <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+</div>
+  <div fxLayout="row">
+    <div fxFlex="100%">
       <div class="card">
         <div class="card-header">
           <div class="card-title">
@@ -82,4 +79,3 @@
       </div>
     </div>
   </div>
-</div>

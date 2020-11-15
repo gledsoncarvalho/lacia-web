@@ -29,8 +29,6 @@ import { ScrumboardBoardAddCardComponent } from './board/list/add-card/add-card.
 import { ScrumboardBoardCardComponent } from './board/list/card/card.component';
 import { ScrumboardBoardEditListNameComponent } from './board/list/edit-list-name/edit-list-name.component';
 import { ScrumboardBoardListComponent } from './board/list/list.component';
-import { ScrumboardBoardColorSelectorComponent } from './board/sidenavs/settings/board-color-selector/board-color-selector.component';
-import { ScrumboardBoardSettingsSidenavComponent } from './board/sidenavs/settings/settings.component';
 import { ScrumboardComponent } from './scrumboard.component';
 import { BoardResolve, ScrumboardService } from './scrumboard.service';
 
@@ -68,8 +66,7 @@ const routes: Routes = [
         ScrumboardCardDialogComponent,
         ScrumboardLabelSelectorComponent,
         ScrumboardEditBoardNameComponent,
-        ScrumboardBoardSettingsSidenavComponent,
-        ScrumboardBoardColorSelectorComponent
+      
     ],
     imports: [
         RouterModule.forChild(routes),
