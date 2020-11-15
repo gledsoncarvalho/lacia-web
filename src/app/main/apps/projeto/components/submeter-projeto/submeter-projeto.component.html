@@ -1,71 +1,72 @@
 <div class="container">
-<div fxLayout="row">
-  <div fxFlex>
-    <h2 class="titulo">
-      Submeter Projeto
-    </h2>
-  </div>
-</div>
-<div class="container">
-  <br>
-  <div fxLayout="row">
-    <div fxFlex="100%">
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">
-            Informações Gerais do Projeto
-          </div>
+    <div fxLayout="row">
+        <div fxFlex>
+            <h2 class="titulo">Submeter Projeto</h2>
         </div>
-        <mat-divider></mat-divider>
-        <div class="card-content">
-          <form [formGroup]="submeterProjetoForm">
-            <div fxLayout="row" fxLayoutGap="2rem">
-              <div fxFlex="1 1 calc(50% - 2rem)" fxFlex.lt-md="100%">
-                <mat-form-field>
-                  <mat-label>Nome</mat-label>
-                  <input id="nome" matInput formControlName="nomeSubmeterProjeto" required>
-                </mat-form-field>
-              </div>
-              <div fxFlex="1 1 calc(50% - 2rem)" fxFlex.lt-md="100%">
-                <mat-form-field>
-                  <mat-label>Orçamento</mat-label>
-                  <input id="orcamento" matInput currencyMask formControlName="orcamentoSubmeterProjeto" maxLength="15" [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left'}" required>
-                </mat-form-field>
-              </div>
+    </div>
+    <div class="container">
+        <br />
+        <div fxLayout="row">
+            <div fxFlex="100%">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            Informações Gerais do Projeto
+                        </div>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div class="card-content">
+                        <form [formGroup]="submeterProjetoForm">
+                            <div fxLayout="row" fxLayoutGap="2rem">
+                                <div fxFlex="1 1 calc(50% - 2rem)" fxFlex.lt-md="100%">
+                                    <mat-form-field>
+                                        <mat-label>Nome</mat-label>
+                                        <input id="nome" matInput formControlName="nomeSubmeterProjeto" required/>
+                                    </mat-form-field>
+                                </div>
+                                <div fxFlex="1 1 calc(50% - 2rem)" fxFlex.lt-md="100%">
+                                    <mat-form-field>
+                                        <mat-label>Orçamento</mat-label>
+                                        <input id="orcamento" matInput currencyMask formControlName="orcamentoSubmeterProjeto" maxLength="15" [options]="{prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left'}" required/>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div fxLayout="row" fxLayoutGap="2rem">
+                                <div class="dataInicio" fxFlex="50%" fxFlex.lt-md="100%">
+                                    <mat-form-field>
+                                        <mat-label>Data Inicio</mat-label>
+                                        <input matInput type="date" formControlName="dtInicioSubmeterProjeto" required/>
+                                    </mat-form-field>
+                                </div>
+                                <div fxFlex="50%" fxFlex.lt-md="100%">
+                                    <mat-form-field>
+                                        <mat-label>Data Finalização</mat-label>
+                                        <input matInput type="date" formControlName="dtFimSubmeterProjeto" required/>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div fxLayout="row" fxFlex.lt-md="colunm">
+                                <div fxFlex="100%" fxFlex.lt-md="100%">
+                                    <mat-form-field>
+                                        <mat-label>Descrição</mat-label>
+                                        <textarea id="desricao" class="area-descricao" rows="5" matInput formControlName="descricaoSubmeterProjeto" required>
+                                        </textarea>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div class="card-footer">
+                        <button (click)="submeterProjeto()" mat-raised-button class="btnAcao">
+                            <mat-icon>send</mat-icon>&nbsp;Submeter
+                        </button>
+                        <button (click)="limparDados()" mat-raised-button class="btnLimpar">
+                            <mat-icon>delete_sweep</mat-icon>&nbsp; Limpar
+                        </button>
+                    </div>
+                </div>
             </div>
-            <div fxLayout="row" fxLayoutGap="2rem">
-              <div class="dataInicio" fxFlex="50%" fxFlex.lt-md="100%">
-                <mat-form-field>
-                  <mat-label>Data Inicio</mat-label>
-                  <input matInput type="date" formControlName="dtInicioSubmeterProjeto" required>
-                </mat-form-field>
-              </div>
-              <div fxFlex="50%" fxFlex.lt-md="100%">
-                <mat-form-field>
-                  <mat-label>Data Finalização</mat-label>
-                  <input matInput type="date" formControlName="dtFimSubmeterProjeto" required>
-                </mat-form-field>
-              </div>
-              </div>
-              <div fxLayout="row" fxFlex.lt-md="colunm">
-              <div fxFlex="100%" fxFlex.lt-md="100%">
-                <mat-form-field>
-                  <mat-label>Descrição</mat-label>
-                  <textarea id="desricao" class="area-descricao" rows="5" matInput formControlName="descricaoSubmeterProjeto"
-                    required>
-                      </textarea>
-                </mat-form-field>
-              </div>
-              </div>
-          </form>
         </div>
-        <mat-divider></mat-divider>
-        <div class="card-footer">
-          <button (click)="submeterProjeto()" mat-raised-button class="btnAcao">
-            <mat-icon>send</mat-icon>&nbsp;Submeter
-          </button>
-          <button (click)="limparDados()" mat-raised-button class="btnLimpar">
-            <mat-icon>delete_sweep</mat-icon>&nbsp; Limpar
-          </button>
-        </div>
-      </div>
+    </div>
+</div>

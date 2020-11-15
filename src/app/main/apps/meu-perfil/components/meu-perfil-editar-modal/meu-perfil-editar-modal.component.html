@@ -1,65 +1,58 @@
 <div class="row">
     <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
-      <h2 mat-dialog-title>Editar Meus Dados</h2>
+        <h2 mat-dialog-title>Editar Meus Dados</h2>
     </div>
     <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-      <mat-icon mat-dialog-close>clear</mat-icon>
+        <mat-icon mat-dialog-close>clear</mat-icon>
     </div>
-  </div>
-  <mat-divider></mat-divider>
-  <mat-dialog-content>
-    <br/>
-    <form [formGroup]="MeuPerfilForm">
+</div>
+<mat-divider></mat-divider>
+<mat-dialog-content>
+  <br />
+  <form [formGroup]="MeuPerfilForm">
       <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-          <mat-form-field>
-            <mat-label>Nome</mat-label>
-            <input matInput formControlName="nomeMeuPerfil" required>
-          </mat-form-field>
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-          <mat-form-field>
-            <mat-label>E-mail</mat-label>
-            <input matInput formControlName="emailMeuPerfil" required>
-            <mat-error
-              *ngIf="MeuPerfilForm.get('emailMeuPerfil').hasError('email') && !MeuPerfilForm.get('emailMeuPerfil').hasError('required')">
-              Por favor, entre com um e-mail válido!
-            </mat-error>
-            <mat-error *ngIf="MeuPerfilForm.get('emailMeuPerfil').hasError('required')">
-              E-mail é <strong>obrigatório</strong>
-            </mat-error>
-          </mat-form-field>
-        </div>
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <mat-form-field>
+                  <mat-label>Nome</mat-label>
+                  <input matInput formControlName="nomeMeuPerfil" required />
+              </mat-form-field>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <mat-form-field>
+                  <mat-label>E-mail</mat-label>
+                  <input matInput formControlName="emailMeuPerfil" required />
+                  <mat-error *ngIf="MeuPerfilForm.get('emailMeuPerfil').hasError('email') && !MeuPerfilForm.get('emailMeuPerfil').hasError('required')">Por favor, entre com um e-mail válido!</mat-error>
+                  <mat-error *ngIf="MeuPerfilForm.get('emailMeuPerfil').hasError('required')">E-mail é <strong>obrigatório</strong></mat-error>
+              </mat-form-field>
+          </div>
       </div>
       <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-          <mat-form-field>
-            <mat-label>Telefone</mat-label>
-            <input matInput Mask type="text" formControlName="telefoneMeuPerfil" mask="celular" maxLength="15" required>
-          </mat-form-field>
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-          <mat-form-field>
-            <mat-label>Data Nascimento</mat-label>
-            <input matInput type="date" formControlName="dtNascimentoMeuPerfil" required>
-            
-          </mat-form-field>
-        </div>
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <mat-form-field>
+                  <mat-label>Telefone</mat-label>
+                  <input matInput Mask type="text" formControlName="telefoneMeuPerfil" mask="celular" maxLength="15" required/>
+              </mat-form-field>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <mat-form-field>
+                  <mat-label>Data Nascimento</mat-label>
+                  <input matInput type="date" formControlName="dtNascimentoMeuPerfil" required/>
+              </mat-form-field>
+          </div>
       </div>
       <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-          <mat-form-field>
-            <mat-label>CPF</mat-label>
-            <input matInput  Mask formControlName="cpfMeuPerfil" mask="cpf" maxlength="14" >
-          </mat-form-field>
-        </div>
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <mat-form-field>
+                  <mat-label>CPF</mat-label>
+                  <input matInput Mask formControlName="cpfMeuPerfil" mask="cpf" maxlength="14"/>
+              </mat-form-field>
+          </div>
       </div>
-    </form>
-  </mat-dialog-content>
-  <mat-divider></mat-divider>
-  <mat-dialog-actions>
+  </form>
+</mat-dialog-content>
+<mat-divider></mat-divider>
+<mat-dialog-actions>
     <button mat-raised-button (click)="atualizarMeuPerfil()" class="btnAcao">
-      <mat-icon>done</mat-icon>&nbsp; Atualizar
+        <mat-icon>done</mat-icon>&nbsp; Atualizar
     </button>
-  </mat-dialog-actions>
-  
+</mat-dialog-actions>
