@@ -1,14 +1,17 @@
-<div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      <h2 class="titulo">
-        Pesquisador
-      </h2>
+<div class="container">
+    <div fxLayout="column">
+        <div fxFlex>
+            <h2 class="titulo">
+                Pesquisador
+            </h2>
+        </div>
+        <mat-tab-group mat-align-tabs="start" fxFlex>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <mat-icon>search</mat-icon>&nbsp; Pesquisar
+                </ng-template>
+                <app-pesquisador-pesquisar></app-pesquisador-pesquisar>
+            </mat-tab>
+        </mat-tab-group>
     </div>
-  </div>
-  <mat-tab-group mat-align-tabs="start">
-    <mat-tab>
-      <ng-template mat-tab-label>
-        <mat-icon>search</mat-icon>&nbsp; Pesquisar
-      </ng-template>
-      <app-pesquisador-pesquisar></app-pesquisador-pesquisar>
-    </mat-tab>
+</div>

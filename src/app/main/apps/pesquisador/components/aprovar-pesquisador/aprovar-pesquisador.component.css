@@ -1,9 +1,10 @@
 table {
-  width: 100%;
+  width: 98% !important ;
+  margin-left: 15px !important;
+
+
 }
-.btnLimpar {
-  background-color: red ;
-}
+
 th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
   padding: 0;
   border-bottom-width: 1px;
@@ -11,3 +12,6 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
   text-align-last: center;
 
 }
+ .btnLimpar{
+   background-color: red !important;
+ }

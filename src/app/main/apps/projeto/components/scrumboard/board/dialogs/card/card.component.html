@@ -17,7 +17,7 @@
                         <button mat-menu-item (click)="removeDueDate()">Remove Due Date</button>
                     </mat-menu>
 
-                    <mat-form-field *ngIf="!card.due">
+                    <mat-form-field *ngIf="!card.due" title="Calendário">
                         <input matInput [matDatepicker]="menuPicker" [(ngModel)]="card.due">
                         <mat-datepicker-toggle matSuffix [for]="menuPicker"></mat-datepicker-toggle>
                         <mat-datepicker #menuPicker></mat-datepicker>
@@ -29,7 +29,7 @@
                 <!-- LABELS -->
                 <div class="labels" fxFlex="0 1 auto">
 
-                    <button mat-icon-button [matMenuTriggerFor]="labelsMenu" title="LABEL">
+                    <button mat-icon-button [matMenuTriggerFor]="labelsMenu" title="Label">
                         <mat-icon>label</mat-icon>
                     </button>
 
@@ -46,7 +46,7 @@
                 <!-- MEMBERS -->
                 <div class="members" fxFlex="0 1 auto">
 
-                    <button mat-icon-button class="" [matMenuTriggerFor]="membersMenu">
+                    <button mat-icon-button class="" [matMenuTriggerFor]="membersMenu" title="Menbros">
                         <mat-icon>account_circle</mat-icon>
                     </button>
 
@@ -68,7 +68,7 @@
                 <!-- / MEMBERS -->
 
                 <!-- ATTACHMENT -->
-                <button mat-icon-button aria-label="Attachment">
+                <button mat-icon-button aria-label="Attachment" title="Anexos">
                     <mat-icon>attachment</mat-icon>
                 </button>
                 <!-- / ATTACHMENT -->
@@ -76,7 +76,7 @@
                 <!-- CHECKLIST -->
                 <div class="due-date " fxFlex="0 1 auto">
 
-                    <button mat-icon-button class="" [matMenuTriggerFor]="checklistMenu"
+                    <button mat-icon-button class="" [matMenuTriggerFor]="checklistMenu" title="Checklist"
                             #checklistMenuTrigger="matMenuTrigger" (menuOpened)="onChecklistMenuOpen()">
                         <mat-icon>check_box</mat-icon>
                     </button>
@@ -106,7 +106,7 @@
                 <!-- OPTIONS -->
                 <div class="options " fxFlex="0 1 auto">
 
-                    <button mat-icon-button class="" [matMenuTriggerFor]="optionsMenu">
+                    <button mat-icon-button class="" [matMenuTriggerFor]="optionsMenu" title="Opções">
                         <mat-icon>more_horiz</mat-icon>
                     </button>
 
