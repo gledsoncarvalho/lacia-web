@@ -3,10 +3,10 @@
     <div class="view" *ngSwitchCase="'labels'" fxFlex fxLayout="column">
 
         <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
-            <div>Labels</div>
+            <div>Etiquetas</div>
             <button mat-button (click)="labelsMenuView ='add'">
                 <mat-icon class="s-16">add</mat-icon>
-                <span>Add</span>
+                <span>Adicionar</span>
             </button>
         </div>
 
@@ -39,12 +39,12 @@
             <button mat-icon-button (click)="labelsMenuView ='labels'">
                 <mat-icon class="s-16">arrow_back</mat-icon>
             </button>
-            <div>Edit Label</div>
+            <div>Editar Etiqueta</div>
         </div>
 
         <div class="content" fxLayout="row" fxLayoutAlign="start center">
             <mat-form-field>
-                <input matInput placeholder="Name" [(ngModel)]="selectedLabel.name" (change)="onLabelChange()">
+                <input matInput placeholder="Nome" [(ngModel)]="selectedLabel.name" (change)="onLabelChange()">
             </mat-form-field>
 
             <fuse-material-color-picker [(ngModel)]="selectedLabel.color" class="ml-8"
@@ -59,7 +59,7 @@
             <button mat-icon-button (click)="labelsMenuView ='labels'">
                 <mat-icon class="s-16">arrow_back</mat-icon>
             </button>
-            <div>Add Label</div>
+            <div>Adicionar Etiqueta</div>
         </div>
 
         <form (submit)="addNewLabel()" #newLabelForm="ngForm" fxFlex fxLayout="column" fxLayoutAlign="start end">
@@ -73,7 +73,7 @@
                                             name="labelColor"></fuse-material-color-picker>
             </div>
 
-            <button mat-raised-button class="mat-accent mt-16" [disabled]="!newLabelForm.valid">ADD NEW LABEL</button>
+            <button mat-raised-button class="mat-accent mt-16" [disabled]="!newLabelForm.valid">ADICIONAR NOVA ETIQUETA</button>
 
         </form>
 
