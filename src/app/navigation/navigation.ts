@@ -67,17 +67,9 @@ export const navigation: FuseNavigation[] = [
             {
                 id: 'pesquisador',
                 title: 'Pesquisador',
-                type: 'collapsable',
+                type: 'item',
                 icon: 'research',
                 url: '/apps/pesquisador',
-                children: [
-                    {
-                        id: 'aprovar-pesquisador',
-                        title: 'Aprovar Pesquisador',
-                        type: 'item',
-                        url: '/apps/pesquisador/aprovar-pesquisador'
-                    }
-                ]
             },
             {
                 id: 'aluno',

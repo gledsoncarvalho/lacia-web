@@ -33,7 +33,8 @@ export class AlertComponent implements OnInit {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: confirmButtonText,
-      heightAuto: false
+      heightAuto: false,
+      cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
         this.show('Excluido', textSuccess, 'success')

@@ -1,3 +1,4 @@
+import { AprovarPesquisadorComponent } from './components/aprovar-pesquisador/aprovar-pesquisador.component';
 import { NgModule } from '@angular/core';
 import { FuseSharedModule } from '../../../../@fuse/shared.module';
 import { PesquisadorPesquisarComponent } from './components/pesquisador-pesquisar/pesquisador-pesquisar.component';
@@ -8,7 +9,8 @@ import { PesquisadorComponent } from './pesquisador.component';
 @NgModule({
     declarations: [
         PesquisadorComponent,
-        PesquisadorPesquisarComponent
+        PesquisadorPesquisarComponent,
+        AprovarPesquisadorComponent
     ],
     imports: [
         FuseSharedModule,

@@ -1,7 +1,9 @@
+import { Pesquisador } from './../../pesquisador';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AlertComponent } from '@fuse/components/alert/alert.component';
 import { AprovarPesquisador } from './aprovar-pesquisador';
+import { MatTableDataSource } from '@angular/material/table';
 
 const ELEMENT_DATA: AprovarPesquisador[] = [
     { nome: 'Diego Alves Ribeiro', email: 'diego@souunit.com.br', telefone: '(79) 9 9999-9999', data: new Date(1999, 9, 19), acao: '' },
@@ -18,6 +20,12 @@ const ELEMENT_DATA: AprovarPesquisador[] = [
 export class AprovarPesquisadorComponent implements OnInit {
     displayedColumns: string[] = ['nome', 'email', 'telefone', 'data', 'acao'];
     dataSource = ELEMENT_DATA;
+    pesquisadores: MatTableDataSource<Pesquisador> = new MatTableDataSource();
+
+    applyFilter(event: Event): void {
+        const filterValue = (event.target as HTMLInputElement).value;
+        this.pesquisadores.filter = filterValue.trim().toLowerCase();
+      }
 
     constructor(private dialog: MatDialog, private alert: AlertComponent) { }
 

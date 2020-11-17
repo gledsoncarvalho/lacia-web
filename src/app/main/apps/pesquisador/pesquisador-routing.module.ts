@@ -10,10 +10,6 @@ const routes: Routes = [
             {
                 path: '', component: PesquisadorComponent
             },
-            {
-                path: 'aprovar-pesquisador', 
-                loadChildren: () => import('./components/aprovar-pesquisador/aprovar-pesquisador.module').then(m => m.AprovarPesquisadorModule)
-            }
         ]
     },
 ];
