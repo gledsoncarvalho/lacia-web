@@ -18,7 +18,7 @@ const ELEMENT_DATA: AprovarProjeto[] = [
     styleUrls: ['./aprovar-projeto.component.css']
 })
 export class AprovarProjetoComponent implements OnInit {
-    displayedColumns: string[] = ['idAprovarProjeto', 'nomeAprovarProjeto', 'orcamentoAprovarProjeto', 'dtInicioAprovarProjeto', 'dtFimAprovarProjeto', 'acoes'];
+    displayedColumns: string[] = ['nomeAprovarProjeto', 'orcamentoAprovarProjeto', 'dtInicioAprovarProjeto', 'dtFimAprovarProjeto', 'acoes'];
     dataSource = new MatTableDataSource(ELEMENT_DATA);
     status = Status;
 

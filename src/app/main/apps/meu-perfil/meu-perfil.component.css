@@ -41,11 +41,12 @@ background-color: white;
 }
 
 button#botao-de-edicao{
-  background-color: white;
-  color:#3f51b5;
   margin-left: 80%;
 }
-
+.btnAcao{
+  background-color: white !important;
+  color: #2d323e !important;
+}
 
 html, body {
   width: 100%;

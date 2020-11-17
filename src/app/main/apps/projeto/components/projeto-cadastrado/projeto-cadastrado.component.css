@@ -48,3 +48,7 @@ table {
   div#filtro-por-projeto{
     margin-left: 30%;
   }
+  div#filtro-por-nome-de-pesquisa{
+    margin-left: 25%;
+    margin-top: 2%;
+  }

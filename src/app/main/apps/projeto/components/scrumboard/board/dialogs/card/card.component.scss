@@ -1,10 +1,13 @@
+
 @import "src/@fuse/scss/fuse";
 
 body.theme-default .mat-progress-bar-fill::after {
     background-color: #039be5;
 }
-
-.mat-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button {
+.icones-tabela{
+    margin-right: 35px;
+}
+/*.mat-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button {
     box-sizing: border-box;
     position: relative;
     user-select: none;
@@ -20,8 +23,7 @@ body.theme-default .mat-progress-bar-fill::after {
     padding: 0 16px;
     border-radius: 4px;
     overflow: visible;
-    margin-right: 35px;
-}
+}*/
 .scrumboard-card-dialog {
 
     @include media-breakpoint('xs') {
@@ -404,19 +406,20 @@ body.theme-default .mat-progress-bar-fill::after {
             flex-direction: column;
             position: relative;
             overflow: hidden;
-            width: 240px;
-            min-width: 240px;
-            max-width: 240px;
-            min-height: 240px;
+            width: 400px;
+            min-width: 300px;
+            max-width: 300px;
+            min-height: 300px;
 
             .view {
                 position: absolute;
-                width: 240px;
+                width: 300px;
                 height: 100%;
                 bottom: 0;
                 left: 0;
                 right: 0;
                 top: 0;
+                
 
                 > .header {
                     border-bottom: 1px solid;

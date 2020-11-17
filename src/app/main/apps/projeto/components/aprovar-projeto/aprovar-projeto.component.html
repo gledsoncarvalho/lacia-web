@@ -4,63 +4,74 @@
             <h2 class="titulo">Aprovar Projeto</h2>
         </div>
         <br />
-        <div class="row">
-            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-                <ng-container matColumnDef="idAprovarProjeto">
-                    <th mat-header-cell *matHeaderCellDef>Id</th>
-                    <td mat-cell *matCellDef="let element">
-                        {{ element.idAprovarProjeto }}
-                    </td>
-                </ng-container>
-
-                <ng-container matColumnDef="nomeAprovarProjeto">
-                    <th mat-header-cell *matHeaderCellDef>Nome Projeto</th>
-                    <td mat-cell *matCellDef="let element">
-                        {{ element.nomeAprovarProjeto }}
-                    </td>
-                </ng-container>
-
-                <ng-container matColumnDef="orcamentoAprovarProjeto">
-                    <th mat-header-cell *matHeaderCellDef>Orçamento</th>
-                    <td mat-cell *matCellDef="let element">
-                        {{ element.orcamentoAprovarProjeto | currencyBrazil }}
-                    </td>
-                </ng-container>
-
-                <ng-container matColumnDef="dtInicioAprovarProjeto">
-                    <th mat-header-cell *matHeaderCellDef>Data inicio</th>
-                    <td mat-cell *matCellDef="let element">
-                        {{ element.dtInicioAprovarProjeto | date: "dd/MM/yyyy" }}
-                    </td>
-                </ng-container>
-
-                <ng-container matColumnDef="dtFimAprovarProjeto">
-                    <th mat-header-cell *matHeaderCellDef>Data fim</th>
-                    <td mat-cell *matCellDef="let element">
-                        {{ element.dtFimAprovarProjeto | date: "dd/MM/yyyy" }}
-                    </td>
-                </ng-container>
-
-                <ng-container matColumnDef="acoes">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                        Ações
-                    </th>
-                    <td mat-cell *matCellDef="let element">
-                        <button id="botao-de-analisar" mat-button (click)="analisarProjeto(element)">
-                            <mat-icon>visibility</mat-icon>&nbsp; Analisar
-                            Projeto
-                        </button>
-                    </td>
-                </ng-container>
-
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-
-                <tr class="mat-row" *matNoDataRow>
-                    <td class="mat-cell" colspan="4"> Não existem projetos a serem aprovados. "{{ input.value }}"
-                    </td>
-                </tr>
-            </table>
+        <div fxLayout="row">
+            <div fxFlex="100%">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                        </div>
+                    </div>
+                    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                        <ng-container matColumnDef="nomeAprovarProjeto">
+                            <th mat-header-cell *matHeaderCellDef style="
+                            color: #2d323e;
+                            font-weight: bold;
+                        ">Nome Projeto</th>
+                            <td mat-cell *matCellDef="let element">
+                                {{ element.nomeAprovarProjeto }}
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="orcamentoAprovarProjeto">
+                            <th mat-header-cell *matHeaderCellDef style="
+                            color: #2d323e;
+                            font-weight: bold;
+                        ">Orçamento</th>
+                            <td mat-cell *matCellDef="let element">
+                                {{ element.orcamentoAprovarProjeto | currencyBrazil }}
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="dtInicioAprovarProjeto">
+                            <th mat-header-cell *matHeaderCellDef style="
+                            color: #2d323e;
+                            font-weight: bold;
+                        ">Data inicio</th>
+                            <td mat-cell *matCellDef="let element">
+                                {{ element.dtInicioAprovarProjeto | date: "dd/MM/yyyy" }}
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="dtFimAprovarProjeto">
+                            <th mat-header-cell *matHeaderCellDef style="
+                            color: #2d323e;
+                            font-weight: bold;
+                        ">Data fim</th>
+                            <td mat-cell *matCellDef="let element">
+                                {{ element.dtFimAprovarProjeto | date: "dd/MM/yyyy" }}
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="acoes" style="
+                        color: #2d323e;
+                        font-weight: bold;
+                    ">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                Ações
+                            </th>
+                            <td mat-cell *matCellDef="let element">
+                                <button id="botao-de-analisar" mat-button (click)="analisarProjeto(element)">
+                                    <mat-icon>visibility</mat-icon>&nbsp; Analisar
+                                    Projeto
+                                </button>
+                            </td>
+                        </ng-container>
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+                        <tr class="mat-row" *matNoDataRow>
+                            <td class="mat-cell" colspan="4"> Não existem projetos a serem aprovados.
+                                "{{ input.value }}"
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>
