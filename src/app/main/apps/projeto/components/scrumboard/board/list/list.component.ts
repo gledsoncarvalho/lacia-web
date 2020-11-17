@@ -120,7 +120,7 @@ export class ScrumboardBoardListComponent implements OnInit, OnDestroy
             disableClose: false
         });
 
-        this.confirmDialogRef.componentInstance.confirmMessage = 'Are you sure you want to delete the list and it\'s all cards?';
+        this.confirmDialogRef.componentInstance.confirmMessage = 'Você tem certeza que quer remover esta lista e todos os cartões dela?';
 
         this.confirmDialogRef.afterClosed().subscribe(result => {
             if ( result )

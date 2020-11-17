@@ -297,7 +297,7 @@ export class ScrumboardCardDialogComponent implements OnInit, OnDestroy
             disableClose: false
         });
 
-        this.confirmDialogRef.componentInstance.confirmMessage = 'Are you sure you want to delete the card?';
+        this.confirmDialogRef.componentInstance.confirmMessage = 'Você tem certeza que quer remover este cartão?';
 
         this.confirmDialogRef.afterClosed().subscribe(result => {
             if ( result )

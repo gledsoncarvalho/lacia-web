@@ -562,7 +562,7 @@ export class ScrumboardFakeDb
                 }
             ],
             'labels'  : [
-                {
+                /*{
                     'id'   : '26022e4129ad3a5sc28b36cd',
                     'name' : 'High Priority',
                     'color': 'red-500'
@@ -581,7 +581,7 @@ export class ScrumboardFakeDb
                     'id'   : '6540635g19ad3s5dc31412b2',
                     'name' : 'Feature',
                     'color': 'green-400'
-                }
+                }*/
             ]
         },
         {
