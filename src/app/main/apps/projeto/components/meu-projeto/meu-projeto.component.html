@@ -14,7 +14,7 @@
         </div>
         <div fxFlex="100%" fxLayoutGap="2rem">
             <button id="botao-de-edicao" mat-button [matMenuTriggerFor]="menu">
-                <mat-icon>filter_alt</mat-icon>&nbsp;Filtro
+                <mat-icon>filter_list</mat-icon>&nbsp;Filtro
             </button>
             <mat-menu #menu="matMenu">
                 <button (click)="recarregarTela()" mat-menu-item>Todos</button>
@@ -35,7 +35,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="card-title">
-
+                        Projetos
                     </div>
                 </div>
                 <div class="row">
@@ -56,8 +56,7 @@
                         <ng-container matColumnDef="orcamentoMeuProjeto">
                             <th mat-header-cell *matHeaderCellDef style="
                             color: #2d323e;
-                            font-weight: bold;
-                        ">
+                            font-weight: bold;">
                                 Orçamento
                             </th>
                             <td mat-cell *matCellDef="let element">

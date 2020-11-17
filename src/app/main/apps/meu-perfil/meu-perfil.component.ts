@@ -19,6 +19,7 @@ export class MeuPerfilComponent implements OnInit {
     dados_perfil: MatTableDataSource<MeuPerfil> = new MatTableDataSource();
     perfil: MeuPerfil = { idMeuPerfil: 100, nomeMeuPerfil: 'Francisco José dos Santos Santana', emailMeuPerfil: 'francisco.jsantos@souunit.com.br', telefoneMeuPerfil: '(79)99841-4129', dtNascimentoMeuPerfil: new Date(), cpfMeuPerfil: '212.121.211-11' } as MeuPerfil;
 
+
     constructor(private fb: FormBuilder, private dialog: MatDialog, private alert: AlertComponent) { }
 
     ngOnInit(): void {
