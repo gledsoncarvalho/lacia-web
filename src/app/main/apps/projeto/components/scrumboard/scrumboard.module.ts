@@ -16,6 +16,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule, Routes } from '@angular/router';
 import { FuseConfirmDialogModule } from '@fuse/components';
+import { FuseMaterialColorPickerModule } from '@fuse/components/material-color-picker/material-color-picker.module';
 import { FuseSharedModule } from '@fuse/shared.module';
 import { NgxDnDModule } from '@swimlane/ngx-dnd';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -91,6 +92,7 @@ const routes: Routes = [
 
         FuseSharedModule,
         FuseConfirmDialogModule,
+        FuseMaterialColorPickerModule,
         InMemoryWebApiModule.forRoot(FakeDbService, {
             delay: 0,
             passThruUnknownUrl: true

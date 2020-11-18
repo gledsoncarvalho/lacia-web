@@ -16,6 +16,7 @@ import { AppComponent } from 'app/app.component';
 import { FakeDbService } from 'app/fake-db/fake-db.service';
 import { fuseConfig } from 'app/fuse-config';
 import { LayoutModule } from 'app/layout/layout.module';
+import { FuseMaterialColorPickerModule } from '../@fuse/components/material-color-picker/material-color-picker.module';
 
 
 
@@ -69,6 +70,7 @@ const appRoutes: Routes = [
         FuseProgressBarModule,
         FuseSharedModule,
         FuseSidebarModule,
+        FuseMaterialColorPickerModule,
 
         // App modules
         LayoutModule,
