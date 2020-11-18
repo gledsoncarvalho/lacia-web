@@ -39,6 +39,6 @@ export class AlunoPesquisarComponent implements OnInit {
   }
 
   excluirAluno(){
-    this.alert.confirmacao("Você deseja realmente fazer isso?", "Você pode reverter isso!", "Confirmar", "O aluno foi excluído.");
+    this.alert.confirmacao("Deseja excluir o aluno?", "", "Confirmar", "O aluno foi excluído.", "Excluído");
   }
 }

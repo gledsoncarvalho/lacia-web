@@ -14,7 +14,7 @@
                     </button>
 
                     <mat-menu #dueDateMenu="matMenu" [overlapTrigger]="false">
-                        <button class="icones-tabela" mat-menu-item (click)="removeDueDate()">Remover Data de
+                        <button class="icones-tabela" mat-menu-item (click)="removeDueDate()"><mat-icon>delete</mat-icon>Remover Data de
                             Entrega</button>
                     </mat-menu>
 
@@ -108,9 +108,7 @@
                     </button>
 
                     <mat-menu #optionsMenu="matMenu" [overlapTrigger]="false">
-                        <button mat-menu-item (click)="removeCard()">
-                            Remover Cartão
-                        </button>
+                        <button mat-menu-item (click)="removeCard()"><mat-icon>delete</mat-icon>Remover Cartão</button>
                     </mat-menu>
 
                 </div>

@@ -49,7 +49,7 @@
         <form (submit)="addNewLabel()" #newLabelForm="ngForm" fxFlex fxLayout="column" fxLayoutAlign="start end">
             <div fxFlex="0 1 auto" fxLayout="row" fxLayoutAlign="space-between center">
                 <mat-form-field fxFlex>
-                    <input matInput placeholder="Name" [(ngModel)]="newLabel.name" name="labelName" required>
+                    <input matInput placeholder="Nome" [(ngModel)]="newLabel.name" name="labelName" required>
                 </mat-form-field>
                 <fuse-material-color-picker class="ml-8" [(ngModel)]="newLabel.color" name="labelColor">
                 </fuse-material-color-picker>

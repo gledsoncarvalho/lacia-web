@@ -8,7 +8,7 @@
                 <img src="assets/images/logos/lacia.png">
             </div>
 
-            <div class="title">SOLICITE O ACESSO</div>
+            <div class="title">Solicite o Acesso</div>
 
             <form name="registerForm" [formGroup]="registerForm" novalidate>
 
@@ -44,14 +44,14 @@
 
                 <button mat-raised-button color="accent" class="submit-button" aria-label="CREATE AN ACCOUNT"
                         [disabled]="registerForm.invalid">
-                    SOLICITAR ACESSO
+                    Solicitar
                 </button>
 
             </form>
 
             <div class="register" fxLayout="column" fxLayoutAlign="center center">
-                <span class="text">Já tem uma conta?</span>
-                <a class="link" [routerLink]="'/pages/auth/login'">Voltar para login</a>
+                <span class="text">Já possui uma conta?</span>
+                <a class="link" [routerLink]="'/pages/auth/login'">Voltar para o login</a>
             </div>
 
         </div>

@@ -39,6 +39,6 @@ export class CoordenadorPesquisarComponent implements OnInit {
     }
 
     excluirCoordenador() {
-        this.alert.confirmacao("Você deseja realmente fazer isso?", "Você pode reverter isso!", "Confirmar", "O coordenador foi excluído.");
+        this.alert.confirmacao("Deseja realmente excluir o coordenador?", "", "Confirmar", "O coordenador foi excluído.", "Excluído");
     }
 }

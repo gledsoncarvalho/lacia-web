@@ -24,7 +24,7 @@ export class AlertComponent implements OnInit {
     });
   }
 
-  confirmacao(title: string, text: string, confirmButtonText: string, textSuccess: string) {
+  confirmacao(title: string, text: string, confirmButtonText: string, textSuccess: string, header: string) {
     Swal.fire({
       title: title,
       text: text,
@@ -37,7 +37,7 @@ export class AlertComponent implements OnInit {
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.show('Excluido', textSuccess, 'success')
+        this.show(header, textSuccess, 'success')
       }
     })
   }

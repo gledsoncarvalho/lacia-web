@@ -32,7 +32,7 @@ export class AprovarPesquisadorComponent implements OnInit {
     ngOnInit(): void { }
 
     ReprovarPesquisador() {
-        this.alert.confirmacao("Você deseja reprovar este pesquisador?", "Você pode reverter isso!", "Confirmar", "O pesquisador foi reprovado!");
+        this.alert.confirmacao("Deseja reprovar este pesquisador?", "", "Confirmar", "O pesquisador foi reprovado!", "Reprovado");
     }
 
     AprovarPesquisador() {

@@ -38,6 +38,6 @@ export class PesquisadorPesquisarComponent implements OnInit {
   }
 
   excluirPesquisador() {
-    this.alert.confirmacao("Você deseja realmente fazer isso?", "Você pode reverter isso!", "Confirmar", "O pesquisador foi excluído.");
+    this.alert.confirmacao("Deseja excluir o pesquisador?", "", "Confirmar", "O pesquisador foi excluído.", "Excluído");
   }
 }

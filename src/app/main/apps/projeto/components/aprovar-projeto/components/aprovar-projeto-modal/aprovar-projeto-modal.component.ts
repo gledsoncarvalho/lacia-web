@@ -52,6 +52,6 @@ export class AprovarProjetoModalComponent implements OnInit {
     }
 
     reprovarProjeto() {
-        this.alert.confirmacao("Você deseja reprovar este projeto?", "Você pode reverter isso!", "Confirmar", "O projeto foi reprovado!");
+        this.alert.confirmacao("Deseja reprovar este projeto?", "", "Confirmar", "O projeto foi reprovado!", "Reprovado");
     }
 }
