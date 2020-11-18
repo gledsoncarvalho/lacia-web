@@ -1,4 +1,4 @@
-import { Component, Inject, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit, ViewChild, ViewEncapsulation, ElementRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatMenuTrigger } from '@angular/material/menu';
@@ -74,7 +74,7 @@ export class ScrumboardCardDialogComponent implements OnInit, OnDestroy
                 this.list = this.board.lists.find((_list) => {
                     return this._data.listId === _list.id;
                 });
-            });
+            });   
     }
 
     /**

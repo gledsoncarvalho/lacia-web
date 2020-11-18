@@ -7,6 +7,7 @@
         .mat-checkbox-label {
             display: flex;
             flex: 1;
+            width: 50px;
         }
 
         .views {
@@ -43,6 +44,12 @@
                         border-radius: 100%;
                         margin-right: 12px;
                     }
+
+                    .text-container {
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        overflow: hidden;
+                      }
                 }
 
                 &.edit,

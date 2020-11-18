@@ -59,7 +59,7 @@
                 <!-- / MEMBERS -->
 
                 <!-- ATTACHMENT -->
-                <button class="icones-tabela" mat-icon-button aria-label="Attachment" title="Anexos">
+                <button for="btn" class="icones-tabela" mat-icon-button aria-label="Attachment" title="Anexos">
                     <mat-icon>attachment</mat-icon>
                 </button>
                 <!-- / ATTACHMENT -->
@@ -180,14 +180,13 @@
 
                     <div class="section-content">
                         <mat-chip-list class="label-chips">
-                            <mat-chip class="label-chip mb-4" *ngFor="let labelId of card.idLabels"
+                            <mat-chip class="label-chip" *ngFor="let labelId of card.idLabels"
                                 [ngClass]="board.labels | getById:labelId:'color'" fxLayout="row"
                                 fxLayoutAlign="start center">
-                                <span>{{board.labels|getById:labelId:'name'}}</span>
+                                    <span>{{board.labels|getById:labelId:'name'}}</span>
                             </mat-chip>
                         </mat-chip-list>
                     </div>
-
                 </div>
 
                 <div *ngIf="card.idMembers[0]" fxFlex class="members">
@@ -285,9 +284,11 @@
 
                         </div>
 
-                        <button mat-stroked-button class="add-attachment-button" aria-label="add attachment">
+                        <!--button  mat-stroked-button class="add-attachment-button" aria-label="add attachment">
                             Adicionar um anexo
-                        </button>
+                        </button-->
+                        <input id="btn" type="file"
+                            onchange="document.getElementById('arquivo').src = window.URL.createObjectURL(this.files[0])">
 
                     </div>
 

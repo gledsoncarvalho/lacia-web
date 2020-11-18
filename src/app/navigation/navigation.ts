@@ -27,7 +27,7 @@ export const navigation: FuseNavigation[] = [
                         type: 'item',
                         url: '/apps/projetos/meus',
                         badge: {
-                            title: '5',
+                            title: '3',
                             bg: '#FF6F00',
                             fg: '#FFFFFF'
                         }
@@ -44,7 +44,7 @@ export const navigation: FuseNavigation[] = [
                         type: 'item',
                         url: '/apps/projetos/cadastrados',
                         badge: {
-                            title: '1',
+                            title: '3',
                             bg: '#FF6F00',
                             fg: '#FFFFFF'
                         },

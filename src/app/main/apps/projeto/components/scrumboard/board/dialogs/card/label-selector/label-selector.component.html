@@ -19,8 +19,12 @@
 
                 <mat-checkbox fxFlex fxLayout="row" fxLayoutAlign="start center"
                               [checked]="card.idLabels.indexOf(label.id) > -1"
-                              (change)="toggleInArray(label.id, card.idLabels);onCardLabelsChanged()">
-                    {{label.name}}
+                              (change)="toggleInArray(label.id, card.idLabels);onCardLabelsChanged()"
+                              >
+                              <div class="text-container">
+                                <span [title]="text.innerText"
+                                    #text>{{label.name}}</span>
+                            </div>
                 </mat-checkbox>
 
                 <button mat-icon-button>
