@@ -21,6 +21,9 @@
                 <button mat-icon-button>
                     <mat-icon class="s-16" (click)="labelsMenuView ='edit';selectedLabel = label">mode_edit</mat-icon>
                 </button>
+                <button mat-icon-button>
+                    <mat-icon style="color: red;" class="s-16" (click)="labelsMenuView ='edit';selectedLabel = label">delete</mat-icon>
+                </button>
             </div>
         </div>
     </div>
@@ -36,8 +39,14 @@
                 <input matInput placeholder="Nome" [(ngModel)]="selectedLabel.name" (change)="onLabelChange()">
             </mat-form-field>
             <fuse-material-color-picker [(ngModel)]="selectedLabel.color" class="ml-8"
-                (colorChanged)="$event.preventDefault;onLabelChange()"></fuse-material-color-picker>
+                (colorChanged)="$event.preventDefault;onLabelChange()"></fuse-material-color-picker>      
         </div>
+        <button mat-button (click)="labelsMenuView ='labels'">
+            Adicionar
+        </button>
+        <!--div fxLayout="100%" class="u-float-right js-accessory-view-holder">
+            <input type="submit" value="Excluir" class="negate">
+        </div-->
     </div>
     <div class="view add" *ngSwitchCase="'add'" fxFlex fxLayout="column">
         <div class="header" fxLayout="row" fxLayoutAlign="start center">
