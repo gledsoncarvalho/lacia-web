@@ -11,13 +11,13 @@
                         <div fxFlex="1 1 calc(50% - 2rem)" fxFlex.lt-md="100%">
                             <mat-form-field>
                                 <mat-label>Filtro por nome do pesquisador</mat-label>
-                                <input matInput (keyup)="applyFilter($event)" placeholder="Ex: João" #input/>
+                                <input matInput (keyup)="applyFilter($event)" placeholder="Ex: João" #input />
                             </mat-form-field>
                         </div>
                         <div fxFlex="1 1 calc(50% - 2rem)" fxFlex.lt-md="100%">
                             <mat-form-field>
                                 <mat-label>Filtro por e-mail do pesquisador</mat-label>
-                                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. joao@mail.com" #input/>
+                                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. joao@mail.com" #input />
                             </mat-form-field>
                         </div>
                     </div>
@@ -45,7 +45,6 @@
                                 {{ element.nomePesquisador }}
                             </td>
                         </ng-container>
-
                         <ng-container matColumnDef="emailPesquisador">
                             <th mat-header-cell *matHeaderCellDef style="
                             color: #2d323e;
@@ -55,7 +54,6 @@
                                 {{ element.emailPesquisador }}
                             </td>
                         </ng-container>
-
                         <ng-container matColumnDef="telefonePesquisador">
                             <th mat-header-cell *matHeaderCellDef style="
                             color: #2d323e;
@@ -65,7 +63,6 @@
                                 {{ element.telefonePesquisador }}
                             </td>
                         </ng-container>
-
                         <ng-container matColumnDef="dtNascimentoPesquisador">
                             <th mat-header-cell *matHeaderCellDef style="
                             color: #2d323e;
@@ -77,7 +74,6 @@
                                 {{ element.dtNascimentoPesquisador | date: "dd/MM/yyyy" }}
                             </td>
                         </ng-container>
-
                         <ng-container matColumnDef="acoes">
                             <th mat-header-cell *matHeaderCellDef style="
                             color: #2d323e;
@@ -89,7 +85,6 @@
                                 </button>
                             </td>
                         </ng-container>
-
                         <tr mat-header-row *matHeaderRowDef="colunasTable"></tr>
                         <tr mat-row *matRowDef="let row; columns: colunasTable"></tr>
                     </table>

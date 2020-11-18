@@ -38,7 +38,7 @@
               [ngClass]="{'overdue': isOverdue(card.due)}"
               *ngIf="card.due" fxLayout="row" fxLayoutAlign="start center">
             <mat-icon class="s-16">access_time</mat-icon>
-            <span>{{card.due | date:'mediumDate'}}</span>
+            <span>{{card.due | date:"dd/MM/yyyy"}}</span>
 
         </span>
         <!-- / CARD DUE -->

@@ -40,7 +40,6 @@
                 </div>
                 <div class="row">
                     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
                         <ng-container matColumnDef="nomeMeuProjeto">
                             <th mat-header-cell *matHeaderCellDef style="
                             color: #2d323e;
@@ -52,7 +51,6 @@
                                 {{ element.nomeMeuProjeto }}
                             </td>
                         </ng-container>
-
                         <ng-container matColumnDef="orcamentoMeuProjeto">
                             <th mat-header-cell *matHeaderCellDef style="
                             color: #2d323e;
@@ -63,7 +61,6 @@
                                 {{ element.orcamentoMeuProjeto | currencyBrazil }}
                             </td>
                         </ng-container>
-
                         <ng-container matColumnDef="dtInicioMeuProjeto">
                             <th mat-header-cell *matHeaderCellDef style="
                             color: #2d323e;
@@ -75,7 +72,6 @@
                                 {{ element.dtInicioMeuProjeto | date: "dd/MM/yyyy" }}
                             </td>
                         </ng-container>
-
                         <ng-container matColumnDef="dtFimMeuProjeto">
                             <th mat-header-cell *matHeaderCellDef style="
                             color: #2d323e;
@@ -87,7 +83,6 @@
                                 {{ element.dtFimMeuProjeto | date: "dd/MM/yyyy" }}
                             </td>
                         </ng-container>
-
                         <ng-container matColumnDef="situacaoMeuProjeto">
                             <th mat-header-cell *matHeaderCellDef style="
                             color: #2d323e;
@@ -99,7 +94,6 @@
                                 {{ element.situacaoMeuProjeto }}
                             </td>
                         </ng-container>
-
                         <ng-container matColumnDef="acoes">
                             <th mat-header-cell *matHeaderCellDef mat-sort-header style="
                             color: #2d323e;
@@ -113,10 +107,8 @@
                                 </button>
                             </td>
                         </ng-container>
-
                         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-
                         <tr class="mat-row" *matNoDataRow>
                             <td class="mat-cell" colspan="4">Você não possui projetos. "{{ input.value}}"</td>
                         </tr>

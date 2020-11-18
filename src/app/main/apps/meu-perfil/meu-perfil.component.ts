@@ -17,7 +17,7 @@ export class MeuPerfilComponent implements OnInit {
     MeuPerfilForm: FormGroup;
     colunasTable: string[] = ['idMeuPerfil', 'nomeMeuPerfil', 'emailMeuPerfil', 'acoes'];
     dados_perfil: MatTableDataSource<MeuPerfil> = new MatTableDataSource();
-    perfil: MeuPerfil = { idMeuPerfil: 100, nomeMeuPerfil: 'Francisco José dos Santos Santana', emailMeuPerfil: 'francisco.jsantos@souunit.com.br', telefoneMeuPerfil: '(79)99841-4129', dtNascimentoMeuPerfil: new Date(), cpfMeuPerfil: '212.121.211-11' } as MeuPerfil;
+    perfil: MeuPerfil = { idMeuPerfil: 100, nomeMeuPerfil: 'Fábio Gomes Rocha', emailMeuPerfil: 'fabiogomes@souunit.com.br', telefoneMeuPerfil: '(79)99841-4129', dtNascimentoMeuPerfil: new Date(), cpfMeuPerfil: '172.159.254-99' } as MeuPerfil;
 
 
     constructor(private fb: FormBuilder, private dialog: MatDialog, private alert: AlertComponent) { }
@@ -40,16 +40,5 @@ export class MeuPerfilComponent implements OnInit {
             }
         })
     }
-    /*document.getElementById('my-file').onchange = function() {
-      if (this.files && this.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-          // e.target.result is a base64-encoded url that contains the image data
-          document.getElementById('profile-pic').setAttribute('src', e.target.result);
-        }
-        reader.readAsDataURL(this.files[0]);
-      }
-    }*/
-
 }
 

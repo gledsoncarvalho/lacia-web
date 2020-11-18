@@ -14,12 +14,14 @@
                     </button>
 
                     <mat-menu #dueDateMenu="matMenu" [overlapTrigger]="false">
-                        <button mat-menu-item (click)="removeDueDate()">Remover Data de Entrega</button>
+                        <button class="icones-tabela" mat-menu-item (click)="removeDueDate()">Remover Data de
+                            Entrega</button>
                     </mat-menu>
 
                     <mat-form-field *ngIf="!card.due" title="Calendário">
                         <input matInput [matDatepicker]="menuPicker" [(ngModel)]="card.due">
-                        <mat-datepicker-toggle matSuffix [for]="menuPicker"></mat-datepicker-toggle>
+                        <mat-datepicker-toggle class="icones-tabela" matSuffix [for]="menuPicker">
+                        </mat-datepicker-toggle>
                         <mat-datepicker #menuPicker></mat-datepicker>
                     </mat-form-field>
 
@@ -57,13 +59,18 @@
 
                 </div>
                 <!-- / MEMBERS -->
-
-                <!-- ATTACHMENT -->
-                <button for="btn" class="icones-tabela" mat-icon-button aria-label="Attachment" title="Anexos">
-                    <mat-icon>attachment</mat-icon>
-                </button>
-                <!-- / ATTACHMENT -->
-
+                <div class="anexo " fxFlex="0 1 auto">
+                    <!-- ATTACHMENT -->
+                    <button class="icones-tabela" mat-icon-button aria-label="Attachment"
+                        [matMenuTriggerFor]="anexoMenu" title="Anexos">
+                        <mat-icon>attachment</mat-icon>
+                    </button>
+                    <mat-menu #anexoMenu="matMenu" [overlapTrigger]="false">
+                        <input id="btn" type="file"
+                            onchange="document.getElementById('arquivo').src = window.URL.createObjectURL(this.files[0])">
+                    </mat-menu>
+                    <!-- / ATTACHMENT -->
+                </div>
                 <!-- CHECKLIST -->
                 <div class="due-date " fxFlex="0 1 auto">
 
@@ -183,7 +190,7 @@
                             <mat-chip class="label-chip" *ngFor="let labelId of card.idLabels"
                                 [ngClass]="board.labels | getById:labelId:'color'" fxLayout="row"
                                 fxLayoutAlign="start center">
-                                    <span>{{board.labels|getById:labelId:'name'}}</span>
+                                <span>{{board.labels|getById:labelId:'name'}}</span>
                             </mat-chip>
                         </mat-chip-list>
                     </div>

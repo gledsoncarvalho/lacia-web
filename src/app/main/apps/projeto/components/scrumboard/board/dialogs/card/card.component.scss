@@ -7,23 +7,6 @@ body.theme-default .mat-progress-bar-fill::after {
 .icones-tabela{
     margin-right: 35px;
 }
-/*.mat-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button {
-    box-sizing: border-box;
-    position: relative;
-    user-select: none;
-    cursor: pointer;
-    outline: none;
-    border: none;
-    display: inline-block;
-    white-space: nowrap;
-    text-decoration: none;
-    vertical-align: baseline;
-    text-align: center;
-    margin: 0;
-    padding: 0 16px;
-    border-radius: 4px;
-    overflow: visible;
-}*/
 .scrumboard-card-dialog {
 
     @include media-breakpoint('xs') {
