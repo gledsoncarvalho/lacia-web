@@ -42,11 +42,9 @@
                 (colorChanged)="$event.preventDefault;onLabelChange()"></fuse-material-color-picker>      
         </div>
         <button mat-button (click)="labelsMenuView ='labels'">
-            Adicionar
+            Editar
         </button>
-        <!--div fxLayout="100%" class="u-float-right js-accessory-view-holder">
-            <input type="submit" value="Excluir" class="negate">
-        </div-->
+     
     </div>
     <div class="view add" *ngSwitchCase="'add'" fxFlex fxLayout="column">
         <div class="header" fxLayout="row" fxLayoutAlign="start center">
@@ -63,7 +61,9 @@
                 <fuse-material-color-picker class="ml-8" [(ngModel)]="newLabel.color" name="labelColor">
                 </fuse-material-color-picker>
             </div>
-            <button mat-raised-button class="mat-accent mt-16" [disabled]="!newLabelForm.valid">Adicionar</button>
+            <button style="margin-right: 60px;" mat-button [disabled]="!newLabelForm.valid">
+                Adicionar
+            </button>
         </form>
     </div>
 </div>
