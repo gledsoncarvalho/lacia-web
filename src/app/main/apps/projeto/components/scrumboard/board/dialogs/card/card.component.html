@@ -14,8 +14,10 @@
                     </button>
 
                     <mat-menu #dueDateMenu="matMenu" [overlapTrigger]="false">
-                        <button class="icones-tabela" mat-menu-item (click)="removeDueDate()"><mat-icon>delete</mat-icon>Remover Data de
-                            Entrega</button>
+                        <button class="icones-tabela" mat-menu-item (click)="removeDueDate()">
+                            <mat-icon>delete</mat-icon>Remover Data de
+                            Entrega
+                        </button>
                     </mat-menu>
 
                     <mat-form-field *ngIf="!card.due" title="Calendário">
@@ -108,7 +110,9 @@
                     </button>
 
                     <mat-menu #optionsMenu="matMenu" [overlapTrigger]="false">
-                        <button mat-menu-item (click)="removeCard()"><mat-icon>delete</mat-icon>Remover Cartão</button>
+                        <button mat-menu-item (click)="removeCard()">
+                            <mat-icon>delete</mat-icon>Remover Cartão
+                        </button>
                     </mat-menu>
 
                 </div>
@@ -234,15 +238,11 @@
                                 [ngSwitch]="item.type">
 
                                 <div fxLayout="column" fxLayoutAlign="start" *ngSwitchCase="'image'">
-
                                     <div class="attachment-preview mat-elevation-z1">
                                         <img [src]="item.src">
                                     </div>
-
                                     <div class="attachment-content mt-8" fxLayout="row" fxLayoutAlign="start center">
-
                                         <div fxFlex>
-
                                             <div fxLayout="row" fxLayoutAlign="start start">
                                                 <span class="attachment-name">{{item.name}}</span>
                                                 <mat-icon *ngIf="card.idAttachmentCover === item.id"
@@ -250,16 +250,12 @@
                                                     star
                                                 </mat-icon>
                                             </div>
-
                                             <span class="attachment-time">{{item.time}}</span>
-
                                         </div>
-
                                         <button mat-icon-button class="attachment-actions-button"
                                             [matMenuTriggerFor]="attachmentActionsMenu">
                                             <mat-icon>more_vert</mat-icon>
                                         </button>
-
                                         <mat-menu #attachmentActionsMenu="matMenu">
                                             <button mat-menu-item (click)="toggleCoverImage(item.id)">
                                                 <span *ngIf="card.idAttachmentCover !== item.id">Capa</span>
@@ -269,11 +265,8 @@
                                                 Remover Anexo
                                             </button>
                                         </mat-menu>
-
                                     </div>
-
                                 </div>
-
                                 <div *ngSwitchCase="'link'" fxLayout="row">
                                     <div class="attachment-preview mat-elevation-z2" fxLayout="column"
                                         fxLayoutAlign="center center">

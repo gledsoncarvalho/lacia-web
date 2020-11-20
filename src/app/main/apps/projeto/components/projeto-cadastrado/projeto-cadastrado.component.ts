@@ -28,7 +28,7 @@ const ELEMENT_DATA: ProjetoCadastrado[] = [
 
 export class ProjetoCadastradoComponent implements OnInit {
 
-  displayedColumns: string[] = ['nomeProjetoCadastrado', 'orcamentoProjetoCadastrado', 'dtInicioProjetoCadastrado', 'dtFimProjetoCadastrado'];
+  displayedColumns: string[] = ['nomeProjetoCadastrado', 'orcamentoProjetoCadastrado', 'dtInicioProjetoCadastrado', 'dtFimProjetoCadastrado','acoes'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   status = Status; 
   columnsToDisplay = ['nome', 'orcamento', 'data inicio', 'data fim'];
@@ -47,6 +47,7 @@ export class ProjetoCadastradoComponent implements OnInit {
     this.mapColunas.set('orcamentoProjetoCadastrado', 'Orçamento');
     this.mapColunas.set('dtInicioProjetoCadastrado', 'Data inicio');
     this.mapColunas.set('dtFimProjetoCadastrado', 'Data fim');
+    this.mapColunas.set('acoes','Acoes');
   }
 
   ngOnInit(): void {

@@ -34,17 +34,18 @@
             </button>
             <div>Editar Etiqueta</div>
         </div>
-        <div class="content" fxLayout="row" fxLayoutAlign="start center">
-            <mat-form-field>
+        <div fxFlex fxLayout="column" fxLayoutAlign="start end">
+        <div>
+            <mat-form-field fxFlex="0 1 auto" fxLayout="row" fxLayoutAlign="space-between center">
                 <input matInput placeholder="Nome" [(ngModel)]="selectedLabel.name" (change)="onLabelChange()">
             </mat-form-field>
             <fuse-material-color-picker [(ngModel)]="selectedLabel.color" class="ml-8"
                 (colorChanged)="$event.preventDefault;onLabelChange()"></fuse-material-color-picker>      
         </div>
-        <button mat-button (click)="labelsMenuView ='labels'">
+        <button style="background-color: #039be5; color: white; margin-right: 85px;" mat-button (click)="labelsMenuView ='labels'">
             Editar
         </button>
-     
+    </div>
     </div>
     <div class="view add" *ngSwitchCase="'add'" fxFlex fxLayout="column">
         <div class="header" fxLayout="row" fxLayoutAlign="start center">
@@ -61,7 +62,7 @@
                 <fuse-material-color-picker class="ml-8" [(ngModel)]="newLabel.color" name="labelColor">
                 </fuse-material-color-picker>
             </div>
-            <button style="margin-right: 60px;" mat-button [disabled]="!newLabelForm.valid">
+            <button style="margin-right: 60px; background-color: #039be5; color: white;" mat-button [disabled]="!newLabelForm.valid">
                 Adicionar
             </button>
         </form>

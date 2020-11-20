@@ -13,7 +13,7 @@
         <input id="btn" type="file"
             onchange="document.getElementById('arquivo').src = window.URL.createObjectURL(this.files[0])">
     </div>
-    <h1 id="nome_embaixo_do_icone_perfil">Fábio Gomes Rocha</h1>
+    <h1 id="nome_embaixo_do_icone_perfil">{{ perfil.nomeMeuPerfil }}</h1>
     <div fxLayout="column" id="coluna-dados-pessoais">
         <div fxLayout="row">
             <div fxFlex="100%">

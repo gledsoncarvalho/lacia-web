@@ -26,10 +26,7 @@
                 <div class="row">
                     <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
                         <ng-container matColumnDef="{{ column }}" *ngFor="let column of displayedColumns">
-                            <th mat-header-cell *matHeaderCellDef style="
-                            color: #2d323e;
-                            font-weight: bold;
-                        ">
+                            <th mat-header-cell *matHeaderCellDef style="color: #2d323e;font-weight: bold;">
                                 {{ mapColunas.get(column) }}
                             </th>
                             <td style="cursor: pointer" mat-cell *matCellDef="let element">
@@ -40,6 +37,9 @@
                                 <ng-template #colunaSemData>
                                     {{ element[column] }}
                                 </ng-template>
+                                <div *ngIf=" column === 'acoes' || column === 'acoes'">
+                                    <mat-icon>keyboard_arrow_down</mat-icon>
+                                </div>
                             </td>
                         </ng-container>
                         <ng-container matColumnDef="expandedDetail">

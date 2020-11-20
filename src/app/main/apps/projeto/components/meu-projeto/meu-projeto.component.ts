@@ -6,9 +6,9 @@ import { Status } from '../../../../../../@fuse/enums/status.enum';
 
 
 const ELEMENT_DATA: MeuProjeto[] = [
-  {  nomeMeuProjeto: "Lacia", orcamentoMeuProjeto: "500,50", dtInicioMeuProjeto: new Date(), dtFimMeuProjeto: new Date(), situacaoMeuProjeto: "Aprovado" },
-  {  nomeMeuProjeto: "Composto V", orcamentoMeuProjeto: "50000,33", dtInicioMeuProjeto: new Date(), dtFimMeuProjeto: new Date(), situacaoMeuProjeto: "Não aprovado" },
-  { nomeMeuProjeto: "Projeto Chico", orcamentoMeuProjeto: "2000,90", dtInicioMeuProjeto: new Date(), dtFimMeuProjeto: new Date(), situacaoMeuProjeto: "Em espera" },
+  {  nomeMeuProjeto: "Lacia", orcamentoMeuProjeto: "500,50", dtInicioMeuProjeto: new Date(), dtFimMeuProjeto: new Date(), situacaoMeuProjeto: "Aprovado"},
+  {  nomeMeuProjeto: "Composto V", orcamentoMeuProjeto: "50000,33", dtInicioMeuProjeto: new Date(), dtFimMeuProjeto: new Date(), situacaoMeuProjeto: "Não aprovado"},
+  { nomeMeuProjeto: "Projeto Chico", orcamentoMeuProjeto: "2000,90", dtInicioMeuProjeto: new Date(), dtFimMeuProjeto: new Date(), situacaoMeuProjeto: "Em espera"},
 ];
 
 @Component({
