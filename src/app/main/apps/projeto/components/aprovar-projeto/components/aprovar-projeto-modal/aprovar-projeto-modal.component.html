@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
+    <div fxFlex='100%' fxLayoutGap= '2rem'>
         <h2 mat-dialog-title>Aprovação de Projeto</h2>
     </div>
     <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
@@ -10,14 +10,14 @@
 <mat-dialog-content>
     <br />
     <form [formGroup]="aprovarProjetoForm">
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="row" fxLayoutGap="2rem">
+            <div fxFlex="1 1 calc(50% - 2rem)" fxFlex.lt-md="100%">
                 <mat-form-field>
                     <mat-label>Nome Projeto</mat-label>
                     <input matInput formControlName="nomeAprovarProjeto" required readonly />
                 </mat-form-field>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div fxFlex="1 1 calc(50% - 2rem)" fxFlex.lt-md="100%">
                 <mat-form-field>
                     <mat-label>Orçamento</mat-label>
                     <input matInput currencyMask formControlName="orcamentoAprovarProjeto" [errorStateMatcher]="matcher"
@@ -25,28 +25,26 @@
                 </mat-form-field>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="row" fxLayoutGap="2rem">
+            <div fxFlex="1 1 calc(50% - 2rem)" fxFlex.lt-md="100%">
                 <mat-form-field>
                     <mat-label>Data Início do Projeto</mat-label>
                     <input matInput [matDatepicker]="pickerDtInicioAprovarProjeto"
                         formControlName="dtInicioAprovarProjeto" required readonly />
-                    <mat-datepicker-toggle matSuffix [for]="pickerDtInicioAprovarProjeto"></mat-datepicker-toggle>
                     <mat-datepicker #pickerDtInicioAprovarProjeto></mat-datepicker>
                 </mat-form-field>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div fxFlex="1 1 calc(50% - 2rem)" fxFlex.lt-md="100%">
                 <mat-form-field>
                     <mat-label>Data Finalização do Projeto</mat-label>
                     <input matInput [matDatepicker]="pickerDtFimAprovarProjeto" formControlName="dtFimAprovarProjeto"
                         required readonly />
-                    <mat-datepicker-toggle matSuffix [for]="pickerDtFimAprovarProjeto"></mat-datepicker-toggle>
                     <mat-datepicker #pickerDtFimAprovarProjeto></mat-datepicker>
                 </mat-form-field>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="row" fxLayoutGap="2rem">
+            <div fxFlex="1 1 calc(50% - 2rem)" fxFlex.lt-md="100%">
                 <mat-form-field>
                     <mat-label>Descrição do Projeto</mat-label>
                     <textarea class="area-descricao" rows="5" matInput formControlName="descricaoAprovarProjeto"
