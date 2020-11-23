@@ -103,3 +103,9 @@ table {
 .swal2-popup {
     font-size: 1.5rem !important;
 }
+
+.mat-progress-bar.mat-success {
+    .mat-progress-bar-fill::after {
+      background-color: lime;
+    }
+  }

@@ -331,7 +331,11 @@
                                 {{checklist.checkItemsChecked}} / {{checklist.checkItems.length}}
                             </span>
 
-                            <mat-progress-bar class="checklist-progressbar" mode="determinate"
+                            <mat-progress-bar *ngIf="checklist.checkItemsChecked != checklist.checkItems.length" class="checklist-progressbar" mode="determinate"
+                                value="{{100 * checklist.checkItemsChecked / checklist.checkItems.length}}">
+                            </mat-progress-bar>
+
+                            <mat-progress-bar *ngIf="checklist.checkItemsChecked == checklist.checkItems.length" class="success" color="success" mode="determinate"
                                 value="{{100 * checklist.checkItemsChecked / checklist.checkItems.length}}">
                             </mat-progress-bar>
 
