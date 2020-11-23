@@ -13,13 +13,13 @@
             <div fxFlex="1 1 calc(50% - 2rem)" fxFlex.lt-md="100%">
               <mat-form-field>
                 <mat-label>Filtro por nome do coordenador</mat-label>
-                <input matInput matInput (keyup)="applyFilter($event)" placeholder="Ex. 	Fábio Gomes" #input>
+                <input matInput matInput (keyup)="applyFilter($event)" placeholder="Ex: João" #input>
               </mat-form-field>
             </div>
             <div fxFlex="1 1 calc(50% - 2rem)" fxFlex.lt-md="100%">
               <mat-form-field>
                 <mat-label>Filtro por e-mail do coordenador</mat-label>
-                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. fabio.gomes@souunit.com.br" #input>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Ex: joao@mail.com" #input>
               </mat-form-field>
             </div>
           </div>
