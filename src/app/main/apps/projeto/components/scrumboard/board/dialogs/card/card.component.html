@@ -9,7 +9,7 @@
                 <!-- DUE DATE -->
                 <div class="due-date" fxFlex="0 1 auto">
 
-                    <button class="icones-tabela" *ngIf="card.due" mat-icon-button [matMenuTriggerFor]="dueDateMenu">
+                    <button title="Calendário" class="icones-tabela" *ngIf="card.due" mat-icon-button [matMenuTriggerFor]="dueDateMenu">
                         <mat-icon>today</mat-icon>
                     </button>
 
@@ -21,7 +21,7 @@
                     </mat-menu>
 
                     <mat-form-field *ngIf="!card.due" title="Calendário">
-                        <input matInput [matDatepicker]="menuPicker" [(ngModel)]="card.due">
+                        <input matInput [matDatepicker]="menuPicker" [(ngModel)]="card.due" cdkFocusInitial>
                         <mat-datepicker-toggle class="icones-tabela" matSuffix [for]="menuPicker">
                         </mat-datepicker-toggle>
                         <mat-datepicker #menuPicker></mat-datepicker>
@@ -157,7 +157,7 @@
             <div *ngIf="card.due" class="due-date px-24 pl-0" fxLayout="row" fxLayoutAlign="start center">
                 <mat-form-field appearance="outline" class="w-100-p">
                     <mat-label>Data de Entrega</mat-label>
-                    <input matInput [matDatepicker]="picker" [(ngModel)]="card.due">
+                    <input matInput [matDatepicker]="picker" [(ngModel)]="card.due" cdkFocusInitial>
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>

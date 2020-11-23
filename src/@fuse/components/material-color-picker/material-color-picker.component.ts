@@ -3,6 +3,7 @@ import { Component, EventEmitter, forwardRef, Input, Output, ViewEncapsulation }
 import { fuseAnimations } from '@fuse/animations';
 import { MatColors } from '@fuse/mat-colors';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { pullAll } from 'lodash';
 
 export const FUSE_MATERIAL_COLOR_PICKER_VALUE_ACCESSOR: any = {
     provide    : NG_VALUE_ACCESSOR,
@@ -150,6 +151,7 @@ export class FuseMaterialColorPickerComponent implements ControlValueAccessor
      */
     selectPalette(event, palette): void
     {
+        console.log(palette);
         // Stop propagation
         event.stopPropagation();
 
@@ -171,6 +173,7 @@ export class FuseMaterialColorPickerComponent implements ControlValueAccessor
      */
     selectHue(event, hue): void
     {
+        console.log(hue);
         // Stop propagation
         event.stopPropagation();
 
