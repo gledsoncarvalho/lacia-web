@@ -93,7 +93,7 @@ export class ScrumboardFakeDb
                         '5640635e19ad3a5dc21416b2'
                     ],
                     'attachments'      : [
-                        {
+                        /*{
                             'id'  : '56027cfcbe1b72ecf1fc452a',
                             'name': 'calendar-app-design.jpg',
                             'src' : 'assets/images/scrumboard/calendar.jpg',
@@ -105,7 +105,7 @@ export class ScrumboardFakeDb
                             'url' : 'assets/images/scrumboard/calendar.jpg',
                             'time': 'Nov 3 at 15:22AM',
                             'type': 'link'
-                        }
+                        }*/
                     ],
                     'subscribed'       : true,
                     'checklists'       : [

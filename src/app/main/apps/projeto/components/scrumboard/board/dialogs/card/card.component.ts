@@ -1,4 +1,5 @@
-import { Component, Inject, OnDestroy, OnInit, ViewChild, ViewEncapsulation, ElementRef } from '@angular/core';
+import { Attachment } from './../../../attachment.model';
+import { Component, Inject, OnDestroy, OnInit, ViewChild, ViewEncapsulation, ElementRef, Sanitizer } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatMenuTrigger } from '@angular/material/menu';
@@ -9,15 +10,15 @@ import { FuseUtils } from '@fuse/utils';
 
 import { ScrumboardService } from '../../../scrumboard.service';
 import { takeUntil } from 'rxjs/operators';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
-    selector     : 'scrumboard-board-card-dialog',
-    templateUrl  : './card.component.html',
-    styleUrls    : ['./card.component.scss'],
+    selector: 'scrumboard-board-card-dialog',
+    templateUrl: './card.component.html',
+    styleUrls: ['./card.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class ScrumboardCardDialogComponent implements OnInit, OnDestroy
-{
+export class ScrumboardCardDialogComponent implements OnInit, OnDestroy {
     card: any;
     board: any;
     list: any;
@@ -43,12 +44,12 @@ export class ScrumboardCardDialogComponent implements OnInit, OnDestroy
      * @param {ScrumboardService} _scrumboardService
      */
     constructor(
+        private _sanitizer: DomSanitizer,  
         public matDialogRef: MatDialogRef<ScrumboardCardDialogComponent>,
         @Inject(MAT_DIALOG_DATA) private _data: any,
         private _matDialog: MatDialog,
         private _scrumboardService: ScrumboardService
-    )
-    {
+    ) {
         // Set the private defaults
         this._unsubscribeAll = new Subject();
     }
@@ -60,8 +61,7 @@ export class ScrumboardCardDialogComponent implements OnInit, OnDestroy
     /**
      * On init
      */
-    ngOnInit(): void
-    {
+    ngOnInit(): void {
         this._scrumboardService.onBoardChanged
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(board => {
@@ -74,14 +74,13 @@ export class ScrumboardCardDialogComponent implements OnInit, OnDestroy
                 this.list = this.board.lists.find((_list) => {
                     return this._data.listId === _list.id;
                 });
-            });   
+            });
     }
 
     /**
      * On destroy
      */
-    ngOnDestroy(): void
-    {
+    ngOnDestroy(): void {
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
@@ -94,8 +93,7 @@ export class ScrumboardCardDialogComponent implements OnInit, OnDestroy
     /**
      * Remove due date
      */
-    removeDueDate(): void
-    {
+    removeDueDate(): void {
         this.card.due = '';
         this.updateCard();
     }
@@ -103,8 +101,7 @@ export class ScrumboardCardDialogComponent implements OnInit, OnDestroy
     /**
      * Toggle subscribe
      */
-    toggleSubscribe(): void
-    {
+    toggleSubscribe(): void {
         this.card.subscribed = !this.card.subscribed;
 
         this.updateCard();
@@ -115,14 +112,11 @@ export class ScrumboardCardDialogComponent implements OnInit, OnDestroy
      *
      * @param attachmentId
      */
-    toggleCoverImage(attachmentId): void
-    {
-        if ( this.card.idAttachmentCover === attachmentId )
-        {
+    toggleCoverImage(attachmentId): void {
+        if (this.card.idAttachmentCover === attachmentId) {
             this.card.idAttachmentCover = '';
         }
-        else
-        {
+        else {
             this.card.idAttachmentCover = attachmentId;
         }
 
@@ -134,10 +128,8 @@ export class ScrumboardCardDialogComponent implements OnInit, OnDestroy
      *
      * @param attachment
      */
-    removeAttachment(attachment): void
-    {
-        if ( attachment.id === this.card.idAttachmentCover )
-        {
+    removeAttachment(attachment): void {
+        if (attachment.id === this.card.idAttachmentCover) {
             this.card.idAttachmentCover = '';
         }
 
@@ -151,8 +143,7 @@ export class ScrumboardCardDialogComponent implements OnInit, OnDestroy
      *
      * @param checklist
      */
-    removeChecklist(checklist): void
-    {
+    removeChecklist(checklist): void {
         this.card.checklists.splice(this.card.checklists.indexOf(checklist), 1);
 
         this.updateCard();
@@ -163,25 +154,21 @@ export class ScrumboardCardDialogComponent implements OnInit, OnDestroy
      *
      * @param list
      */
-    updateCheckedCount(list): void
-    {
+    updateCheckedCount(list): void {
         const checkItems = list.checkItems;
         let checkedItems = 0;
         let allCheckedItems = 0;
         let allCheckItems = 0;
 
-        for ( const checkItem of checkItems )
-        {
-            if ( checkItem.checked )
-            {
+        for (const checkItem of checkItems) {
+            if (checkItem.checked) {
                 checkedItems++;
             }
         }
 
         list.checkItemsChecked = checkedItems;
 
-        for ( const item of this.card.checklists )
-        {
+        for (const item of this.card.checklists) {
             allCheckItems += item.checkItems.length;
             allCheckedItems += item.checkItemsChecked;
         }
@@ -198,8 +185,7 @@ export class ScrumboardCardDialogComponent implements OnInit, OnDestroy
      * @param checkItem
      * @param checklist
      */
-    removeChecklistItem(checkItem, checklist): void
-    {
+    removeChecklistItem(checkItem, checklist): void {
         checklist.checkItems.splice(checklist.checkItems.indexOf(checkItem), 1);
 
         this.updateCheckedCount(checklist);
@@ -213,17 +199,15 @@ export class ScrumboardCardDialogComponent implements OnInit, OnDestroy
      * @param {NgForm} form
      * @param checkList
      */
-    addCheckItem(form: NgForm, checkList): void
-    {
+    addCheckItem(form: NgForm, checkList): void {
         const checkItemVal = form.value.checkItem;
 
-        if ( !checkItemVal || checkItemVal === '' )
-        {
+        if (!checkItemVal || checkItemVal === '') {
             return;
         }
 
         const newCheckItem = {
-            name   : checkItemVal,
+            name: checkItemVal,
             checked: false
         };
 
@@ -231,7 +215,7 @@ export class ScrumboardCardDialogComponent implements OnInit, OnDestroy
 
         this.updateCheckedCount(checkList);
 
-        form.setValue({checkItem: ''});
+        form.setValue({ checkItem: '' });
 
         this.updateCard();
     }
@@ -241,16 +225,15 @@ export class ScrumboardCardDialogComponent implements OnInit, OnDestroy
      *
      * @param {NgForm} form
      */
-    addChecklist(form: NgForm): void
-    {
+    addChecklist(form: NgForm): void {
         this.card.checklists.push({
-            id               : FuseUtils.generateGUID(),
-            name             : form.value.checklistTitle,
+            id: FuseUtils.generateGUID(),
+            name: form.value.checklistTitle,
             checkItemsChecked: 0,
-            checkItems       : []
+            checkItems: []
         });
 
-        form.setValue({checklistTitle: ''});
+        form.setValue({ checklistTitle: '' });
         form.resetForm();
         this.checklistMenu.closeMenu();
         this.updateCard();
@@ -259,8 +242,7 @@ export class ScrumboardCardDialogComponent implements OnInit, OnDestroy
     /**
      * On checklist menu open
      */
-    onChecklistMenuOpen(): void
-    {
+    onChecklistMenuOpen(): void {
         setTimeout(() => {
             this.newCheckListTitleField.nativeElement.focus();
         });
@@ -271,19 +253,18 @@ export class ScrumboardCardDialogComponent implements OnInit, OnDestroy
      *
      * @param {NgForm} form
      */
-    addNewComment(form: NgForm): void
-    {
+    addNewComment(form: NgForm): void {
         const newCommentText = form.value.newComment;
 
         const newComment = {
             idMember: '36027j1930450d8bf7b10158',
-            message : newCommentText,
-            time    : 'now'
+            message: newCommentText,
+            time: 'now'
         };
 
         this.card.comments.unshift(newComment);
 
-        form.setValue({newComment: ''});
+        form.setValue({ newComment: '' });
 
         this.updateCard();
     }
@@ -291,8 +272,7 @@ export class ScrumboardCardDialogComponent implements OnInit, OnDestroy
     /**
      * Remove card
      */
-    removeCard(): void
-    {
+    removeCard(): void {
         this.confirmDialogRef = this._matDialog.open(FuseConfirmDialogComponent, {
             disableClose: false
         });
@@ -300,8 +280,7 @@ export class ScrumboardCardDialogComponent implements OnInit, OnDestroy
         this.confirmDialogRef.componentInstance.confirmMessage = 'Você tem certeza que quer remover este cartão?';
 
         this.confirmDialogRef.afterClosed().subscribe(result => {
-            if ( result )
-            {
+            if (result) {
                 this.matDialogRef.close();
                 this._scrumboardService.removeCard(this.card.id, this.list.id);
             }
@@ -311,8 +290,38 @@ export class ScrumboardCardDialogComponent implements OnInit, OnDestroy
     /**
      * Update card
      */
-    updateCard(): void
-    {
+    updateCard(): void {
         this._scrumboardService.updateCard(this.card);
+    }
+
+    changeListener($event): void {
+        this.readThis($event.target);
+    }
+
+    readThis(inputValue: any): void {
+        var file: File = inputValue.files[0];
+        var myReader: FileReader = new FileReader();
+
+        myReader.onloadend = (e) => {
+            // you can perform an action with readed data here
+            let attachment: Attachment = {} as Attachment;
+            attachment.src = myReader.result.toString();
+            attachment.type = 'image';
+            attachment.name = file.name;
+            attachment.time = new Date();
+            this.card.attachments.push(attachment);
+            console.log(file);
+        }
+
+        myReader.readAsDataURL(file);
+
+    }
+
+    retornarImagem(src: any){
+       return this._sanitizer.bypassSecurityTrustResourceUrl(src);
+    }
+
+    uploadImage(){
+        document.getElementById('btn').click();
     }
 }

@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
@@ -76,7 +76,7 @@ const appRoutes: Routes = [
         LayoutModule,
     ],
     providers: [
-        { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }
+        { provide: MAT_DATE_LOCALE, useValue: 'pt-BR'}
     ],
     bootstrap: [
         AppComponent
