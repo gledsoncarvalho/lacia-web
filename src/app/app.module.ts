@@ -17,6 +17,8 @@ import { FakeDbService } from 'app/fake-db/fake-db.service';
 import { fuseConfig } from 'app/fuse-config';
 import { LayoutModule } from 'app/layout/layout.module';
 import { FuseMaterialColorPickerModule } from '../@fuse/components/material-color-picker/material-color-picker.module';
+import { AuthGuard } from './main/guards/auth.guard';
+import { JwtService } from './main/services/jwt.service';
 
 
 
@@ -29,7 +31,8 @@ const appRoutes: Routes = [
     },
     {
         path: 'apps',
-        loadChildren: () => import('./main/apps/apps.module').then(m => m.AppsModule)
+        loadChildren: () => import('./main/apps/apps.module').then(m => m.AppsModule),
+        canActivate: [AuthGuard]
     },
     {
         path: 'pages',
@@ -76,7 +79,9 @@ const appRoutes: Routes = [
         LayoutModule,
     ],
     providers: [
-        { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }
+        { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
+        JwtService,
+        AuthGuard
     ],
     bootstrap: [
         AppComponent

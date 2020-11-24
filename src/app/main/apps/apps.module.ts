@@ -1,28 +1,29 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FuseSharedModule } from '@fuse/shared.module';
+import { AuthGuard } from '../guards/auth.guard';
 
 
 const routes = [
     {
         path: 'aluno',
-        loadChildren: () => import('./alunos/alunos.module').then(m => m.AlunosModule)
+        loadChildren: () => import('./alunos/alunos.module').then(m => m.AlunosModule),
     },
     {
         path: 'coordenador',
-        loadChildren: () => import('./coordenador/coordenador.module').then(m => m.CoordenadorModule)
+        loadChildren: () => import('./coordenador/coordenador.module').then(m => m.CoordenadorModule),
     },
     {
         path: 'projetos',
-        loadChildren: () => import('./projeto/projeto.module').then(m => m.ProjetoModule)
+        loadChildren: () => import('./projeto/projeto.module').then(m => m.ProjetoModule),
     },
     {
         path: 'pesquisador',
-        loadChildren: () => import('./pesquisador/pesquisador.module').then(m => m.PesquisadorModule)
+        loadChildren: () => import('./pesquisador/pesquisador.module').then(m => m.PesquisadorModule),
     },
     {
         path: 'meu-perfil',
-        loadChildren: () => import('./meu-perfil/meu-perfil.module').then(m => m.MeuPerfilModule)
+        loadChildren: () => import('./meu-perfil/meu-perfil.module').then(m => m.MeuPerfilModule),
     }
 ];
 

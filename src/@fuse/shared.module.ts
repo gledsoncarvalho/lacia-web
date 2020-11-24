@@ -24,6 +24,7 @@ import { AlertComponent } from './components/alert/alert.component';
 import { MaskDirective } from './directives/mask';
 import { CurrencyMaskModule } from "ng2-currency-mask";
 import { AngularFileUploaderModule } from "angular-file-uploader";
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { AngularFileUploaderModule } from "angular-file-uploader";
     ],
     exports: [
         CommonModule,
+        HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
 
