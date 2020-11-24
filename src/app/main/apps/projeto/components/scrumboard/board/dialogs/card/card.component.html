@@ -7,26 +7,21 @@
             <div fxFlex fxLayout="row" fxLayoutAlign="start center">
 
                 <!-- DUE DATE -->
-                <div class="due-date" fxFlex="0 1 auto">
+                <div class="due-date" fxFlex="0 1 auto" cdkFocusInitial>
 
-                    <button class="icones-tabela" *ngIf="card.due" mat-icon-button [matMenuTriggerFor]="dueDateMenu">
+                    <button title="Calendário" class="icones-tabela" mat-icon-button [matMenuTriggerFor]="dueDateMenu">
                         <mat-icon>today</mat-icon>
                     </button>
-
+                    
                     <mat-menu #dueDateMenu="matMenu" [overlapTrigger]="false">
-                        <button class="icones-tabela" mat-menu-item (click)="removeDueDate()">
-                            <mat-icon>delete</mat-icon>Remover Data de
-                            Entrega
+                        <button *ngIf="card.due" class="icones-tabela" mat-menu-item (click)="removeDueDate()">
+                            <mat-icon>delete</mat-icon>Remover Data de Entrega
+                        </button>
+
+                        <button *ngIf="!card.due" class="icones-tabela" mat-menu-item (click)="card.due = true">
+                            <mat-icon>add</mat-icon>Inserir Data de Entrega
                         </button>
                     </mat-menu>
-
-                    <mat-form-field *ngIf="!card.due" title="Calendário">
-                        <input matInput [matDatepicker]="menuPicker" [(ngModel)]="card.due">
-                        <mat-datepicker-toggle class="icones-tabela" matSuffix [for]="menuPicker">
-                        </mat-datepicker-toggle>
-                        <mat-datepicker #menuPicker></mat-datepicker>
-                    </mat-form-field>
-
                 </div>
                 <div class="labels" fxFlex="0 1 auto">
 
@@ -68,8 +63,10 @@
                         <mat-icon>attachment</mat-icon>
                     </button>
                     <mat-menu #anexoMenu="matMenu" [overlapTrigger]="false">
-                        <input id="btn" type="file"
-                            onchange="document.getElementById('arquivo').src = window.URL.createObjectURL(this.files[0])">
+                        <button class="icones-tabela" mat-menu-item (click)="uploadImage()">
+                            <mat-icon>attachment</mat-icon>Adicionar Anexo
+                        </button>
+                        <input multiple id="btn" hidden="true" type="file" (change)="changeListener($event)">
                     </mat-menu>
                     <!-- / ATTACHMENT -->
                 </div>
@@ -155,7 +152,7 @@
             <div *ngIf="card.due" class="due-date px-24 pl-0" fxLayout="row" fxLayoutAlign="start center">
                 <mat-form-field appearance="outline" class="w-100-p">
                     <mat-label>Data de Entrega</mat-label>
-                    <input matInput [matDatepicker]="picker" [(ngModel)]="card.due">
+                    <input matInput [matDatepicker]="picker" [(ngModel)]="card.due" (click)="picker.open()" cdkFocusInitial readonly>
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
@@ -232,35 +229,29 @@
 
                     <div class="section-content">
 
-                        <div fxLayout="column" fxLayoutAlign="start" fxLayoutWrap fxLayout.gt-sm="row">
-
+                        <div fxLayout="column" fxLayoutAlign="start" fxLayoutWrap>
                             <div class="attachment" fxFlex="33" *ngFor="let item of card.attachments"
                                 [ngSwitch]="item.type">
-
-                                <div fxLayout="column" fxLayoutAlign="start" *ngSwitchCase="'image'">
+                                <div fxLayout="row" fxLayoutAlign="start" *ngSwitchCase="'image'">
                                     <div class="attachment-preview mat-elevation-z1">
-                                        <img [src]="item.src">
+                                        <img [src]="retornarImagem(item.src)">
                                     </div>
                                     <div class="attachment-content mt-8" fxLayout="row" fxLayoutAlign="start center">
                                         <div fxFlex>
-                                            <div fxLayout="row" fxLayoutAlign="start start">
+                                            <div fxLayout="column" fxLayoutAlign="start start">
                                                 <span class="attachment-name">{{item.name}}</span>
                                                 <mat-icon *ngIf="card.idAttachmentCover === item.id"
                                                     class="yellow-700-fg attachment-is-cover">
                                                     star
                                                 </mat-icon>
                                             </div>
-                                            <span class="attachment-time">{{item.time}}</span>
+                                            <span class="attachment-time">{{item.time | date: 'dd/MM/yyyy HH:mm'}}</span>
                                         </div>
                                         <button mat-icon-button class="attachment-actions-button"
                                             [matMenuTriggerFor]="attachmentActionsMenu">
                                             <mat-icon>more_vert</mat-icon>
                                         </button>
                                         <mat-menu #attachmentActionsMenu="matMenu">
-                                            <button mat-menu-item (click)="toggleCoverImage(item.id)">
-                                                <span *ngIf="card.idAttachmentCover !== item.id">Capa</span>
-                                                <span *ngIf="card.idAttachmentCover === item.id">Remover Capa</span>
-                                            </button>
                                             <button mat-menu-item (click)="removeAttachment(item)">
                                                 Remover Anexo
                                             </button>
@@ -274,7 +265,7 @@
                                     </div>
                                     <div class="attachment-content" fxLayout="column">
                                         <span class="attachment-url">{{item.url}}</span>
-                                        <span class="attachment-time">{{item.time}}</span>
+                                        <span class="attachment-time">{{item.time | date: 'dd/MM/yyyy HH:mm'}}</span>
                                     </div>
                                 </div>
 
@@ -285,8 +276,7 @@
                         <!--button  mat-stroked-button class="add-attachment-button" aria-label="add attachment">
                             Adicionar um anexo
                         </button-->
-                        <input id="btn" type="file"
-                            onchange="document.getElementById('arquivo').src = window.URL.createObjectURL(this.files[0])">
+                        <input id="btn" multiple type="file" (change)="changeListener($event)">
 
                     </div>
 
@@ -331,7 +321,11 @@
                                 {{checklist.checkItemsChecked}} / {{checklist.checkItems.length}}
                             </span>
 
-                            <mat-progress-bar class="checklist-progressbar" mode="determinate"
+                            <mat-progress-bar *ngIf="checklist.checkItemsChecked != checklist.checkItems.length" class="checklist-progressbar" mode="determinate"
+                                value="{{100 * checklist.checkItemsChecked / checklist.checkItems.length}}">
+                            </mat-progress-bar>
+
+                            <mat-progress-bar *ngIf="checklist.checkItemsChecked == checklist.checkItems.length" class="success" color="success" mode="determinate"
                                 value="{{100 * checklist.checkItemsChecked / checklist.checkItems.length}}">
                             </mat-progress-bar>
 

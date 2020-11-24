@@ -22,7 +22,8 @@
                     <mat-icon class="s-16" (click)="labelsMenuView ='edit';selectedLabel = label">mode_edit</mat-icon>
                 </button>
                 <button mat-icon-button>
-                    <mat-icon style="color: red;" class="s-16" (click)="labelsMenuView ='edit';selectedLabel = label">delete</mat-icon>
+                    <mat-icon style="color: red;" class="s-16" (click)="labelsMenuView ='edit';selectedLabel = label">
+                        delete</mat-icon>
                 </button>
             </div>
         </div>
@@ -35,17 +36,18 @@
             <div>Editar Etiqueta</div>
         </div>
         <div fxFlex fxLayout="column" fxLayoutAlign="start end">
-        <div>
-            <mat-form-field fxFlex="0 1 auto" fxLayout="row" fxLayoutAlign="space-between center">
-                <input matInput placeholder="Nome" [(ngModel)]="selectedLabel.name" (change)="onLabelChange()">
-            </mat-form-field>
-            <fuse-material-color-picker [(ngModel)]="selectedLabel.color" class="ml-8"
-                (colorChanged)="$event.preventDefault;onLabelChange()"></fuse-material-color-picker>      
+            <div fxFlex="0 1 auto" fxLayout="row" fxLayoutAlign="space-between center">
+                <mat-form-field fxFlex="75%">
+                    <input matInput [(ngModel)]="selectedLabel.name" (change)="onLabelChange()" name="labelName">
+                </mat-form-field>
+                <fuse-material-color-picker fxFlex="25%" [(ngModel)]="selectedLabel.color" class="ml-7"
+                    (colorChanged)="$event.preventDefault;onLabelChange()" style="margin-left: 10px !important;"></fuse-material-color-picker >
+            </div>
+            <button style="background-color: #039be5; color: white; margin-right: 85px;" mat-button
+                (click)="labelsMenuView ='labels'">
+                Editar
+            </button>
         </div>
-        <button style="background-color: #039be5; color: white; margin-right: 85px;" mat-button (click)="labelsMenuView ='labels'">
-            Editar
-        </button>
-    </div>
     </div>
     <div class="view add" *ngSwitchCase="'add'" fxFlex fxLayout="column">
         <div class="header" fxLayout="row" fxLayoutAlign="start center">
@@ -54,7 +56,7 @@
             </button>
             <div>Adicionar Etiqueta</div>
         </div>
-        <form (submit)="addNewLabel()" #newLabelForm="ngForm" fxFlex fxLayout="column" fxLayoutAlign="start end">
+        <form #newLabelForm="ngForm" fxFlex fxLayout="column" fxLayoutAlign="start end">
             <div fxFlex="0 1 auto" fxLayout="row" fxLayoutAlign="space-between center">
                 <mat-form-field fxFlex>
                     <input matInput placeholder="Nome" [(ngModel)]="newLabel.name" name="labelName" required>
@@ -62,7 +64,8 @@
                 <fuse-material-color-picker class="ml-8" [(ngModel)]="newLabel.color" name="labelColor">
                 </fuse-material-color-picker>
             </div>
-            <button style="margin-right: 60px; background-color: #039be5; color: white;" mat-button [disabled]="!newLabelForm.valid">
+            <button (click)="addNewLabel()" style="margin-right: 60px; background-color: #039be5; color: white;"
+                mat-button [disabled]="!newLabelForm.valid">
                 Adicionar
             </button>
         </form>

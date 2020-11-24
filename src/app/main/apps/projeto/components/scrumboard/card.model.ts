@@ -16,7 +16,6 @@ export class Card
     comments: any[];
     activities: any[];
     due: string;
-
     /**
      * Constructor
      *

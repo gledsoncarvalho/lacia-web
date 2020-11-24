@@ -9,7 +9,7 @@
 <mat-menu #colorMenu="matMenu" class="fuse-material-color-picker-menu mat-elevation-z8">
 
     <header [ngClass]="selectedColor?.class || 'accent'" class="mat-elevation-z4"
-            fxLayout="row" fxLayoutAlign="space-between center">
+            fxLayout="row" fxLayoutAlign="space-between center" (click)="$event.stopPropagation()">
 
         <button mat-icon-button
                 class="secondary-text"
@@ -17,28 +17,19 @@
                 (click)="goToPalettesView($event)" aria-label="Palette">
             <mat-icon class="s-20">arrow_back</mat-icon>
         </button>
-
-        <span *ngIf="selectedColor?.palette">
-            {{selectedColor.palette}} {{selectedColor.hue}}
-        </span>
-
-        <span *ngIf="!selectedColor?.palette">
-            Select a Color
-        </span>
-
+        
         <button mat-icon-button
                 class="remove-color-button secondary-text"
                 (click)="removeColor($event)"
-                aria-label="Remove color"
-                matTooltip="Remove color">
+                aria-label="Removr color"
+                matTooltip="Remover cor">
             <mat-icon class="s-20">delete</mat-icon>
         </button>
     </header>
 
-    <div [ngSwitch]="view" class="views">
+    <div [ngSwitch]="view" class="views" (click)="$event.stopPropagation()">
 
         <div class="view" *ngSwitchCase="'palettes'">
-
             <div fxLayout="row wrap" fxLayoutAlign="start start" class="colors" fusePerfectScrollbar>
                 <div class="color" fxLayout="row" fxLayoutAlign="center center"
                      *ngFor="let color of (colors | keys)"

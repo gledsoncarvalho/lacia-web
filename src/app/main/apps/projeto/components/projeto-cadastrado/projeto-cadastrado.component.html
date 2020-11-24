@@ -37,8 +37,8 @@
                                 <ng-template #colunaSemData>
                                     {{ element[column] }}
                                 </ng-template>
-                                <div *ngIf=" column === 'acoes' || column === 'acoes'">
-                                    <mat-icon>keyboard_arrow_down</mat-icon>
+                                <div *ngIf=" column === 'acoes'">
+                                    <mat-icon>{{ element == expandedElement ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</mat-icon>
                                 </div>
                             </td>
                         </ng-container>
