@@ -166,9 +166,15 @@ body.theme-default .mat-progress-bar-fill::after .success {
                                 font-weight: 600;
                                 border-radius: 4px;
                                 overflow: hidden;
+                                width: 16rem;
+                                height: 16rem;
                             }
 
                             .attachment-content {
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                                overflow: hidden;
+                                margin-left: 1%;
 
                                 .attachment-url,
                                 .attachment-name {

@@ -38,7 +38,7 @@
                                     {{ element[column] }}
                                 </ng-template>
                                 <div *ngIf=" column === 'acoes' || column === 'acoes'">
-                                    <mat-icon>keyboard_arrow_down</mat-icon>
+                                    <mat-icon>{{ menuIsOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</mat-icon>
                                 </div>
                             </td>
                         </ng-container>

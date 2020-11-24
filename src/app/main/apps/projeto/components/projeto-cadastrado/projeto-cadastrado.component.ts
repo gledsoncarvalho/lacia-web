@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ProjetoCadastrado } from './projeto-cadastrado';
-import {animate, state, style, transition, trigger} from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Status } from '@fuse/enums/status.enum';
 
 
@@ -19,8 +19,8 @@ const ELEMENT_DATA: ProjetoCadastrado[] = [
   styleUrls: ['./projeto-cadastrado.component.css'],
   animations: [
     trigger('detailExpand', [
-      state('collapsed', style({height: '0px', minHeight: '0'})),
-      state('expanded', style({height: '*'})),
+      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '*' })),
       transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
     ]),
   ],
@@ -28,30 +28,38 @@ const ELEMENT_DATA: ProjetoCadastrado[] = [
 
 export class ProjetoCadastradoComponent implements OnInit {
 
-  displayedColumns: string[] = ['nomeProjetoCadastrado', 'orcamentoProjetoCadastrado', 'dtInicioProjetoCadastrado', 'dtFimProjetoCadastrado','acoes'];
+  menuIsOpen: boolean = false;
+  displayedColumns: string[] = ['nomeProjetoCadastrado', 'orcamentoProjetoCadastrado', 'dtInicioProjetoCadastrado', 'dtFimProjetoCadastrado', 'acoes'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
-  status = Status; 
+  status = Status;
   columnsToDisplay = ['nome', 'orcamento', 'data inicio', 'data fim'];
   dicionarioColunas: { [coluna: string]: string };
-  mapColunas = new Map<string,string>(); 
-  
+  mapColunas = new Map<string, string>();
+
 
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-  
-  constructor(private router: Router) { 
+
+  constructor(private router: Router) {
     this.mapColunas.set('nomeProjetoCadastrado', 'Nome Projeto');
     this.mapColunas.set('orcamentoProjetoCadastrado', 'Orçamento');
     this.mapColunas.set('dtInicioProjetoCadastrado', 'Data inicio');
     this.mapColunas.set('dtFimProjetoCadastrado', 'Data fim');
-    this.mapColunas.set('acoes','Acoes');
+    this.mapColunas.set('acoes', 'Ações');
   }
 
   ngOnInit(): void {
   }
 
-  
+  menuOpened() {
+    this.menuIsOpen = true;
+  }
+
+  menuClosed() {
+    this.menuIsOpen = false;
+  }
+
 }

@@ -18,6 +18,7 @@ import { navigation } from 'app/navigation/navigation';
 
 export class ToolbarComponent implements OnInit, OnDestroy
 {
+    menuIsOpen: boolean = false;
     horizontalNavbar: boolean;
     rightNavbar: boolean;
     hiddenNavbar: boolean;
@@ -160,4 +161,12 @@ export class ToolbarComponent implements OnInit, OnDestroy
         // Use the selected language for translations
         this._translateService.use(lang.id);
     }
+
+    menuOpened() {
+        this.menuIsOpen = true;
+      }
+    
+    menuClosed() {
+        this.menuIsOpen = false;
+      }
 }

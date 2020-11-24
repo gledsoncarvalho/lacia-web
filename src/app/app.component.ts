@@ -22,6 +22,7 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class AppComponent implements OnInit, OnDestroy
 {
+    menuIsOpen: boolean = false;
     fuseConfig: any;
     navigation: any;
 
@@ -179,4 +180,11 @@ export class AppComponent implements OnInit, OnDestroy
     {
         this._fuseSidebarService.getSidebar(key).toggleOpen();
     }
+    menuOpened() {
+        this.menuIsOpen = true;
+      }
+    
+      menuClosed() {
+        this.menuIsOpen = false;
+      }
 }
