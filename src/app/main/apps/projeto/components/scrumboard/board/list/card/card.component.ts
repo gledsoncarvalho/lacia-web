@@ -15,6 +15,7 @@ export class ScrumboardBoardCardComponent implements OnInit
 
     card: any;
     board: any;
+    myDate = new Date();
 
     /**
      * Constructor

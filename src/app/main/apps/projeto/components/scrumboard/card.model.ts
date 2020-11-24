@@ -16,6 +16,7 @@ export class Card
     comments: any[];
     activities: any[];
     due: string;
+    myDate = new Date();
 
     /**
      * Constructor
@@ -37,6 +38,6 @@ export class Card
         this.checkItemsChecked = card.checkItemsChecked || 0;
         this.comments = card.comments || [];
         this.activities = card.activities || [];
-        this.due = card.due || '';
+        this.due = card.due || card.myDate;
     }
 }

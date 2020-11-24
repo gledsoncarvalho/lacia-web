@@ -1,16 +1,16 @@
-import { Attachment } from './../../../attachment.model';
-import { Component, Inject, OnDestroy, OnInit, ViewChild, ViewEncapsulation, ElementRef, Sanitizer } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { FormControl, NgForm } from '@angular/forms';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatMenuTrigger } from '@angular/material/menu';
-import { Subject } from 'rxjs';
-
+import { DomSanitizer } from '@angular/platform-browser';
 import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/confirm-dialog.component';
 import { FuseUtils } from '@fuse/utils';
-
-import { ScrumboardService } from '../../../scrumboard.service';
+import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { DomSanitizer } from '@angular/platform-browser';
+import { ScrumboardService } from '../../../scrumboard.service';
+import { Attachment } from './../../../attachment.model';
+
+
 
 @Component({
     selector: 'scrumboard-board-card-dialog',
@@ -22,6 +22,9 @@ export class ScrumboardCardDialogComponent implements OnInit, OnDestroy {
     card: any;
     board: any;
     list: any;
+    
+    date = new FormControl(new Date());
+    serializedDate = new FormControl((new Date()).toISOString());
 
     toggleInArray = FuseUtils.toggleInArray;
     confirmDialogRef: MatDialogRef<FuseConfirmDialogComponent>;
