@@ -12,13 +12,6 @@
                     <button title="Calendário" class="icones-tabela" mat-icon-button [matMenuTriggerFor]="dueDateMenu">
                         <mat-icon>today</mat-icon>
                     </button>
-
-                    <mat-form-field *ngIf="!card.due" title="Calendário">
-                        <input matInput [matDatepicker]="menuPicker" [(ngModel)]="card.due">
-                        <mat-datepicker-toggle class="icones-tabela" matSuffix [for]="menuPicker">
-                        </mat-datepicker-toggle>
-                        <mat-datepicker #menuPicker></mat-datepicker>
-                    </mat-form-field>
                     
                     <mat-menu #dueDateMenu="matMenu" [overlapTrigger]="false">
                         <button *ngIf="card.due" class="icones-tabela" mat-menu-item (click)="removeDueDate()">
