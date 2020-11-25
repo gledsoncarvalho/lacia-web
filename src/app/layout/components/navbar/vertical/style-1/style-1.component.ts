@@ -19,6 +19,10 @@ export class NavbarVerticalStyle1Component implements OnInit, OnDestroy
     fuseConfig: any;
     navigation: any;
 
+    nome: string;
+    email: string;
+    avatar: any;
+
     // Private
     private _fusePerfectScrollbar: FusePerfectScrollbarDirective;
     private _unsubscribeAll: Subject<any>;
@@ -119,6 +123,8 @@ export class NavbarVerticalStyle1Component implements OnInit, OnDestroy
             .subscribe(() => {
                 this.navigation = this._fuseNavigationService.getCurrentNavigation();
             });
+
+            this.getDadosSessao();
     }
 
     /**
@@ -150,4 +156,11 @@ export class NavbarVerticalStyle1Component implements OnInit, OnDestroy
     {
         this._fuseSidebarService.getSidebar('navbar').toggleFold();
     }
+
+    getDadosSessao(): void {
+        this.nome = sessionStorage.getItem('nome');
+        this.email = sessionStorage.getItem('email');
+        this.avatar = sessionStorage.getItem('avatar');
+    }
+
 }
