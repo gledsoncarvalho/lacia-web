@@ -27,6 +27,9 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     selectedLanguage: any;
     userStatusOptions: any[];
 
+    nome: string;
+    avatar: any;
+
     // Private
     private _unsubscribeAll: Subject<any>;
 
@@ -110,6 +113,8 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 
         // Set the selected language from default languages
         this.selectedLanguage = _.find(this.languages, { id: this._translateService.currentLang });
+
+        this.getDadosSessao();
     }
 
     /**
@@ -167,5 +172,10 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 
     menuClosed() {
         this.menuIsOpen = false;
+    }
+
+    getDadosSessao(): void {
+        this.nome = sessionStorage.getItem('nome');
+        this.avatar = sessionStorage.getItem('avatar');
     }
 }
