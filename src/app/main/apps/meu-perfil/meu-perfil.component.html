@@ -1,83 +1,107 @@
-<link rel="stylesheet" type="text/css" media="screen"
-    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" media="screen"     href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 <div class="container">
     <div>
-        <h2 class="titulo">
-            Meu Perfil
-        </h2>
+        <h2 class="titulo">Meu Perfil</h2>
     </div>
     <div class="box">
         <label class="avatar-perfil" for="btn">
-            <img id="arquivo" width="220" height="220" [src]="retornarImagem()" />
+            <img id="arquivo" class="perfil" [src]="retornarImagem()" />
         </label>
-        <input id="btn" type="file" (change)="changeListener($event)">
+        <input id="btn" type="file" (change)="changeListener($event)" />
     </div>
-    <h1 id="nome_embaixo_do_icone_perfil">{{ perfil.nome }}</h1>
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <h1 id="nome_embaixo_do_icone_perfil">{{ perfil.nome }}</h1>
+    </div>
     <div fxLayout="column" id="coluna-dados-pessoais">
         <div fxLayout="row">
             <div fxFlex="100%">
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title">
-                            Dados Pessoais
-                        </div>
-                        <button mat-raised-button id="botao-de-edicao" class="btnAcao"
-                            (click)="atualizarMeuPerfil();$event.stopPropagation()">
-                            <mat-icon>edit</mat-icon>&nbsp; Editar dados
+                        <div class="card-title">Dados Pessoais</div>
+                        <button mat-button id="botao-de-edicao" (menuOpened)="menuOpened()" (menuClosed)="menuClosed()" class="btnAcao" [matMenuTriggerFor]="menu"><mat-icon>edit</mat-icon>&nbsp; 
+                            Editar
+                            <mat-icon class="s-16" fxHide.xs>{{ menuIsOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</mat-icon>
                         </button>
+                         <mat-menu #menu="matMenu">
+                            <button mat-menu-item (click)="atualizarMeuPerfil();$event.stopPropagation()"><span class="material-icons">account_circle</span>
+                              Alterar dados pessoais
+                            </button>
+                            <button mat-menu-item (click)="alterarSenha();$event.stopPropagation()">
+                             <span class="material-icons">https</span> 
+                              Alterar senha
+                            </button>
+                         </mat-menu>
                     </div>
                     <mat-divider></mat-divider>
                     <div class="card-content">
                         <div fxLayout="row" fxLayout.lt-md="column">
-                            <br>
+                            <br />
                             <div fxFlex="50%" fxFlex.lt-md="100%">
                                 <h3>
-                                    <mat-panel-title class="itens-dados-pessoais">
+                                    <mat-panel-title
+                                        class="itens-dados-pessoais"
+                                    >
                                         <b>Nome Completo</b>: {{ perfil.nome }}
                                     </mat-panel-title>
                                 </h3>
                             </div>
-                            <br>
+                            <br />
                             <div fxFlex="50%" fxFlex.lt-md="100%">
                                 <h3>
-                                    <mat-panel-title class="itens-dados-pessoais">
+                                    <mat-panel-title
+                                        class="itens-dados-pessoais"
+                                    >
                                         <b>Email</b>: {{ perfil.email }}
                                     </mat-panel-title>
                                 </h3>
                             </div>
                         </div>
                         <div fxLayout="row" fxLayout.lt-md="column">
-                            <br>
+                            <br />
                             <div fxFlex="50%" fxFlex.lt-md="100%">
                                 <h3>
-                                    <mat-panel-title class="itens-dados-pessoais">
-                                        <b> Data Nascimento</b>: {{ perfil.dataNascimento | date:"dd/MM/yyyy" }}
+                                    <mat-panel-title
+                                        class="itens-dados-pessoais"
+                                    >
+                                        <b> Data Nascimento</b>:
+                                        {{
+                                            perfil.dataNascimento
+                                                | date: "dd/MM/yyyy"
+                                        }}
                                     </mat-panel-title>
                                 </h3>
                             </div>
-                            <br>
+                            <br />
                             <div fxFlex="50%" fxFlex.lt-md="100%">
                                 <h3>
-                                    <mat-panel-title class="itens-dados-pessoais">
-                                        <b> Função</b>: {{ getFuncao(perfil.tipoUsuario) }}
+                                    <mat-panel-title
+                                        class="itens-dados-pessoais"
+                                    >
+                                        <b> Função</b>:
+                                        {{ getFuncao(perfil.tipoUsuario) }}
                                     </mat-panel-title>
                                 </h3>
                             </div>
                         </div>
                         <div fxLayout="row" fxLayout.lt-md="column">
-                            <br>
+                            <br />
                             <div fxFlex="50%" fxFlex.lt-md="100%">
                                 <h3>
-                                    <mat-panel-title class="itens-dados-pessoais">
+                                    <mat-panel-title
+                                        class="itens-dados-pessoais"
+                                    >
                                         <b> CPF</b>: {{ perfil.cpf | cpf }}
                                     </mat-panel-title>
                                 </h3>
                             </div>
-                            <br>
+                            <br />
                             <div fxFlex="50%" fxFlex.lt-md="100%">
                                 <h3>
-                                    <mat-panel-title class="itens-dados-pessoais">
-                                        <b> Número de Celular</b>: {{ perfil.telefone | telefone}}
+                                    <mat-panel-title
+                                        class="itens-dados-pessoais"
+                                    >
+                                        <b> Número de Celular</b>:
+                                        {{ perfil.telefone | telefone }}
                                     </mat-panel-title>
                                 </h3>
                             </div>

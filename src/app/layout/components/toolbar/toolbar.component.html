@@ -15,8 +15,8 @@
             <button mat-button [matMenuTriggerFor]="userMenu"
                     class="user-button" (menuOpened)="menuOpened()" (menuClosed)="menuClosed()">
                 <div fxLayout="row" fxLayoutAlign="center center">
-                    <img class="avatar mr-0 mr-sm-16" src="assets/images/avatars/fabio.jpg">
-                    <span class="username mr-12" fxHide fxShow.gt-sm>{{ nome }}</span>
+                    <img class="avatar mr-0 mr-sm-16" [src]="retornarImagem(getFotoPerfilSessao())">
+                    <span class="username mr-12" fxHide fxShow.gt-sm>{{ getNomeSessao() }}</span>
                     <!--mat-icon class="s-16" fxHide.xs>keyboard_arrow_up</mat-icon-->
                     <mat-icon class="s-16" fxHide.xs>{{ menuIsOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</mat-icon>
                 </div>

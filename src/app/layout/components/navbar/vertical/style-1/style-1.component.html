@@ -27,10 +27,10 @@
 
     <div class="user" fxLayout="column" [ngClass]="fuseConfig.layout.navbar.secondaryBackground">
 
-        <div class="h3 username">{{ nome }}</div>
-        <div class="h5 email hint-text mt-8">{{ email }}</div>
+        <div class="h3 username">{{ getNomeSessao() }}</div>
+        <div class="h5 email hint-text mt-8">{{ getEmailSessao() }}</div>
         <div class="avatar-container" [ngClass]="fuseConfig.layout.navbar.primaryBackground">
-            <img class="avatar" [src]="retornarImagem(fotoPerfil)">
+            <img class="avatar" [src]="retornarImagem(getFotoPerfilSessao())">
         </div>
 
     </div>

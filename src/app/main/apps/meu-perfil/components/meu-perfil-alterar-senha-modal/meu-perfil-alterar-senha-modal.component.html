@@ -1,0 +1,70 @@
+<div class="row">
+    <div fxFlex="100%" fxLayoutGap="2rem">
+        <h2 mat-dialog-title>Alterar senha</h2>
+    </div>
+    <div>
+        <mat-icon mat-dialog-close>clear</mat-icon>
+    </div>
+</div>
+<mat-divider></mat-divider>
+<mat-dialog-content>
+    <br />
+    <form [formGroup]="formAlterarSenha">
+        <div fxLayout="column" fxLayoutGap="2rem">
+            <div fxFlex="1 1 calc(33% - 2rem)">
+                <mat-form-field>
+                    <mat-label>Senha atual</mat-label>
+                    <input
+                        type="password"
+                        id="pass"
+                        name="password"
+                        matInput
+                        formControlName="senhaAtual"
+                        required
+                    />
+                </mat-form-field>
+            </div>
+
+            <div fxFlex="1 1 calc(33% - 2rem)">
+                <mat-form-field>
+                    <mat-label>Nova senha</mat-label>
+                    <input
+                        matInput
+                        type="password"
+                        formControlName="novaSenha"
+                        required
+                    />
+                    <mat-error
+                        *ngIf="
+                            formAlterarSenha.hasError('required', 'password')
+                        "
+                    >
+                        Entre com nova senha
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div fxFlex="1 1 calc(33% - 2rem)">
+                <mat-form-field>
+                    <mat-label>Confirmar nova senha</mat-label>
+                    <input
+                        matInput
+                        type="password"
+                        formControlName="confirmarSenha"
+                        [errorStateMatcher]="macther"
+                        required
+                    />
+                    <mat-error *ngIf="formAlterarSenha.hasError('notSame')">
+                        Confirmação de senha difere de nova senha.
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>
+<br>
+<mat-divider></mat-divider>
+<mat-dialog-actions>
+    <button mat-raised-button class="btnAcao" (click)="atualizarSenha()">
+        <mat-icon class="material-icons"> check </mat-icon>&nbsp; Atualizar
+    </button>
+</mat-dialog-actions>

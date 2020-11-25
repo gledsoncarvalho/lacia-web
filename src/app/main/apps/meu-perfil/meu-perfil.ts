@@ -6,6 +6,7 @@ export interface MeuPerfil {
     dataNascimento: Date;
     email: string;
     cpf: string;
+    token: string;
     tipoUsuario: 'C' | 'P' | 'A';
   }
   

@@ -4,12 +4,14 @@ import { MeuPerfilRoutingModule } from './meu-perfil-routing.module';
 import { MeuPerfilComponent } from './meu-perfil.component';
 import { FuseSharedModule } from '../../../../@fuse/shared.module';
 import { MeuPerfilService } from '../../services/meu-perfil.service';
+import { MeuPerfilAlterarSenhaModalComponent } from './components/meu-perfil-alterar-senha-modal/meu-perfil-alterar-senha-modal.component';
 
 
 @NgModule({
     declarations: [
         MeuPerfilComponent,
-        MeuPerfilEditarModalComponent
+        MeuPerfilEditarModalComponent,
+        MeuPerfilAlterarSenhaModalComponent
     ],
     imports: [
         FuseSharedModule,

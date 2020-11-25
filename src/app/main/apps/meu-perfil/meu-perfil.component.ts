@@ -1,3 +1,4 @@
+import { MeuPerfilAlterarSenhaModalComponent } from './components/meu-perfil-alterar-senha-modal/meu-perfil-alterar-senha-modal.component';
 import { DomSanitizer } from '@angular/platform-browser';
 import { TipoUsuario } from './../../../../@fuse/enums/tipoUsuario.enum';
 import { Component, OnInit } from '@angular/core';
@@ -21,7 +22,7 @@ export class MeuPerfilComponent implements OnInit {
     colunasTable: string[] = ['idMeuPerfil', 'nome', 'email', 'acoes'];
     dados_perfil: MatTableDataSource<MeuPerfil> = new MatTableDataSource();
     perfil: MeuPerfil = {} as MeuPerfil;
-
+    menuIsOpen: boolean = false;
 
     constructor(
         private fb: FormBuilder, 
@@ -54,6 +55,10 @@ export class MeuPerfilComponent implements OnInit {
         })
     }
 
+    alterarSenha() {
+        this.dialog.open(MeuPerfilAlterarSenhaModalComponent, { data: this.perfil.idUsuario, width: "15%" });
+    }
+
     getFuncao(tipoUsuario: string){
         switch(tipoUsuario){
             case 'C':
@@ -74,12 +79,7 @@ export class MeuPerfilComponent implements OnInit {
             let myReader: FileReader = new FileReader();
 
             myReader.onloadend = (e) => {
-                this.meuPerfilService.atualizarImagem(myReader.result.toString(), this.perfil.idUsuario)
-                    .subscribe(resposta => {
-                        this.alert.show("Atualização", "Imagem do meu perfil alterada com sucesso", "success");
-                    },
-                    error => this.alert.show("Erro", "Não foi possível alterar a imagem", "error")
-                    )
+                this.meuPerfilService.atualizarImagem(myReader.result.toString(), this.perfil.idUsuario);
             }
 
             myReader.readAsDataURL(file);
@@ -89,6 +89,14 @@ export class MeuPerfilComponent implements OnInit {
             let src: string = sessionStorage.getItem("fotoPerfil");
             return src && src.startsWith('data:image') ? this._sanitizer.bypassSecurityTrustResourceUrl(src) : '../../../../../../../../../assets/images/scrumboard/documents.jpg';
         }
+
+        menuOpened() {
+            this.menuIsOpen = true;
+          }
+        
+          menuClosed() {
+            this.menuIsOpen = false;
+          }
     
     }
 

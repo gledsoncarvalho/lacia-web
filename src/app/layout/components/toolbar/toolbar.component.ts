@@ -1,3 +1,4 @@
+import { DomSanitizer } from '@angular/platform-browser';
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 import { FuseConfigService } from '@fuse/services/config.service';
@@ -27,9 +28,6 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     selectedLanguage: any;
     userStatusOptions: any[];
 
-    nome: string;
-    avatar: any;
-
     // Private
     private _unsubscribeAll: Subject<any>;
 
@@ -44,7 +42,8 @@ export class ToolbarComponent implements OnInit, OnDestroy {
         private _fuseConfigService: FuseConfigService,
         private _fuseSidebarService: FuseSidebarService,
         private _translateService: TranslateService,
-        private _jwt: JwtService
+        private _jwt: JwtService,
+        private _sanitizer: DomSanitizer
     ) {
         // Set the defaults
         this.userStatusOptions = [
@@ -114,7 +113,6 @@ export class ToolbarComponent implements OnInit, OnDestroy {
         // Set the selected language from default languages
         this.selectedLanguage = _.find(this.languages, { id: this._translateService.currentLang });
 
-        this.getDadosSessao();
     }
 
     /**
@@ -174,8 +172,15 @@ export class ToolbarComponent implements OnInit, OnDestroy {
         this.menuIsOpen = false;
     }
 
-    getDadosSessao(): void {
-        this.nome = sessionStorage.getItem('nome');
-        this.avatar = sessionStorage.getItem('avatar');
+    retornarImagem(src: string) {
+        return src && src.startsWith('data:image') ? this._sanitizer.bypassSecurityTrustResourceUrl(src) : '../../../../../../../../../assets/images/scrumboard/documents.jpg';
+    }
+
+    getNomeSessao(){
+        return sessionStorage.getItem('nome');
+    }
+
+    getFotoPerfilSessao(){
+        return sessionStorage.getItem('fotoPerfil');
     }
 }

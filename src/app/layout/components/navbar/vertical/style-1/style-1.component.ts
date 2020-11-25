@@ -20,9 +20,6 @@ export class NavbarVerticalStyle1Component implements OnInit, OnDestroy
     fuseConfig: any;
     navigation: any;
 
-    nome: string;
-    email: string;
-    fotoPerfil: string = "";
 
     // Private
     private _fusePerfectScrollbar: FusePerfectScrollbarDirective;
@@ -46,7 +43,6 @@ export class NavbarVerticalStyle1Component implements OnInit, OnDestroy
     {
         // Set the private defaults
         this._unsubscribeAll = new Subject();
-        this.getDadosSessao();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -159,15 +155,20 @@ export class NavbarVerticalStyle1Component implements OnInit, OnDestroy
         this._fuseSidebarService.getSidebar('navbar').toggleFold();
     }
 
-    getDadosSessao(): void {
-        this.nome = sessionStorage.getItem('nome');
-        this.email = sessionStorage.getItem('email');
-        this.fotoPerfil = sessionStorage.getItem('fotoPerfil');
-    }
-
     retornarImagem(src: string) {
         return src && src.startsWith('data:image') ? this._sanitizer.bypassSecurityTrustResourceUrl(src) : '../../../../../../../../../assets/images/scrumboard/documents.jpg';
     }
 
+    getNomeSessao(){
+        return sessionStorage.getItem('nome');
+    }
+
+    getEmailSessao(){
+        return sessionStorage.getItem('email');
+    }
+
+    getFotoPerfilSessao(){
+        return sessionStorage.getItem('fotoPerfil');
+    }
 
 }

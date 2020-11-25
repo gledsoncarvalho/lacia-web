@@ -38,10 +38,13 @@ export class MeuPerfilEditarModalComponent implements OnInit {
     }
     atualizarMeuPerfil() {
         if (this.MeuPerfilForm.valid) {
-            this.meuPerfilService
+                this.meuPerfilService
                 .atualizarUsuario(this.MeuPerfilForm.value)
                 .subscribe(
                     (usuario) => {
+                        sessionStorage.setItem('token', usuario.token);
+                        sessionStorage.setItem('email', usuario.email);
+                        sessionStorage.setItem('nome', usuario.nome);
                         this.perfil = usuario;
                         this.dialogRef.close(this.perfil);
                         this.alert.show(
