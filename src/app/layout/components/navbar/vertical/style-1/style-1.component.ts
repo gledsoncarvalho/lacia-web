@@ -1,3 +1,4 @@
+import { DomSanitizer } from '@angular/platform-browser';
 import { Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
@@ -21,7 +22,7 @@ export class NavbarVerticalStyle1Component implements OnInit, OnDestroy
 
     nome: string;
     email: string;
-    avatar: any;
+    fotoPerfil: string = "";
 
     // Private
     private _fusePerfectScrollbar: FusePerfectScrollbarDirective;
@@ -39,11 +40,13 @@ export class NavbarVerticalStyle1Component implements OnInit, OnDestroy
         private _fuseConfigService: FuseConfigService,
         private _fuseNavigationService: FuseNavigationService,
         private _fuseSidebarService: FuseSidebarService,
-        private _router: Router
+        private _router: Router,
+        private _sanitizer: DomSanitizer
     )
     {
         // Set the private defaults
         this._unsubscribeAll = new Subject();
+        this.getDadosSessao();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -124,7 +127,6 @@ export class NavbarVerticalStyle1Component implements OnInit, OnDestroy
                 this.navigation = this._fuseNavigationService.getCurrentNavigation();
             });
 
-            this.getDadosSessao();
     }
 
     /**
@@ -160,7 +162,12 @@ export class NavbarVerticalStyle1Component implements OnInit, OnDestroy
     getDadosSessao(): void {
         this.nome = sessionStorage.getItem('nome');
         this.email = sessionStorage.getItem('email');
-        this.avatar = sessionStorage.getItem('avatar');
+        this.fotoPerfil = sessionStorage.getItem('fotoPerfil');
     }
+
+    retornarImagem(src: string) {
+        return src && src.startsWith('data:image') ? this._sanitizer.bypassSecurityTrustResourceUrl(src) : '../../../../../../../../../assets/images/scrumboard/documents.jpg';
+    }
+
 
 }

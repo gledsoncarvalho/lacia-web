@@ -33,7 +33,7 @@ export class JwtService {
                 sessionStorage.setItem('token', response.token);
                 sessionStorage.setItem('email', response.email);
                 sessionStorage.setItem('tipoUsuario', response.tipoUsuario);
-                sessionStorage.setItem('avatar', JSON.stringify(response.avatar));
+                sessionStorage.setItem('fotoPerfil', atob(response.fotoPerfil));
                 sessionStorage.setItem('nome', response.nome);
                 this.usuarioAutenticado = true;
                 this._router.navigateByUrl('/apps/projetos/meus');
@@ -47,7 +47,7 @@ export class JwtService {
         sessionStorage.setItem('token', null);
         sessionStorage.setItem('email', null);
         sessionStorage.setItem('tipoUsuario', null);
-        sessionStorage.setItem('avatar', null);
+        sessionStorage.setItem('fotoPerfil', null);
         sessionStorage.setItem('nome', null);
         this._router.navigateByUrl('pages/auth/login');
     }

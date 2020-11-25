@@ -1,3 +1,5 @@
+import { DomSanitizer } from '@angular/platform-browser';
+import { TipoUsuario } from './../../../../@fuse/enums/tipoUsuario.enum';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -16,28 +18,30 @@ import { MeuPerfilService } from '../../services/meu-perfil.service';
 export class MeuPerfilComponent implements OnInit {
 
     MeuPerfilForm: FormGroup;
-    colunasTable: string[] = ['idMeuPerfil', 'nomeMeuPerfil', 'emailMeuPerfil', 'acoes'];
+    colunasTable: string[] = ['idMeuPerfil', 'nome', 'email', 'acoes'];
     dados_perfil: MatTableDataSource<MeuPerfil> = new MatTableDataSource();
-    perfil: MeuPerfil = { idMeuPerfil: 100, nomeMeuPerfil: 'Fábio Gomes Rocha', emailMeuPerfil: 'fabiogomes@souunit.com.br', telefoneMeuPerfil: '(79)99841-4129', dtNascimentoMeuPerfil: new Date(), cpfMeuPerfil: '172.159.254-99' } as MeuPerfil;
+    perfil: MeuPerfil = {} as MeuPerfil;
 
 
     constructor(
         private fb: FormBuilder, 
         private dialog: MatDialog, 
         private alert: AlertComponent,
-        private meuPerfilService: MeuPerfilService) { }
+        private meuPerfilService: MeuPerfilService,
+        private _sanitizer: DomSanitizer) { }
 
     ngOnInit(): void {
         this.meuPerfilService.obterUsuario()
             .subscribe(perfil => {
                 console.log(perfil);
+                this.perfil = perfil;
             });
     }
 
     criarForm() {
         this.MeuPerfilForm = this.fb.group({
-            nomeMeuPerfil: [null],
-            emailMeuPerfil: [null]
+            nome: [null],
+            email: [null]
         })
     }
 
@@ -49,5 +53,43 @@ export class MeuPerfilComponent implements OnInit {
             }
         })
     }
-}
+
+    getFuncao(tipoUsuario: string){
+        switch(tipoUsuario){
+            case 'C':
+                return "Coordenador";
+            case 'P':
+                return "Pesquisador";
+            default:
+                return "Aluno";
+        }
+    }
+
+    changeListener($event): void {
+        this.readThis($event.target);
+    }
+
+    readThis(inputValue: any): void {
+            let file: File = inputValue.files[0];
+            let myReader: FileReader = new FileReader();
+
+            myReader.onloadend = (e) => {
+                this.meuPerfilService.atualizarImagem(myReader.result.toString(), this.perfil.idUsuario)
+                    .subscribe(resposta => {
+                        this.alert.show("Atualização", "Imagem do meu perfil alterada com sucesso", "success");
+                    },
+                    error => this.alert.show("Erro", "Não foi possível alterar a imagem", "error")
+                    )
+            }
+
+            myReader.readAsDataURL(file);
+        }
+
+        retornarImagem() {
+            let src: string = sessionStorage.getItem("fotoPerfil");
+            return src && src.startsWith('data:image') ? this._sanitizer.bypassSecurityTrustResourceUrl(src) : '../../../../../../../../../assets/images/scrumboard/documents.jpg';
+        }
+    
+    }
+
 

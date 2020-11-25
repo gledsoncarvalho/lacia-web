@@ -316,34 +316,12 @@ export class ScrumboardCardDialogComponent implements OnInit, OnDestroy {
                 attachment.name = file.name;
                 attachment.time = new Date();
                 this.card.attachments.push(attachment);
-                console.log(file);
+                console.log(myReader.result.toString());
             }
 
             myReader.readAsDataURL(file);
         }
     }
-
-
-    /*readThis(inputValue: any): void {
-        var file: File = inputValue.files[0];
-        var myReader: FileReader = new FileReader();
-
-        
-
-        myReader.onloadend = (e) => {
-            // you can perform an action with readed data here
-            let attachment: Attachment = {} as Attachment;
-            attachment.src = myReader.result.toString();
-            attachment.type = 'image';
-            attachment.name = file.name;
-            attachment.time = new Date();
-            this.card.attachments.push(attachment);
-            console.log(file);
-        }
-
-        myReader.readAsDataURL(file);
-
-    }*/
 
     retornarImagem(src: string) {
         return src.startsWith('data:image') ? this._sanitizer.bypassSecurityTrustResourceUrl(src) : '../../../../../../../../../assets/images/scrumboard/documents.jpg';

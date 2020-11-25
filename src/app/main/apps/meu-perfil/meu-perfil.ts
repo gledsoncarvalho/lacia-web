@@ -1,10 +1,11 @@
 export interface MeuPerfil {
 
-    idMeuPerfil: number;
-    nomeMeuPerfil: string;
-    telefoneMeuPerfil: string;
-    dtNascimentoMeuPerfil: Date;
-    emailMeuPerfil: string;
-    cpfMeuPerfil: string;
+    idUsuario: number;
+    nome: string;
+    telefone: string;
+    dataNascimento: Date;
+    email: string;
+    cpf: string;
+    tipoUsuario: 'C' | 'P' | 'A';
   }
   

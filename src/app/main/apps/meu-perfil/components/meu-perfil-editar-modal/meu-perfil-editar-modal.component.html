@@ -14,17 +14,17 @@
             <div fxFlex="1 1 calc(50% - 2rem)" fxFlex.lt-md="100%">
                 <mat-form-field>
                     <mat-label>Nome</mat-label>
-                    <input matInput formControlName="nomeMeuPerfil" required />
+                    <input matInput formControlName="nome" required />
                 </mat-form-field>
             </div>
             <div fxFlex="1 1 calc(50% - 2rem)" fxFlex.lt-md="100%">
                 <mat-form-field>
                     <mat-label>E-mail</mat-label>
-                    <input matInput formControlName="emailMeuPerfil" required />
+                    <input matInput formControlName="email" required />
                     <mat-error
-                        *ngIf="MeuPerfilForm.get('emailMeuPerfil').hasError('email') && !MeuPerfilForm.get('emailMeuPerfil').hasError('required')">
+                        *ngIf="MeuPerfilForm.get('email').hasError('email') && !MeuPerfilForm.get('email').hasError('required')">
                         Por favor, entre com um e-mail válido!</mat-error>
-                    <mat-error *ngIf="MeuPerfilForm.get('emailMeuPerfil').hasError('required')">E-mail é
+                    <mat-error *ngIf="MeuPerfilForm.get('email').hasError('required')">E-mail é
                         <strong>obrigatório</strong></mat-error>
                 </mat-form-field>
             </div>
@@ -33,17 +33,17 @@
             <div fxFlex="1 1 calc(50% - 2rem)" fxFlex.lt-md="100%">
                 <mat-form-field>
                     <mat-label>Telefone</mat-label>
-                    <input matInput Mask type="text" formControlName="telefoneMeuPerfil" mask="celular" maxLength="15"
+                    <input matInput Mask type="text" formControlName="telefone" mask="celular" maxLength="15"
                         required />
                 </mat-form-field>
             </div>
             <div fxFlex="1 1 calc(50% - 2rem)" fxFlex.lt-md="100%">
                 <mat-form-field>
                     <mat-label>Data Nascimento</mat-label>
-                    <input matInput [matDatepicker]="pickerDtNascimentoMeuPerfil"
-                        formControlName="dtNascimentoMeuPerfil" required (click)="pickerDtNascimentoMeuPerfil.open()" readonly/>
-                    <mat-datepicker-toggle matSuffix [for]="pickerDtNascimentoMeuPerfil"></mat-datepicker-toggle>
-                    <mat-datepicker id="dp" #pickerDtNascimentoMeuPerfil></mat-datepicker>
+                    <input matInput [matDatepicker]="pickerdataNascimento"
+                        formControlName="dataNascimento" required (click)="pickerdataNascimento.open()" readonly/>
+                    <mat-datepicker-toggle matSuffix [for]="pickerdataNascimento"></mat-datepicker-toggle>
+                    <mat-datepicker id="dp" #pickerdataNascimento></mat-datepicker>
                 </mat-form-field>
             </div>
         </div>
@@ -51,7 +51,7 @@
             <div fxFlex="1 1 calc(50% - 2rem)" fxFlex.lt-md="100%">
                 <mat-form-field>
                     <mat-label>CPF</mat-label>
-                    <input matInput Mask formControlName="cpfMeuPerfil" mask="cpf" maxlength="14" />
+                    <input matInput Mask formControlName="cpf" mask="cpf" maxlength="14" />
                 </mat-form-field>
             </div>
             <div fxFlex="1 1 calc(50% - 2rem)" fxFlex.lt-md="100%"></div>

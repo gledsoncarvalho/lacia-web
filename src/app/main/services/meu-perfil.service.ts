@@ -2,11 +2,12 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { MeuPerfil } from '../apps/meu-perfil/meu-perfil';
+import { MeuPerfil } from './../apps/meu-perfil/meu-perfil';
 
 const httpOptions = {
     headers: new HttpHeaders({
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + sessionStorage.getItem('token') 
     }),
     params: new HttpParams()
 };
@@ -17,12 +18,20 @@ const httpOptions = {
 export class MeuPerfilService {
 
     constructor(private _http: HttpClient) {
-        httpOptions.headers.set('Access-Control-Allow-Origin', '*');
-        httpOptions.headers.set('Authorization', 'Bearer ' + sessionStorage.getItem('token'));
+        httpOptions.headers.set('Access-Control-Allow-Origin', 'http://localhost:4200');
+        httpOptions.headers.set('Access-Control-Allow-Methods', 'POST, GET, DELETE, PUT');
+        httpOptions.headers.set('Access-Control-Allow-Headers', '*');
     }
 
     obterUsuario(): Observable<MeuPerfil> {
-        httpOptions.params.set('email', sessionStorage.getItem('email'));
-        return this._http.get<MeuPerfil>(environment.url + '/usuario', httpOptions);
+        return this._http.post<MeuPerfil>(environment.url + '/usuarioObter', sessionStorage.getItem('email'), httpOptions);
+    }
+
+    atualizarUsuario(meuPerfil: MeuPerfil) {
+        return this._http.put<MeuPerfil>(environment.url + '/usuario', JSON.stringify(meuPerfil), httpOptions);
+    }
+
+    atualizarImagem(fotoPerfil: any, id: number){
+        return this._http.put<boolean>(environment.url + `/usuario/imagem/${id}`, fotoPerfil, httpOptions);
     }
 }
