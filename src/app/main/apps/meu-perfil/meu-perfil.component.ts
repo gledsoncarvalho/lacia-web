@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { AlertComponent } from '@fuse/components/alert/alert.component';
 import { MeuPerfilEditarModalComponent } from './components/meu-perfil-editar-modal/meu-perfil-editar-modal.component';
 import { MeuPerfil } from './meu-perfil';
+import { MeuPerfilService } from '../../services/meu-perfil.service';
 
 
 @Component({
@@ -20,9 +21,17 @@ export class MeuPerfilComponent implements OnInit {
     perfil: MeuPerfil = { idMeuPerfil: 100, nomeMeuPerfil: 'Fábio Gomes Rocha', emailMeuPerfil: 'fabiogomes@souunit.com.br', telefoneMeuPerfil: '(79)99841-4129', dtNascimentoMeuPerfil: new Date(), cpfMeuPerfil: '172.159.254-99' } as MeuPerfil;
 
 
-    constructor(private fb: FormBuilder, private dialog: MatDialog, private alert: AlertComponent) { }
+    constructor(
+        private fb: FormBuilder, 
+        private dialog: MatDialog, 
+        private alert: AlertComponent,
+        private meuPerfilService: MeuPerfilService) { }
 
     ngOnInit(): void {
+        this.meuPerfilService.obterUsuario()
+            .subscribe(perfil => {
+                console.log(perfil);
+            });
     }
 
     criarForm() {

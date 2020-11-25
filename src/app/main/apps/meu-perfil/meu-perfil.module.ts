@@ -3,6 +3,7 @@ import { MeuPerfilEditarModalComponent } from './components/meu-perfil-editar-mo
 import { MeuPerfilRoutingModule } from './meu-perfil-routing.module';
 import { MeuPerfilComponent } from './meu-perfil.component';
 import { FuseSharedModule } from '../../../../@fuse/shared.module';
+import { MeuPerfilService } from '../../services/meu-perfil.service';
 
 
 @NgModule({
@@ -14,6 +15,9 @@ import { FuseSharedModule } from '../../../../@fuse/shared.module';
         FuseSharedModule,
         //SharedModule,
         MeuPerfilRoutingModule
+    ],
+    providers: [
+        MeuPerfilService
     ]
 })
 export class MeuPerfilModule { }
