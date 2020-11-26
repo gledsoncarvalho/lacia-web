@@ -173,7 +173,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     }
 
     retornarImagem(src: string) {
-        return src && src.startsWith('data:image') ? this._sanitizer.bypassSecurityTrustResourceUrl(src) : '../../../../../../../../../assets/images/scrumboard/documents.jpg';
+        return src && src.startsWith('data:image') ? this._sanitizer.bypassSecurityTrustResourceUrl(src) : '../../../../../../../../../assets/images/avatars/profile.jpg';
     }
 
     getNomeSessao(){

@@ -87,7 +87,7 @@ export class MeuPerfilComponent implements OnInit {
 
         retornarImagem() {
             let src: string = sessionStorage.getItem("fotoPerfil");
-            return src && src.startsWith('data:image') ? this._sanitizer.bypassSecurityTrustResourceUrl(src) : '../../../../../../../../../assets/images/scrumboard/documents.jpg';
+            return src && src.startsWith('data:image') ? this._sanitizer.bypassSecurityTrustResourceUrl(src) : '../../../../../../../../../assets/images/avatars/profile.jpg';
         }
 
         menuOpened() {

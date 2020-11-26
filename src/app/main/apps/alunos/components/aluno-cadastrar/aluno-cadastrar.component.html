@@ -22,7 +22,7 @@
                                 <input matInput formControlName="emailAluno" [errorStateMatcher]="matcher" required>
                                 <mat-error
                                     *ngIf="alunosForm.get('emailAluno').hasError('email') && !alunosForm.get('emailAluno').hasError('required')">
-                                    Por favor, entre com um e-mail válido!
+                                    Entre com um e-mail válido!
                                 </mat-error>
                                 <mat-error *ngIf="alunosForm.get('emailAluno').hasError('required')">
                                     E-mail é <strong>obrigatório</strong>

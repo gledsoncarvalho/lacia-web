@@ -3,7 +3,7 @@
         <h2 mat-dialog-title>Editar Meus Dados</h2>
     </div>
     <div>
-        <mat-icon mat-dialog-close>clear</mat-icon>
+        <mat-icon mat-dialog-close id="clear">clear</mat-icon>
     </div>
 </div>
 <mat-divider></mat-divider>
@@ -23,7 +23,7 @@
                     <input matInput formControlName="email" required />
                     <mat-error
                         *ngIf="MeuPerfilForm.get('email').hasError('email') && !MeuPerfilForm.get('email').hasError('required')">
-                        Por favor, entre com um e-mail válido!</mat-error>
+                        Entre com um e-mail válido!</mat-error>
                     <mat-error *ngIf="MeuPerfilForm.get('email').hasError('required')">E-mail é
                         <strong>obrigatório</strong></mat-error>
                 </mat-form-field>

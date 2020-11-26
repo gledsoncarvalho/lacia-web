@@ -53,7 +53,7 @@ export class MeuPerfilEditarModalComponent implements OnInit {
                             "success"
                         );
                     },
-                    (error) => this.alert.show("Erro", "Dado(s) email/CPF já em uso!", "error")
+                    (error) => this.alert.show("Erro", "Dado(s) email, CPF e/ou telefone já em uso!", "error")
                 );
         } else {
             this.alert.show(
