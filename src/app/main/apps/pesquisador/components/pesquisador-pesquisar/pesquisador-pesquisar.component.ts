@@ -1,4 +1,5 @@
 import { Pesquisador } from './../../pesquisador';
+import { PesquisadorService } from './../../../../services/pesquisador.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
@@ -22,12 +23,22 @@ export class PesquisadorPesquisarComponent implements OnInit {
   }
 
 
-  constructor(private fb: FormBuilder, private dialog: MatDialog, private alert: AlertComponent) { }
+  constructor(private fb: FormBuilder,
+     private dialog: MatDialog,
+     private alert: AlertComponent,
+     private pesquisadorService: PesquisadorService) { }
 
   ngOnInit(): void {
+    this.obterPesquisadores();
     this.criarForm();
-    this.pesquisadores.data.push({nomePesquisador: "Vinícius Mendonça", emailPesquisador: "vinicius.jose@souunit.com.br", telefonePesquisador: "79 9 9999-9999", dtNascimentoPesquisador: new Date(1998, 9, 18), cpf: "111.111.111-11" } as Pesquisador);
-    this.pesquisadores.data.push({nomePesquisador: "Diego Ribeiro", emailPesquisador: "diego.ribeiro@souunit.com.br", telefonePesquisador: "79 9 9999-9999", dtNascimentoPesquisador: new Date(1999, 9, 19), cpf: "111.111.111-11" } as Pesquisador);
+  }
+
+  obterPesquisadores(){
+    this.pesquisadorService.obterPesquisadoresAprovados()
+      .subscribe(pesquisadores => {
+        this.pesquisadores.data = pesquisadores;
+      }, erro => this.alert.show('Erro', 'Não foi possível obter os pesquisadores!', 'error')
+      );
   }
 
   criarForm() {
@@ -37,7 +48,14 @@ export class PesquisadorPesquisarComponent implements OnInit {
     })
   }
 
-  excluirPesquisador() {
-    this.alert.confirmacao("Deseja excluir o pesquisador?", "", "Confirmar", "O pesquisador foi excluído.", "Excluído");
+  excluirPesquisador(idUsuario: number, index: number) {
+    this.alert.confirmacao("Deseja excluir o pesquisador?", "", "Confirmar", "O pesquisador foi excluído.", "Excluído")
+      .then(() => {
+        this.pesquisadorService.excluirPesquisador(idUsuario)
+          .subscribe(() => {
+            this.pesquisadores.data.splice(index, 1);
+            this.pesquisadores._updateChangeSubscription();
+          })
+      });
   }
 }

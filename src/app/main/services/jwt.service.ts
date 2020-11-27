@@ -39,7 +39,7 @@ export class JwtService {
                 this._router.navigateByUrl('/apps/projetos/meus');
             }, erro => {
                 this.usuarioAutenticado = false;
-                this._alert.show('Login', 'Email/nome inválidos', 'error');
+                this._alert.show('Login', erro.error, 'error');
             });
     }
 

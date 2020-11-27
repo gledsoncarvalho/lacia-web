@@ -18,7 +18,7 @@
                             <mat-icon>delete</mat-icon>Remover Data de Entrega
                         </button>
 
-                        <button *ngIf="!card.due" class="icones-tabela" mat-menu-item (click)="card.due = true">
+                        <button *ngIf="!card.due" class="icones-tabela" mat-menu-item (click)="addDueDate()">
                             <mat-icon>add</mat-icon>Inserir Data de Entrega
                         </button>
                     </mat-menu>

@@ -25,7 +25,7 @@ export class AlertComponent implements OnInit {
   }
 
   confirmacao(title: string, text: string, confirmButtonText: string, textSuccess: string, header: string) {
-    Swal.fire({
+    return Swal.fire({
       title: title,
       text: text,
       icon: 'warning',

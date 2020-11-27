@@ -1,3 +1,4 @@
+import { PesquisadorService } from './../../services/pesquisador.service';
 import { AprovarPesquisadorComponent } from './components/aprovar-pesquisador/aprovar-pesquisador.component';
 import { NgModule } from '@angular/core';
 import { FuseSharedModule } from '../../../../@fuse/shared.module';
@@ -16,7 +17,8 @@ import { PesquisadorComponent } from './pesquisador.component';
         FuseSharedModule,
         PesquisadorRoutingModule
     ],
-    entryComponents: [
+    providers: [
+        PesquisadorService
     ]
 
 })

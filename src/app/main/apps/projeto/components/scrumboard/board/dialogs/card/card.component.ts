@@ -101,6 +101,10 @@ export class ScrumboardCardDialogComponent implements OnInit, OnDestroy {
         this.updateCard();
     }
 
+    addDueDate(): void{
+        this.card.due = new Date();
+    }
+
     /**
      * Toggle subscribe
      */

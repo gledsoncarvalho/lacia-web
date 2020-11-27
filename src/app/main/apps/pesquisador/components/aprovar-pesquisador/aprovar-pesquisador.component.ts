@@ -1,16 +1,9 @@
-import { Pesquisador } from './../../pesquisador';
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { AlertComponent } from '@fuse/components/alert/alert.component';
-import { AprovarPesquisador } from './aprovar-pesquisador';
 import { MatTableDataSource } from '@angular/material/table';
+import { AlertComponent } from '@fuse/components/alert/alert.component';
+import { PesquisadorService } from './../../../../services/pesquisador.service';
+import { Pesquisador } from './../../pesquisador';
 
-const ELEMENT_DATA: AprovarPesquisador[] = [
-    { nome: 'Diego Alves Ribeiro', email: 'diego@souunit.com.br', telefone: '(79) 9 9999-9999', data: new Date(1999, 9, 19), acao: '' },
-    { nome: 'Francisco Carvalho', email: 'Francisco@souunit.com.br', telefone: '(79) 9 9999-9999', data: new Date(2001, 5, 30), acao: '' },
-    { nome: 'Gledson Carvalho', email: 'Gledson@souunit.com.br', telefone: '(79) 9 9999-9999', data: new Date(1900, 4, 20), acao: '' },
-
-];
 
 @Component({
     selector: 'app-aprovar-pesquisador',
@@ -19,23 +12,44 @@ const ELEMENT_DATA: AprovarPesquisador[] = [
 })
 export class AprovarPesquisadorComponent implements OnInit {
     displayedColumns: string[] = ['nome', 'email', 'telefone', 'data', 'acao'];
-    dataSource = ELEMENT_DATA;
     pesquisadores: MatTableDataSource<Pesquisador> = new MatTableDataSource();
 
     applyFilter(event: Event): void {
         const filterValue = (event.target as HTMLInputElement).value;
         this.pesquisadores.filter = filterValue.trim().toLowerCase();
-      }
-
-    constructor(private dialog: MatDialog, private alert: AlertComponent) { }
-
-    ngOnInit(): void { }
-
-    ReprovarPesquisador() {
-        this.alert.confirmacao("Deseja reprovar este pesquisador?", "", "Confirmar", "O pesquisador foi reprovado!", "Reprovado");
     }
 
-    AprovarPesquisador() {
-        this.alert.show("Aprovado!", "O pesquisador foi aprovado com sucesso!", "success");
+    constructor(private alert: AlertComponent,
+        private pesquisadorService: PesquisadorService) { }
+
+    ngOnInit(): void {
+        this.obterPesquisadores();
     }
+
+    reprovarPesquisador(idUsuario: number, index: number) {
+        this.pesquisadorService.reprovarPesquisador(idUsuario)
+            .subscribe(() => {
+                this.pesquisadores.data.splice(index, 1);
+                this.pesquisadores._updateChangeSubscription();
+                this.alert.show("Reprovado!", "O pesquisador foi reprovado com sucesso!", "success");
+            }, erro => this.alert.show('Erro', 'Não foi possível reprovar o pesquisador', 'error'))
+    };
+
+    aprovarPesquisador(idUsuario: number, index: number) {
+        this.pesquisadorService.aprovarPesquisador(idUsuario)
+            .subscribe(() => {
+                this.pesquisadores.data.splice(index, 1);
+                this.pesquisadores._updateChangeSubscription();
+                this.alert.show("Aprovado!", "O pesquisador foi aprovado com sucesso!", "success");
+            }, erro => this.alert.show('Erro', 'Não foi possível aprovar o pesquisador', 'error'))
+    };
+
+
+    obterPesquisadores() {
+        this.pesquisadorService.obterPesquisadores()
+            .subscribe(pesquisadores => {
+                this.pesquisadores.data = pesquisadores;
+                this.pesquisadores._updateChangeSubscription();
+            }, erro => this.alert.show('Erro', 'Não foi possível obter os pesquisadores', 'error'))
+    };
 }
