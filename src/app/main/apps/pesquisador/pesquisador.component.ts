@@ -13,4 +13,8 @@ export class PesquisadorComponent implements OnInit {
 
     ngOnInit(): void { }
 
+    getTipoUsuario() {
+        return sessionStorage.getItem('tipoUsuario');
+    }
+
 }

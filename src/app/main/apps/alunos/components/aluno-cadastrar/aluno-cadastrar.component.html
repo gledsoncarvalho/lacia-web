@@ -13,18 +13,18 @@
                         <div fxFlex="1 1 calc(50% - 2rem)" fxFlex.lt-md="100%">
                             <mat-form-field>
                                 <mat-label>Nome</mat-label>
-                                <input matInput formControlName="nomeAluno" required>
+                                <input matInput formControlName="nome" required>
                             </mat-form-field>
                         </div>
                         <div fxFlex="1 1 calc(50% - 2rem)" fxFlex.lt-md="100%">
                             <mat-form-field>
                                 <mat-label>E-mail</mat-label>
-                                <input matInput formControlName="emailAluno" [errorStateMatcher]="matcher" required>
+                                <input matInput formControlName="email" [errorStateMatcher]="matcher" required>
                                 <mat-error
-                                    *ngIf="alunosForm.get('emailAluno').hasError('email') && !alunosForm.get('emailAluno').hasError('required')">
+                                    *ngIf="alunosForm.get('email').hasError('email') && !alunosForm.get('email').hasError('required')">
                                     Entre com um e-mail válido!
                                 </mat-error>
-                                <mat-error *ngIf="alunosForm.get('emailAluno').hasError('required')">
+                                <mat-error *ngIf="alunosForm.get('email').hasError('required')">
                                     E-mail é <strong>obrigatório</strong>
                                 </mat-error>
                             </mat-form-field>
@@ -34,14 +34,14 @@
                         <div fxFlex="1 1 calc(50% - 2rem)" fxFlex.lt-md="100%">
                             <mat-form-field>
                                 <mat-label>Telefone</mat-label>
-                                <input matInput Mask type="text" formControlName="telefoneAluno" mask="celular"
+                                <input matInput Mask type="text" formControlName="telefone" mask="celular"
                                     maxLength="15" required>
                             </mat-form-field>
                         </div>
                         <div fxFlex="1 1 calc(50% - 2rem)" fxFlex.lt-md="100%">
                             <mat-form-field>
                                 <mat-label>Data Nascimento</mat-label>
-                                <input matInput type="date" max="9999-12-31" formControlName="dtNascimentoAluno"
+                                <input matInput type="date" max="9999-12-31" formControlName="dataNascimento"
                                     required>
                             </mat-form-field>
                         </div>

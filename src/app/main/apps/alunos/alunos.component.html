@@ -10,13 +10,17 @@
                 <ng-template mat-tab-label>
                     <mat-icon>search</mat-icon>&nbsp; Pesquisar
                 </ng-template>
-                <app-aluno-pesquisar></app-aluno-pesquisar>
+                <ng-template matTabContent> 
+                    <app-aluno-pesquisar></app-aluno-pesquisar>
+                </ng-template>
             </mat-tab>
-            <mat-tab>
+            <mat-tab *ngIf="getTipoUsuario() !== 'A'">
                 <ng-template mat-tab-label>
                     <mat-icon>add</mat-icon>&nbsp;Cadastrar
                 </ng-template>
-                <app-aluno-cadastrar></app-aluno-cadastrar>
+                <ng-template matTabContent> 
+                    <app-aluno-cadastrar></app-aluno-cadastrar>
+                </ng-template>
             </mat-tab>
         </mat-tab-group>
     </div>

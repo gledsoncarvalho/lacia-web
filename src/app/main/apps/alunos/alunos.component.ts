@@ -12,4 +12,8 @@ export class AlunosComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getTipoUsuario(){
+    return sessionStorage.getItem('tipoUsuario');
+  }
+
 }

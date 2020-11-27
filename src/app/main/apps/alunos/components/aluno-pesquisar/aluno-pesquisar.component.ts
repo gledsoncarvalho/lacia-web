@@ -1,9 +1,10 @@
+import { AlunoService } from './../../../../services/aluno.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { AlertComponent } from '@fuse/components/alert/alert.component';
-import { Alunos } from './../../alunos';
+import { Aluno } from './../../../../models/aluno.model';
+
 
 @Component({
   selector: 'app-aluno-pesquisar',
@@ -13,8 +14,9 @@ import { Alunos } from './../../alunos';
 export class AlunoPesquisarComponent implements OnInit {
 
   alunosForm: FormGroup;
-  colunasTable: string[] = ['nomeAluno', 'emailAluno','telefoneAluno','dtNascimentoAluno', 'acoes'];
-  alunos: MatTableDataSource<Alunos> = new MatTableDataSource();
+  colunasTable: string[] = ['nomeAluno', 'emailAluno','telefoneAluno','dtNascimentoAluno'];
+  colunasTablePrioritaria: string[] = ['nomeAluno', 'emailAluno','telefoneAluno','dtNascimentoAluno', 'acoes'];
+  alunos: MatTableDataSource<Aluno> = new MatTableDataSource();
 
 
   applyFilter(event: Event) {
@@ -22,12 +24,14 @@ export class AlunoPesquisarComponent implements OnInit {
     this.alunos.filter = filterValue.trim().toLowerCase();
   }
 
-  constructor(private fb: FormBuilder, private dialog: MatDialog, private alert: AlertComponent) { }
+  constructor(
+    private fb: FormBuilder, 
+    private alert: AlertComponent,
+    private alunoService: AlunoService) { }
 
   ngOnInit(): void {
     this.criarForm();
-    this.alunos.data.push({nomeAluno:"Chico",emailAluno:"chico@gmail.com.br", telefoneAluno:"79 9 9999-9999",dtNascimentoAluno: new Date(),cpfAluno:"111.111.111-11"} as Alunos);
-    this.alunos.data.push({nomeAluno:"Brenno",emailAluno:"brenno@gmail.com.br", telefoneAluno:"79 9 9999-9999",dtNascimentoAluno: new Date(),cpfAluno:"111.111.111-11"} as Alunos);
+    this.obterAlunos();
 
   }
   
@@ -38,7 +42,25 @@ export class AlunoPesquisarComponent implements OnInit {
     })
   }
 
-  excluirAluno(){
-    this.alert.confirmacao("Deseja excluir o aluno?", "", "Confirmar", "O aluno foi excluído.", "Excluído");
+  obterAlunos(){
+      this.alunoService.obterAlunos()
+        .subscribe(alunos => {
+          this.alunos.data = alunos;
+        }, erro => this.alert.show("Erro","Não foi possível obter os alunos!","error") )
   }
+
+  excluirAluno(idUsuario: number, index: number) {
+    this.alert.confirmacao("Deseja excluir o aluno?", "", "Confirmar", "O aluno foi excluído.", "Excluído")
+      .then(() => {
+        this.alunoService.excluirAluno(idUsuario)
+          .subscribe(() => {
+            this.alunos.data.splice(index, 1);
+            this.alunos._updateChangeSubscription();
+          })
+      });
+  }
+
+  getTipoUsuario() {
+    return sessionStorage.getItem('tipoUsuario');
+}
 }

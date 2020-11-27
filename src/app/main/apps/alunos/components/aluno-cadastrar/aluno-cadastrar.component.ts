@@ -1,8 +1,8 @@
+import { AlunoService } from './../../../../services/aluno.service';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { AlertComponent } from '@fuse/components/alert/alert.component';
-
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -10,7 +10,6 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     const isSubmitted = form && form.submitted;
     return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted))
   }
-
 }
 
 @Component({
@@ -22,7 +21,10 @@ export class AlunoCadastrarComponent implements OnInit {
   alunosForm: FormGroup;
   matcher = new MyErrorStateMatcher();
 
-  constructor(private fb: FormBuilder, private alert: AlertComponent) { }
+  constructor(
+    private fb: FormBuilder,
+    private alert: AlertComponent,
+    private alunoService: AlunoService) { }
 
   ngOnInit(): void {
     this.criarForm();
@@ -31,24 +33,29 @@ export class AlunoCadastrarComponent implements OnInit {
 
   criarForm() {
     this.alunosForm = this.fb.group({
-      nomeAluno: [null, Validators.required],
-      emailAluno: [null, [Validators.required, Validators.email]],
-      telefoneAluno: [null, Validators.required],
-      dtNascimentoAluno: [null, Validators.required],
+      idUsuario: [null],
+      nome: [null, Validators.required],
+      email: [null, [Validators.required, Validators.email]],
+      telefone: [null, Validators.required],
+      dataNascimento: [null, Validators.required],
       cpf: [null]
 
     });
   }
+  
   cadastrarAluno() {
-    if(this.alunosForm.valid){
-      this.alert.show("Cadastrado!", "O aluno foi cadastrado com sucesso!", "success");
-    }else{
+    if (this.alunosForm.valid) {
+      this.alunoService.cadastrarAluno(this.alunosForm.value)
+        .subscribe(() => {
+          this.alert.show("Cadastrado!", "O aluno foi cadastrado com sucesso!", "success");
+          this.limparDados();
+        }, erro => this.alert.show("Erro", "Não foi possível cadastrar!", "error"));
+    } else {
       this.alert.show("Aviso", "Favor preencher os campos obrigatórios", "warning");
     }
-    this.alunosForm.reset();
   }
 
-  limparDados(){
+  limparDados() {
     this.alunosForm.reset();
   }
 

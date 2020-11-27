@@ -14,7 +14,8 @@ import { AlertComponent } from '@fuse/components/alert/alert.component';
 export class PesquisadorPesquisarComponent implements OnInit {
 
   pesquisadorForm: FormGroup;
-  colunasTable: string[] = ['nomePesquisador', 'emailPesquisador','telefonePesquisador', 'dtNascimentoPesquisador',  'acoes',];
+  colunasTable: string[] = ['nomePesquisador', 'emailPesquisador','telefonePesquisador', 'dtNascimentoPesquisador'];
+  colunasTableCoordenador: string[] = ['nomePesquisador', 'emailPesquisador','telefonePesquisador', 'dtNascimentoPesquisador',  'acoes',];
   pesquisadores: MatTableDataSource<Pesquisador> = new MatTableDataSource();
 
   applyFilter(event: Event) {
@@ -58,4 +59,9 @@ export class PesquisadorPesquisarComponent implements OnInit {
           })
       });
   }
+
+  getTipoUsuario() {
+    return sessionStorage.getItem('tipoUsuario');
+}
+
 }

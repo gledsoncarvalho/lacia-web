@@ -74,7 +74,7 @@
                                 {{ element.dataNascimento | date: "dd/MM/yyyy" }}
                             </td>
                         </ng-container>
-                        <ng-container matColumnDef="acoes">
+                        <ng-container matColumnDef="acoes" *ngIf="getTipoUsuario() === 'C'">
                             <th mat-header-cell *matHeaderCellDef style="
                             color: #2d323e;
                             font-weight: bold;
@@ -85,8 +85,8 @@
                                 </button>
                             </td>
                         </ng-container>
-                        <tr mat-header-row *matHeaderRowDef="colunasTable"></tr>
-                        <tr mat-row *matRowDef="let row; columns: colunasTable"></tr>
+                        <tr mat-header-row *matHeaderRowDef="getTipoUsuario() === 'C' ? colunasTableCoordenador : colunasTable"></tr>
+                        <tr mat-row *matRowDef="let row; columns: getTipoUsuario() === 'C' ? colunasTableCoordenador : colunasTable"></tr>
                     </table>
                 </div>
             </div>
