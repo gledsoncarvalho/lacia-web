@@ -12,14 +12,14 @@
                             Projetos
                         </div>
                     </div>
-                    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                    <table mat-table [dataSource]="projetos" class="mat-elevation-z8">
                         <ng-container matColumnDef="nomeAprovarProjeto">
                             <th mat-header-cell *matHeaderCellDef style="
                             color: #2d323e;
                             font-weight: bold;
-                        ">Nome Projeto</th>
+                        ">Título Projeto</th>
                             <td mat-cell *matCellDef="let element">
-                                {{ element.nomeAprovarProjeto }}
+                                {{ element.titulo }}
                             </td>
                         </ng-container>
                         <ng-container matColumnDef="orcamentoAprovarProjeto">
@@ -28,7 +28,7 @@
                             font-weight: bold;
                         ">Orçamento</th>
                             <td mat-cell *matCellDef="let element">
-                                {{ element.orcamentoAprovarProjeto | currencyBrazil }}
+                                {{ element.orcamento | currencyBrazil }}
                             </td>
                         </ng-container>
                         <ng-container matColumnDef="dtInicioAprovarProjeto">
@@ -37,7 +37,7 @@
                             font-weight: bold;
                         ">Data inicio</th>
                             <td mat-cell *matCellDef="let element">
-                                {{ element.dtInicioAprovarProjeto | date: "dd/MM/yyyy" }}
+                                {{ element.dataInicio | date: "dd/MM/yyyy" }}
                             </td>
                         </ng-container>
                         <ng-container matColumnDef="dtFimAprovarProjeto">
@@ -46,7 +46,7 @@
                             font-weight: bold;
                         ">Data fim</th>
                             <td mat-cell *matCellDef="let element">
-                                {{ element.dtFimAprovarProjeto | date: "dd/MM/yyyy" }}
+                                {{ element.dataFim | date: "dd/MM/yyyy" }}
                             </td>
                         </ng-container>
                         <ng-container matColumnDef="acoes" style="
@@ -56,8 +56,8 @@
                             <th mat-header-cell *matHeaderCellDef mat-sort-header>
                                 Ações
                             </th>
-                            <td mat-cell *matCellDef="let element">
-                                <button id="botao-de-analisar" mat-button (click)="analisarProjeto(element)">
+                            <td mat-cell *matCellDef="let element; let i = index">
+                                <button id="botao-de-analisar" mat-button (click)="analisarProjeto(element, i)">
                                     <mat-icon>visibility</mat-icon>&nbsp; Analisar
                                     Projeto
                                 </button>

@@ -21,13 +21,13 @@
                                 <div fxFlex="1 1 calc(50% - 2rem)" fxFlex.lt-md="100%">
                                     <mat-form-field>
                                         <mat-label>Nome</mat-label>
-                                        <input id="nome" matInput formControlName="nomeSubmeterProjeto" required/>
+                                        <input id="nome" matInput formControlName="titulo" required/>
                                     </mat-form-field>
                                 </div>
                                 <div fxFlex="1 1 calc(50% - 2rem)" fxFlex.lt-md="100%">
                                     <mat-form-field>
                                         <mat-label>Orçamento</mat-label>
-                                        <input id="orcamento" matInput currencyMask formControlName="orcamentoSubmeterProjeto" maxLength="15" [options]="{prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left'}" required/>
+                                        <input id="orcamento" matInput currencyMask formControlName="orcamento" maxLength="15" [options]="{prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left'}" required/>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -35,13 +35,13 @@
                                 <div class="dataInicio" fxFlex="50%" fxFlex.lt-md="100%">
                                     <mat-form-field>
                                         <mat-label>Data Inicio</mat-label>
-                                        <input matInput type="date" max="9999-12-31" formControlName="dtInicioSubmeterProjeto" required/>
+                                        <input matInput type="date" max="9999-12-31" formControlName="dataInicio" required/>
                                     </mat-form-field>
                                 </div>
                                 <div fxFlex="50%" fxFlex.lt-md="100%">
                                     <mat-form-field>
                                         <mat-label>Data Finalização</mat-label>
-                                        <input matInput type="date" max="9999-12-31" formControlName="dtFimSubmeterProjeto" required/>
+                                        <input matInput type="date" max="9999-12-31" formControlName="dataFim" required/>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -49,7 +49,7 @@
                                 <div fxFlex="100%" fxFlex.lt-md="100%">
                                     <mat-form-field>
                                         <mat-label>Descrição</mat-label>
-                                        <textarea id="desricao" class="area-descricao" rows="5" matInput formControlName="descricaoSubmeterProjeto" required>
+                                        <textarea id="desricao" class="area-descricao" rows="5" matInput formControlName="descricao" required>
                                         </textarea>
                                     </mat-form-field>
                                 </div>

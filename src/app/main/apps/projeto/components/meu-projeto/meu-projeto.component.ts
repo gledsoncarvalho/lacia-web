@@ -1,15 +1,10 @@
+import { AlertComponent } from './../../../../../../@fuse/components/alert/alert.component';
+import { ProjetoService } from './../../../../services/projeto.service';
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
-import { MeuProjeto } from './meu-projeto';
+import { Projeto } from 'app/main/models/projeto.model';
 import { Status } from '../../../../../../@fuse/enums/status.enum';
 
-
-const ELEMENT_DATA: MeuProjeto[] = [
-  {  nomeMeuProjeto: "Lacia", orcamentoMeuProjeto: "500,50", dtInicioMeuProjeto: new Date(), dtFimMeuProjeto: new Date(), situacaoMeuProjeto: "Aprovado"},
-  {  nomeMeuProjeto: "Composto V", orcamentoMeuProjeto: "50000,33", dtInicioMeuProjeto: new Date(), dtFimMeuProjeto: new Date(), situacaoMeuProjeto: "Não aprovado"},
-  { nomeMeuProjeto: "Projeto Chico", orcamentoMeuProjeto: "2000,90", dtInicioMeuProjeto: new Date(), dtFimMeuProjeto: new Date(), situacaoMeuProjeto: "Em espera"},
-];
 
 @Component({
   selector: 'app-meu-projeto',
@@ -19,25 +14,45 @@ const ELEMENT_DATA: MeuProjeto[] = [
 
 export class MeuProjetoComponent implements OnInit {
   displayedColumns: string[] = [ 'nomeMeuProjeto', 'orcamentoMeuProjeto', 'dtInicioMeuProjeto', 'dtFimMeuProjeto', 'situacaoMeuProjeto', 'acoes'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  projetos: MatTableDataSource <Projeto> = new MatTableDataSource();
   status = Status; 
   
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.projetos.filter = filterValue.trim().toLowerCase();
   }
-  constructor(private router: Router){ }
+  constructor(
+    private projetoService: ProjetoService, 
+    private alert: AlertComponent){ }
 
 
-  ngOnInit(): void { }
-
-  filtrarProjetos(status: Status.APROVADO | Status.REPROVADO | Status.AGUARDANDO) {
-    console.log(status);
-    this.dataSource.data = ELEMENT_DATA;
-    this.dataSource.data = this.dataSource.data.filter(projeto => projeto.situacaoMeuProjeto === status);
-    this.dataSource._updateChangeSubscription();
+  ngOnInit(): void { 
+    this.projetos.filterPredicate = (projeto: Projeto, filter: string) => {
+      return filter.includes("todos") ? true : projeto.aprovado == JSON.parse(filter); 
+    }
+    this.obterProjetos();
   }
-  recarregarTela(){
-    this.dataSource.data = ELEMENT_DATA;
+
+  filtrarProjetos(status: boolean, todos?: boolean) {
+    this.projetos.filter = todos ? "todos" : String(status);
+    this.projetos._updateChangeSubscription();
+  }
+
+  obterProjetos(){
+    this.projetoService.obterProjetosPorUsuario(sessionStorage.getItem("email"))
+      .subscribe(projetos => {
+        this.projetos.data = projetos;
+      }, error => this.alert.show("Erro!", "Não foi possível obter seus projetos", "error"))
+  }
+
+  getSituacao(aprovado: boolean): string{
+    switch(aprovado){
+      case true:
+        return "Aprovado";
+      case false:
+        return "Reprovado";
+      default:
+        return "Em espera";
+    }
   }
 }

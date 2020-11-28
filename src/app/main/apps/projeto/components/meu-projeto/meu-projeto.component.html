@@ -17,14 +17,14 @@
                 <mat-icon>filter_list</mat-icon>&nbsp;Filtro
             </button>
             <mat-menu #menu="matMenu">
-                <button (click)="recarregarTela()" mat-menu-item>Todos</button>
-                <button (click)="filtrarProjetos(status.APROVADO)" mat-menu-item>
+                <button (click)="filtrarProjetos(true, true)" mat-menu-item>Todos</button>
+                <button (click)="filtrarProjetos(true)" mat-menu-item>
                     Aprovado
                 </button>
-                <button (click)="filtrarProjetos(status.REPROVADO)" mat-menu-item>
+                <button (click)="filtrarProjetos(false)" mat-menu-item>
                     Não Aprovado
                 </button>
-                <button (click)="filtrarProjetos(status.AGUARDANDO)" mat-menu-item>
+                <button (click)="filtrarProjetos(null)" mat-menu-item>
                     Em Espera
                 </button>
             </mat-menu>
@@ -39,16 +39,16 @@
                     </div>
                 </div>
                 <div class="row">
-                    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                    <table mat-table [dataSource]="projetos" class="mat-elevation-z8">
                         <ng-container matColumnDef="nomeMeuProjeto">
                             <th mat-header-cell *matHeaderCellDef style="
                             color: #2d323e;
                             font-weight: bold;
                         ">
-                                Nome Projeto
+                                Título Projeto
                             </th>
                             <td mat-cell *matCellDef="let element">
-                                {{ element.nomeMeuProjeto }}
+                                {{ element.titulo }}
                             </td>
                         </ng-container>
                         <ng-container matColumnDef="orcamentoMeuProjeto">
@@ -58,7 +58,7 @@
                                 Orçamento
                             </th>
                             <td mat-cell *matCellDef="let element">
-                                {{ element.orcamentoMeuProjeto | currencyBrazil }}
+                                {{ element.orcamento | currencyBrazil }}
                             </td>
                         </ng-container>
                         <ng-container matColumnDef="dtInicioMeuProjeto">
@@ -69,7 +69,7 @@
                                 Data inicio
                             </th>
                             <td mat-cell *matCellDef="let element">
-                                {{ element.dtInicioMeuProjeto | date: "dd/MM/yyyy" }}
+                                {{ element.dataInicio | date: "dd/MM/yyyy" }}
                             </td>
                         </ng-container>
                         <ng-container matColumnDef="dtFimMeuProjeto">
@@ -80,7 +80,7 @@
                                 Data fim
                             </th>
                             <td mat-cell *matCellDef="let element">
-                                {{ element.dtFimMeuProjeto | date: "dd/MM/yyyy" }}
+                                {{ element.dataFim | date: "dd/MM/yyyy" }}
                             </td>
                         </ng-container>
                         <ng-container matColumnDef="situacaoMeuProjeto">
@@ -91,7 +91,7 @@
                                 Situação
                             </th>
                             <td mat-cell *matCellDef="let element">
-                                {{ element.situacaoMeuProjeto }}
+                                {{ getSituacao(element.aprovado) }}
                             </td>
                         </ng-container>
                         <ng-container matColumnDef="acoes">

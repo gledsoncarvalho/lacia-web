@@ -1,9 +1,11 @@
+import { ProjetoService } from './../../../../../../services/projeto.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AlertComponent } from '@fuse/components/alert/alert.component';
 import { AprovarProjeto } from './../../aprovar-projeto';
+import { Projeto } from 'app/main/models/projeto.model';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
     isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -27,32 +29,42 @@ export class AprovarProjetoModalComponent implements OnInit {
         private fb: FormBuilder,
         private dialogRef: MatDialogRef<AprovarProjetoModalComponent>,
         private alert: AlertComponent,
-        @Inject(MAT_DIALOG_DATA) projeto: AprovarProjeto) {
+        private projetoService: ProjetoService,
+        @Inject(MAT_DIALOG_DATA) projeto: Projeto) {
         this.criarForm(projeto);
-        console.log(projeto);
     }
 
     ngOnInit(): void {
+
     }
 
-    criarForm(projeto: AprovarProjeto) {
+    criarForm(projeto: Projeto) {
         this.aprovarProjetoForm = this.fb.group({
-            idAprovarProjeto: [projeto.idAprovarProjeto, Validators.required],
-            nomeAprovarProjeto: [projeto.nomeAprovarProjeto, [Validators.required]],
-            orcamentoAprovarProjeto: [projeto.orcamentoAprovarProjeto, Validators.required],
-            dtInicioAprovarProjeto: [projeto.dtInicioAprovarProjeto, Validators.required],
-            dtFimAprovarProjeto: [projeto.dtFimAprovarProjeto, Validators.required],
-            descricaoAprovarProjeto: [projeto.descricaoAprovarProjeto, Validators.required]
+            idAprovarProjeto: [projeto.idProjeto, Validators.required],
+            nomeAprovarProjeto: [projeto.titulo, [Validators.required]],
+            orcamentoAprovarProjeto: [projeto.orcamento, Validators.required],
+            dtInicioAprovarProjeto: [projeto.dataInicio, Validators.required],
+            dtFimAprovarProjeto: [projeto.dataFim, Validators.required],
+            descricaoAprovarProjeto: [projeto.descricao, Validators.required]
         });
     }
 
-    aprovarProjeto() {
-        this.alert.show("Aprovado!", "O projeto foi aprovado com sucesso!", "success");
-        this.dialogRef.close();
-    }
-
     reprovarProjeto() {
-        this.alert.confirmacao("Deseja reprovar este projeto?", "", "Confirmar", "O projeto foi reprovado!", "Reprovado");
-        this.dialogRef.close();
-    }
+        this.alert.confirmacao("Deseja reprovar este projeto?", "", "Confirmar", "O projeto foi reprovado!", "Reprovado")
+        .then(() => {
+            this.projetoService.reprovarProjeto(this.aprovarProjetoForm.value.idAprovarProjeto)
+            .subscribe(() => {
+                this.dialogRef.close(true);
+            }, erro => this.alert.show('Erro', 'Não foi possível reprovar o projeto', 'error'))
+        });
+        
+    };
+
+    aprovarProjeto() {
+        this.projetoService.aprovarProjeto(this.aprovarProjetoForm.value.idAprovarProjeto)
+            .subscribe(() => {
+                this.alert.show("Aprovado!", "O projeto foi aprovado com sucesso!", "success");
+                this.dialogRef.close(true);
+            }, erro => this.alert.show('Erro', 'Não foi possível aprovar o projeto', 'error'))
+    };
 }
