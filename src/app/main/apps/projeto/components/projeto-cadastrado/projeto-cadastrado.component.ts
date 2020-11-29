@@ -1,16 +1,10 @@
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
-import { ProjetoCadastrado } from './projeto-cadastrado';
-import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Status } from '@fuse/enums/status.enum';
+import { AlertComponent } from './../../../../../../@fuse/components/alert/alert.component';
+import { Projeto } from './../../../../models/projeto.model';
+import { ProjetoService } from './../../../../services/projeto.service';
 
-
-const ELEMENT_DATA: ProjetoCadastrado[] = [
-  { idProjetoCadastrado: 3, nomeProjetoCadastrado: "Lacia", orcamentoProjetoCadastrado: "500,50", dtInicioProjetoCadastrado: new Date(), dtFimProjetoCadastrado: new Date(), descricaoProjetoCadastrado: "Projeto voltado para gestao de projetos" },
-  { idProjetoCadastrado: 4, nomeProjetoCadastrado: "Composto V", orcamentoProjetoCadastrado: "50000,33", dtInicioProjetoCadastrado: new Date(), dtFimProjetoCadastrado: new Date(), descricaoProjetoCadastrado: "Um projeto para mudar o mundo como conhecemos" },
-  { idProjetoCadastrado: 5, nomeProjetoCadastrado: "Projeto Chico", orcamentoProjetoCadastrado: "2000,90", dtInicioProjetoCadastrado: new Date(), dtFimProjetoCadastrado: new Date(), descricaoProjetoCadastrado: "Um projeto basicamente impossivel de resolver" },
-];
 
 
 @Component({
@@ -29,29 +23,28 @@ const ELEMENT_DATA: ProjetoCadastrado[] = [
 export class ProjetoCadastradoComponent implements OnInit {
 
   menuIsOpen: boolean = false;
-  displayedColumns: string[] = ['nomeProjetoCadastrado', 'orcamentoProjetoCadastrado', 'dtInicioProjetoCadastrado', 'dtFimProjetoCadastrado', 'acoes'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
-  status = Status;
-  columnsToDisplay = ['nome', 'orcamento', 'data inicio', 'data fim'];
-  dicionarioColunas: { [coluna: string]: string };
+  displayedColumns: string[] = ['titulo', 'orcamento', 'dataInicio', 'dataFim', 'acoes'];
+  projetos: MatTableDataSource<Projeto> = new MatTableDataSource();
   mapColunas = new Map<string, string>();
-
 
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.projetos.filter = filterValue.trim().toLowerCase();
   }
 
-  constructor(private router: Router) {
-    this.mapColunas.set('nomeProjetoCadastrado', 'Nome Projeto');
-    this.mapColunas.set('orcamentoProjetoCadastrado', 'Orçamento');
-    this.mapColunas.set('dtInicioProjetoCadastrado', 'Data inicio');
-    this.mapColunas.set('dtFimProjetoCadastrado', 'Data fim');
+  constructor(
+    private projetoService: ProjetoService,
+    private alert: AlertComponent) {
+    this.mapColunas.set('titulo', 'Título Projeto');
+    this.mapColunas.set('orcamento', 'Orçamento');
+    this.mapColunas.set('dataInicio', 'Data inicio');
+    this.mapColunas.set('dataFim', 'Data fim');
     this.mapColunas.set('acoes', 'Ações');
   }
 
   ngOnInit(): void {
+    this.obterTodosProjetosCadastrados();
   }
 
   menuOpened() {
@@ -60,6 +53,14 @@ export class ProjetoCadastradoComponent implements OnInit {
 
   menuClosed() {
     this.menuIsOpen = false;
+  }
+
+  obterTodosProjetosCadastrados(){
+    this.projetoService.obterTodosProjetosCadastrados()
+    .subscribe(projetos => {
+      this.projetos.data = projetos;
+    },
+    error => this.alert.show("Erro!", "Não foi possível obter todos os projetos cadastrados", "error"));
   }
 
 }

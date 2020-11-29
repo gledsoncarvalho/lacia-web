@@ -43,5 +43,9 @@ export class ProjetoService {
         return this._http.put<boolean>(environment.url + `/projeto/reprovar/${idProjeto}`, null, httpOptions)
     }
 
+    obterTodosProjetosCadastrados(){
+        return this._http.get<Projeto[]>(environment.url + '/projeto/todos', httpOptions);
+    }
+
 }
 

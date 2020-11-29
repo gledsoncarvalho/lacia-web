@@ -24,14 +24,14 @@
                     </div>
                 </div>
                 <div class="row">
-                    <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
+                    <table mat-table [dataSource]="projetos" multiTemplateDataRows class="mat-elevation-z8">
                         <ng-container matColumnDef="{{ column }}" *ngFor="let column of displayedColumns">
                             <th mat-header-cell *matHeaderCellDef style="color: #2d323e;font-weight: bold;">
                                 {{ mapColunas.get(column) }}
                             </th>
                             <td style="cursor: pointer" mat-cell *matCellDef="let element">
                                 <div
-                                    *ngIf=" column === 'dtInicioProjetoCadastrado' || column === 'dtFimProjetoCadastrado'; else colunaSemData">
+                                    *ngIf=" column === 'dataInicio' || column === 'dataFim'; else colunaSemData">
                                     {{ element[column] | date: "dd/MM/yyyy" }}
                                 </div>
                                 <ng-template #colunaSemData>
@@ -48,7 +48,7 @@
                                     [@detailExpand]=" element == expandedElement ? 'expanded' : 'collapsed'">
                                     <div class="example-element-description">
                                         <b>Descrição: </b>
-                                        {{ element.descricaoProjetoCadastrado }}
+                                        {{ element.descricao }}
                                     </div>
                                 </div>
                             </td>

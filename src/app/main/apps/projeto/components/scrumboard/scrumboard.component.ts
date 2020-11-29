@@ -1,3 +1,4 @@
+import { ProjetoService } from './../../../../services/projeto.service';
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
@@ -30,7 +31,8 @@ export class ScrumboardComponent implements OnInit, OnDestroy
      */
     constructor(
         private  _router: Router,
-        private _scrumboardService: ScrumboardService
+        private _scrumboardService: ScrumboardService,
+        private projetoService: ProjetoService
     )
     {
         // Set the private defaults
@@ -76,5 +78,9 @@ export class ScrumboardComponent implements OnInit, OnDestroy
         this._scrumboardService.createNewBoard(newBoard).then(() => {
             this._router.navigate(['/apps/scrumboard/boards/' + newBoard.id + '/' + newBoard.uri]);
         });
+    }
+
+    obterProjetosPorUsuario(){
+        
     }
 }
