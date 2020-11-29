@@ -6,6 +6,8 @@ export const environment = {
     production: false,
     hmr       : false,
     url: 'https://immense-dusk-63468.herokuapp.com/'
+   //url: 'http://localhost:8080'
+
 };
 
 /*

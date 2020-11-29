@@ -1,9 +1,10 @@
+import { CoordenadorService } from './../../../../services/coordenador.service';
+import { Coordenador } from './../../coordenador';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { AlertComponent } from '@fuse/components/alert/alert.component';
-import { Coordenador } from './../../coordenador';
 
 @Component({
     selector: 'app-coordenador-pesquisar',
@@ -13,7 +14,7 @@ import { Coordenador } from './../../coordenador';
 export class CoordenadorPesquisarComponent implements OnInit {
 
     coordenadorForm: FormGroup;
-    colunasTable: string[] = ['dsCoordenador', 'dsEmail', 'dsTelefone', 'dtNascimento', 'acoes'];
+    colunasTable: string[] = ['dsCoordenador', 'dsEmail', 'dsTelefone', 'dtNascimento'];
     coordenadores: MatTableDataSource<Coordenador> = new MatTableDataSource();
 
     applyFilter(event: Event) {
@@ -21,12 +22,19 @@ export class CoordenadorPesquisarComponent implements OnInit {
         this.coordenadores.filter = filterValue.trim().toLowerCase();
     }
 
-    constructor(private fb: FormBuilder, private dialog: MatDialog, private alert: AlertComponent) { }
+    constructor(private fb: FormBuilder, private dialog: MatDialog, private alert: AlertComponent, private coordenadorService: CoordenadorService) { }
 
     ngOnInit(): void {
         this.criarForm();
-        this.coordenadores.data.push({ idCoordenador: 1, nomeCoordenador: "Fábio Gomes", emailCoordenador: "fabio.gomes@souunit.com.br", telefoneCoordenador: "79 9 9999-8888", dtNascimentoCoordenador: new Date(), cpf: "111.111.111-11" } as Coordenador);
-        this.coordenadores.data.push({ idCoordenador: 2, nomeCoordenador: "Roberto Carlos", emailCoordenador: "roberto.carlos@souunit.com.br", telefoneCoordenador: "79 9 9999-9999", dtNascimentoCoordenador: new Date(), cpf: "111.111.111-11" } as Coordenador);
+        this.obterCoordenadores();
+    }
+
+    obterCoordenadores() {
+        this.coordenadorService.obterCoordenadores()
+      .subscribe(coordenadores => {
+        this.coordenadores.data = coordenadores ;
+      }, erro => this.alert.show('Erro', 'Não foi possível obter os coordenadores!', 'error')
+      );
     }
 
     criarForm() {
