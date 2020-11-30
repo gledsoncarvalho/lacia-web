@@ -2,12 +2,12 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { AlertComponent } from './../../../@fuse/components/alert/alert.component';
-import { Pesquisador } from './../apps/pesquisador/pesquisador';
+import { Pesquisador } from './../models/pesquisador.model';
 
 const httpOptions = {
     headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + sessionStorage.getItem('token') 
+        'Authorization': 'Bearer ' + sessionStorage.getItem('token')
     }),
     params: new HttpParams()
 };
@@ -23,23 +23,23 @@ export class PesquisadorService {
         httpOptions.headers.set('Access-Control-Allow-Headers', '*');
     }
 
-    obterPesquisadoresAprovados(){
-      return this._http.get<Pesquisador[]>(environment.url + '/pesquisadores', httpOptions);
+    obterPesquisadoresAprovados() {
+        return this._http.get<Pesquisador[]>(environment.url + '/pesquisadores', httpOptions);
     }
 
-    obterPesquisadores(){
-      return this._http.get<Pesquisador[]>(environment.url + '/pesquisador/todos', httpOptions);
+    obterPesquisadores() {
+        return this._http.get<Pesquisador[]>(environment.url + '/pesquisador/todos', httpOptions);
     }
 
-    excluirPesquisador(idUsuario: number){
-      return this._http.delete<boolean>(environment.url + `/pesquisador/excluir/${idUsuario}`, httpOptions)
+    excluirPesquisador(idUsuario: number) {
+        return this._http.delete<boolean>(environment.url + `/pesquisador/excluir/${idUsuario}`, httpOptions)
     }
 
-    aprovarPesquisador(idUsuario: number){
-      return this._http.put<boolean>(environment.url + `/pesquisador/aprovar/${idUsuario}`, null, httpOptions)
+    aprovarPesquisador(idUsuario: number) {
+        return this._http.put<boolean>(environment.url + `/pesquisador/aprovar/${idUsuario}`, null, httpOptions)
     }
 
-    reprovarPesquisador(idUsuario: number){
-      return this._http.put<boolean>(environment.url + `/pesquisador/reprovar/${idUsuario}`, null, httpOptions)
+    reprovarPesquisador(idUsuario: number) {
+        return this._http.put<boolean>(environment.url + `/pesquisador/reprovar/${idUsuario}`, null, httpOptions)
     }
 }

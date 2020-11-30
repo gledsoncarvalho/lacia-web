@@ -1,28 +1,34 @@
-import { ProjetoService } from "./../../../../services/projeto.service";
 import { Component, OnInit } from "@angular/core";
-import { ErrorStateMatcher } from "@angular/material/core";
 import {
     FormBuilder,
     FormControl,
     FormGroup,
     FormGroupDirective,
     NgForm,
-    Validators,
+    Validators
 } from "@angular/forms";
-import { HttpClient } from "@angular/common/http";
+import { ErrorStateMatcher } from "@angular/material/core";
 import { AlertComponent } from "@fuse/components/alert/alert.component";
+import { ProjetoService } from "./../../../../services/projeto.service";
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
     isErrorState(
         control: FormControl | null,
         form: FormGroupDirective | NgForm | null
     ): boolean {
-        const isSubmitted = form && form.submitted;
-        return !!(
+        const invalidCtrl = !!(
             control &&
             control.invalid &&
-            (control.dirty || control.touched || isSubmitted)
+            control.parent.dirty
         );
+        const invalidParent = !!(
+            control &&
+            control.parent &&
+            control.parent.getError('menor') &&
+            control.parent.dirty
+        );
+
+        return invalidCtrl || invalidParent;
     }
 }
 @Component({
@@ -35,13 +41,14 @@ export class SubmeterProjetoComponent implements OnInit {
     matcher = new MyErrorStateMatcher();
     constructor(
         private fb: FormBuilder,
-        private http: HttpClient,
         private alert: AlertComponent,
         private projetoService: ProjetoService
-    ) {}
+    ) { 
+        this.criarForm();
+    }
 
     ngOnInit(): void {
-        this.criarForm();
+        
     }
 
     criarForm() {
@@ -50,12 +57,19 @@ export class SubmeterProjetoComponent implements OnInit {
             titulo: [null, Validators.required],
             descricao: [null, [Validators.required]],
             dataInicio: [null, Validators.required],
-            dataFim: [null, Validators.required],
+            dataFim: [null, [Validators.required]],
             orcamento: [null, Validators.required],
-            emailUsuario: [sessionStorage.getItem("email")],
+            emailUsuario: [sessionStorage.getItem('email')],
             isAprovado: [null],
-        });
+        }, { validator: this.checkDatas});
     }
+
+    checkDatas(formGroup: FormGroup) {
+        let dataInicio = formGroup.get('dataInicio').value;
+        let dataFim = formGroup.get('dataFim').value;
+        return new Date(dataInicio) < new Date(dataFim) ? null : { menor: true };
+    }
+
     submeterProjeto() {
         if (this.submeterProjetoForm.valid) {
             this.projetoService

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { AlertComponent } from '@fuse/components/alert/alert.component';
+import { Pesquisador } from 'app/main/models/pesquisador.model';
 import { PesquisadorService } from './../../../../services/pesquisador.service';
-import { Pesquisador } from './../../pesquisador';
 
 
 @Component({

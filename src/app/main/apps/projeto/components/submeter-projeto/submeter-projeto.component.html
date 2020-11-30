@@ -17,7 +17,7 @@
                     <mat-divider></mat-divider>
                     <div class="card-content">
                         <form [formGroup]="submeterProjetoForm">
-                            <div fxLayout="row" fxLayoutGap="2rem">
+                            <div fxLayout="row" fxLayoutGap="2rem" fxLayout.lt-md="column">
                                 <div fxFlex="1 1 calc(50% - 2rem)" fxFlex.lt-md="100%">
                                     <mat-form-field>
                                         <mat-label>Nome</mat-label>
@@ -31,7 +31,7 @@
                                     </mat-form-field>
                                 </div>
                             </div>
-                            <div fxLayout="row" fxLayoutGap="2rem">
+                            <div fxLayout="row" fxLayoutGap="2rem" fxLayout.lt-md="column">
                                 <div class="dataInicio" fxFlex="50%" fxFlex.lt-md="100%">
                                     <mat-form-field>
                                         <mat-label>Data Inicio</mat-label>
@@ -41,12 +41,15 @@
                                 <div fxFlex="50%" fxFlex.lt-md="100%">
                                     <mat-form-field>
                                         <mat-label>Data Finalização</mat-label>
-                                        <input matInput type="date" max="9999-12-31" formControlName="dataFim" required/>
+                                        <input matInput type="date" max="9999-12-31" [errorStateMatcher]="matcher" formControlName="dataFim" required/>
+                                        <mat-error *ngIf="submeterProjetoForm.hasError('menor')">
+                                            Data de término não pode ser maior que a de início.
+                                        </mat-error>
                                     </mat-form-field>
                                 </div>
                             </div>
-                            <div fxLayout="row" fxFlex.lt-md="colunm">
-                                <div fxFlex="100%" fxFlex.lt-md="100%">
+                            <div fxLayout="row">
+                                <div fxFlex="100%">
                                     <mat-form-field>
                                         <mat-label>Descrição</mat-label>
                                         <textarea id="desricao" class="area-descricao" rows="5" matInput formControlName="descricao" required>

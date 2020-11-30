@@ -1,10 +1,10 @@
-import { CoordenadorService } from './../../../../services/coordenador.service';
-import { Coordenador } from './../../coordenador';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { AlertComponent } from '@fuse/components/alert/alert.component';
+import { Coordenador } from '../../../../models/coordenador.model';
+import { CoordenadorService } from './../../../../services/coordenador.service';
 
 @Component({
     selector: 'app-coordenador-pesquisar',
@@ -31,10 +31,10 @@ export class CoordenadorPesquisarComponent implements OnInit {
 
     obterCoordenadores() {
         this.coordenadorService.obterCoordenadores()
-      .subscribe(coordenadores => {
-        this.coordenadores.data = coordenadores ;
-      }, erro => this.alert.show('Erro', 'Não foi possível obter os coordenadores!', 'error')
-      );
+            .subscribe(coordenadores => {
+                this.coordenadores.data = coordenadores;
+            }, erro => this.alert.show('Erro', 'Não foi possível obter os coordenadores!', 'error')
+            );
     }
 
     criarForm() {

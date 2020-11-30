@@ -1,12 +1,10 @@
-import { AlertComponent } from './../../../../../../@fuse/components/alert/alert.component';
-import { ProjetoService } from './../../../../services/projeto.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
 import { Status } from '@fuse/enums/status.enum';
 import { Projeto } from 'app/main/models/projeto.model';
-import { AprovarProjeto } from './aprovar-projeto';
+import { AlertComponent } from './../../../../../../@fuse/components/alert/alert.component';
+import { ProjetoService } from './../../../../services/projeto.service';
 import { AprovarProjetoModalComponent } from './components/aprovar-projeto-modal/aprovar-projeto-modal.component';
 
 @Component({
@@ -19,34 +17,34 @@ export class AprovarProjetoComponent implements OnInit {
     projetos: MatTableDataSource<Projeto> = new MatTableDataSource();
     status = Status;
 
-    constructor( 
+    constructor(
         private dialog: MatDialog,
         private projetoService: ProjetoService,
         private alert: AlertComponent) { }
 
     ngOnInit(): void {
         this.obterProjetos();
-     }
+    }
 
     analisarProjeto(projeto: Projeto, indice: number) {
         let dialogRef = this.dialog.open(AprovarProjetoModalComponent, { data: projeto });
-        dialogRef.afterClosed().subscribe(resposta => { 
+        dialogRef.afterClosed().subscribe(resposta => {
             if (resposta) {
                 this.projetos.data.splice(indice, 1);
                 this.projetos._updateChangeSubscription();
             }
-         })
+        });
     }
 
     recarregarTela() {
         location.reload();
     }
 
-    obterProjetos(){
+    obterProjetos() {
         this.projetoService.obterProjetos(sessionStorage.getItem("email"))
-          .subscribe(projetos => {
-            this.projetos.data = projetos;
-          }, error => this.alert.show("Erro!", "Não foi possível obter os projetos", "error"))
-      }
+            .subscribe(projetos => {
+                this.projetos.data = projetos;
+            }, error => this.alert.show("Erro!", "Não foi possível obter os projetos", "error"))
+    }
 
 }

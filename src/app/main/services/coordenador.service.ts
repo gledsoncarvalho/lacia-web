@@ -1,8 +1,8 @@
-import { Coordenador } from './../apps/coordenador/coordenador';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { AlertComponent } from './../../../@fuse/components/alert/alert.component';
+import { Coordenador } from '../models/coordenador.model';
 
 const httpOptions = {
     headers: new HttpHeaders({
