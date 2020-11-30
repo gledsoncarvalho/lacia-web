@@ -18,7 +18,6 @@ const httpOptions = {
 })
 export class JwtService {
 
-    private usuarioAutenticado: boolean = false;
     constructor(
         private _http: HttpClient, 
         private _alert: AlertComponent,
@@ -29,30 +28,27 @@ export class JwtService {
     login(usuario: UserLogin) {
         this._http.post<UserResponse>(environment.url + '/login', JSON.stringify(usuario), httpOptions)
             .subscribe(response => {
-                console.log(response.tipoUsuario);
                 sessionStorage.setItem('token', response.token);
                 sessionStorage.setItem('email', response.email);
                 sessionStorage.setItem('tipoUsuario', response.tipoUsuario);
                 sessionStorage.setItem('fotoPerfil', atob(response.fotoPerfil));
                 sessionStorage.setItem('nome', response.nome);
-                this.usuarioAutenticado = true;
-                this._router.navigateByUrl('/apps/projetos/meus');
+                sessionStorage.setItem('autenticado', JSON.stringify(true));
+                this._router.navigateByUrl('/apps/projetos/tarefas');
             }, erro => {
-                this.usuarioAutenticado = false;
                 this._alert.show('Login', erro.error, 'error');
             });
     }
 
     logout() {
-        sessionStorage.setItem('token', null);
-        sessionStorage.setItem('email', null);
-        sessionStorage.setItem('tipoUsuario', null);
-        sessionStorage.setItem('fotoPerfil', null);
-        sessionStorage.setItem('nome', null);
+        sessionStorage.clear();
         this._router.navigateByUrl('pages/auth/login');
     }
 
     isAutenticado(): boolean {
-        return this.usuarioAutenticado && (sessionStorage.getItem('token') !== null);
+        if (sessionStorage.getItem('autenticado')) {
+            return JSON.parse(sessionStorage.getItem('autenticado')) && (sessionStorage.getItem('token') !== null);
+        }
+        return false;
     }
 }

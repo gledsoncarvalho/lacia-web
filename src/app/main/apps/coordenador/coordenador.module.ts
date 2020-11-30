@@ -3,6 +3,7 @@ import { FuseSharedModule } from '../../../../@fuse/shared.module';
 import { CoordenadorPesquisarComponent } from './components/coordenador-pesquisar/coordenador-pesquisar.component';
 import { CoordenadorRoutingModule } from './coordenador-routing.module';
 import { CoordenadorComponent } from './coordenador.component';
+import { PermissaoGuard } from '../../guards/permissao.guard';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { CoordenadorComponent } from './coordenador.component';
         //SharedModule,
         CoordenadorRoutingModule
     ],
-    entryComponents: [
+    providers: [
+        PermissaoGuard
     ]
 })
 export class CoordenadorModule { }

@@ -2,13 +2,19 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { PesquisadorComponent } from './pesquisador.component';
+import { PermissaoGuard } from '../../guards/permissao.guard';
 
 const routes: Routes = [
     {
-        path: '', 
+        path: '',
+        data: {
+            permissions: ['C', 'P']  
+        },
+        canActivateChild: [PermissaoGuard],
         children: [
             {
-                path: '', component: PesquisadorComponent
+                path: '', 
+                component: PesquisadorComponent
             },
         ]
     },

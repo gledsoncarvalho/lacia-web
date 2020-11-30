@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProjetoComponent } from './projeto.component';
-import { ProjetosGuard } from '../../guards/projetos.guard';
+import { PermissaoGuard } from '../../guards/permissao.guard';
 
 
 const routes: Routes = [
@@ -16,35 +15,35 @@ const routes: Routes = [
                 data: {
                     permissions: ['C', 'P']  
                 },
-                canActivateChild: [ProjetosGuard]
+                canActivateChild: [PermissaoGuard]
             },
             {
                 path: 'meus', loadChildren: () => import('./components/meu-projeto/meu-projeto.module').then(m => m.MeuProjetoModule),
                 data: {
                     permissions: ['C', 'P']  
                 },
-                canActivateChild: [ProjetosGuard]
+                canActivateChild: [PermissaoGuard]
             },
             {
                 path: 'aprovar', loadChildren: () => import('./components/aprovar-projeto/aprovar-projeto.module').then(m => m.AprovarProjetoModule),
                 data: {
                     permissions: ['C']  
                 },
-                canActivateChild: [ProjetosGuard]
+                canActivateChild: [PermissaoGuard]
             },
             {
                 path: 'cadastrados', loadChildren: () => import('./components/projeto-cadastrado/projeto-cadastrado.module').then(m => m.ProjetoCadastradoModule),
                 data: {
                     permissions: ['C', 'P']  
                 },
-                canActivateChild: [ProjetosGuard]
+                canActivateChild: [PermissaoGuard]
             },
             {
                 path: 'tarefas', loadChildren: () => import('./components/scrumboard/scrumboard.module').then(m => m.ScrumboardModule),
                 data: {
                     permissions: ['C', 'P', 'A']  
                 },
-                canActivateChild: [ProjetosGuard]
+                canActivateChild: [PermissaoGuard]
             },
         ]
     }

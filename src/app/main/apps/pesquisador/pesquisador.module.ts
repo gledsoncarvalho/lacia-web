@@ -5,6 +5,7 @@ import { FuseSharedModule } from '../../../../@fuse/shared.module';
 import { PesquisadorPesquisarComponent } from './components/pesquisador-pesquisar/pesquisador-pesquisar.component';
 import { PesquisadorRoutingModule } from './pesquisador-routing.module';
 import { PesquisadorComponent } from './pesquisador.component';
+import { PermissaoGuard } from '../../guards/permissao.guard';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { PesquisadorComponent } from './pesquisador.component';
         PesquisadorRoutingModule
     ],
     providers: [
-        PesquisadorService
+        PesquisadorService,
+        PermissaoGuard
     ]
 
 })
