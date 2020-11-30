@@ -67,7 +67,7 @@ export class SubmeterProjetoComponent implements OnInit {
     checkDatas(formGroup: FormGroup) {
         let dataInicio = formGroup.get('dataInicio').value;
         let dataFim = formGroup.get('dataFim').value;
-        return new Date(dataInicio) < new Date(dataFim) ? null : { menor: true };
+        return new Date(dataInicio) <= new Date(dataFim) ? null : { menor: true };
     }
 
     submeterProjeto() {

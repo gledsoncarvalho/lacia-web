@@ -1,3 +1,4 @@
+import { UsuarioService } from './../../../services/usuario.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -17,19 +18,13 @@ export class ForgotPasswordComponent implements OnInit
 {
     forgotPasswordForm: FormGroup;
 
-    /**
-     * Constructor
-     *
-     * @param {FuseConfigService} _fuseConfigService
-     * @param {FormBuilder} _formBuilder
-     */
     constructor(
         private _fuseConfigService: FuseConfigService,
         private _formBuilder: FormBuilder,
-        private alert: AlertComponent
+        private alert: AlertComponent,
+        private usuarioService: UsuarioService
     )
     {
-        // Configure the layout
         this._fuseConfigService.config = {
             layout: {
                 navbar   : {
@@ -48,24 +43,22 @@ export class ForgotPasswordComponent implements OnInit
         };
     }
 
-    // -----------------------------------------------------------------------------------------------------
-    // @ Lifecycle hooks
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * On init
-     */
     ngOnInit(): void
     {
         this.forgotPasswordForm = this._formBuilder.group({
             email: ['', [Validators.required, Validators.email]]
         });
     }
+    
     confirmarSenha() {
         if (this.forgotPasswordForm.valid) {
-            this.alert.show("Enviado!", "Uma nova senha foi enviada para o seu email registrado!", "success");
+            this.usuarioService.recuperarSenha(this.forgotPasswordForm.value.email)
+                .subscribe(() => {
+                    this.alert.show("Enviado!", "Uma nova senha foi enviada para o seu email registrado!", "success");
+                }, error => this.alert.show("Erro", "Email incorreto.", "error") )
         } else {
             this.alert.show("Aviso", "Favor preencher os campos obrigatórios", "warning");
         }
     }
+
 }

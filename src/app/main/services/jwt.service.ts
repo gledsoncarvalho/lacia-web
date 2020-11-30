@@ -1,3 +1,4 @@
+import { PesquisadorSolicitacao } from './../models/pesquisador-solicitacao.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserLogin } from '../models/User.model';
@@ -50,5 +51,9 @@ export class JwtService {
             return JSON.parse(sessionStorage.getItem('autenticado')) && (sessionStorage.getItem('token') !== null);
         }
         return false;
+    }
+
+    solicitarAcessoPesquisador(pesquisadorSolicitacao: PesquisadorSolicitacao){
+        return this._http.post<boolean>(environment.url + '/usuario/solicitacao', JSON.stringify(pesquisadorSolicitacao), httpOptions);
     }
 }
