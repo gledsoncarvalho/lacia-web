@@ -1,3 +1,6 @@
+import { UsuarioProjeto } from './usuario-projeto.model';
+
+
 export interface Projeto {
     idProjeto: number;
     titulo: string;
@@ -6,5 +9,6 @@ export interface Projeto {
     dataInicio: Date;
     dataFim: Date;
     aprovado: boolean;
-    idUser: number;
+    idUser?: number;
+    usuarios: UsuarioProjeto[];
 }

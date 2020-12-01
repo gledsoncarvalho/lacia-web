@@ -1,0 +1,19 @@
+<div class="row">
+    <div fxFlex='100%' fxLayoutGap='2rem'>
+        <h2 mat-dialog-title>Adicionar Membros</h2>
+    </div>
+    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+        <mat-icon mat-dialog-close id="clear">clear</mat-icon>
+    </div>
+</div>
+<mat-divider></mat-divider>
+
+<div fxFlex fxLayout="column" class="scrumboard-members-menu" (click)="$event.stopPropagation()">
+    <mat-checkbox class="member px-16" [checked]="usuarios.indexOf(member) > -1"
+        *ngFor="let member of todosUsuarios">
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <img [src]=" member.fotoPerfil" class="avatar" />
+            <p class="member-name">{{ member.nome }}</p>
+        </div>
+    </mat-checkbox>
+</div>

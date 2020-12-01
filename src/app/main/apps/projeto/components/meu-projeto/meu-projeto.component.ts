@@ -1,9 +1,12 @@
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AlertComponent } from './../../../../../../@fuse/components/alert/alert.component';
 import { ProjetoService } from './../../../../services/projeto.service';
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Projeto } from 'app/main/models/projeto.model';
 import { Status } from '../../../../../../@fuse/enums/status.enum';
+import { AddMembroModalComponent } from './components/add-membro-modal/add-membro-modal.component';
+import { UsuarioProjeto } from 'app/main/models/usuario-projeto.model';
 
 
 @Component({
@@ -22,6 +25,7 @@ export class MeuProjetoComponent implements OnInit {
     this.projetos.filter = filterValue.trim().toLowerCase();
   }
   constructor(
+    public matDialog: MatDialog,
     private projetoService: ProjetoService, 
     private alert: AlertComponent){ }
 
@@ -54,5 +58,14 @@ export class MeuProjetoComponent implements OnInit {
       default:
         return "Em espera";
     }
+  }
+
+  openModal(usuarios: UsuarioProjeto[]){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.id = "modal-component";
+    dialogConfig.height = "350px";
+    dialogConfig.width = "600px";
+    dialogConfig.data = usuarios;
+    const modalDialog = this.matDialog.open(AddMembroModalComponent, dialogConfig);
   }
 }
