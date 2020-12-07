@@ -8,7 +8,7 @@
             </button>
         </div>
         <div fxFlex fxLayout="column" fusePerfectScrollbar>
-            <div class="label" *ngFor="let label of board.labels" fxFlex="0 0 auto" fxLayout="row"
+            <div class="label" *ngFor="let label of board.labels; let i = index"  fxFlex="0 0 auto" fxLayout="row"
                 fxLayoutAlign="space-between center">
                 <div class="label-color" [ngClass]="label.color"></div>
                 <mat-checkbox fxFlex fxLayout="row" fxLayoutAlign="start center"
@@ -22,7 +22,7 @@
                     <mat-icon class="s-16" (click)="labelsMenuView ='edit';selectedLabel = label">mode_edit</mat-icon>
                 </button>
                 <button mat-icon-button>
-                    <mat-icon style="color: red;" class="s-16" (click)="labelsMenuView ='edit';selectedLabel = label">
+                    <mat-icon style="color: red;" class="s-16" (click)="removeLabel(i)">
                         delete</mat-icon>
                 </button>
             </div>

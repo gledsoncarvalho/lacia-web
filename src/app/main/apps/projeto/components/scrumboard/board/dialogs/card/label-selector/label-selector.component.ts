@@ -111,4 +111,8 @@ export class ScrumboardLabelSelectorComponent implements OnInit, OnDestroy
         this.newLabel.name = '';
         this.labelsMenuView = 'labels';
     }
+
+    removeLabel(indice: number) {
+        this.board.labels.splice(indice, 1);
+    }
 }
