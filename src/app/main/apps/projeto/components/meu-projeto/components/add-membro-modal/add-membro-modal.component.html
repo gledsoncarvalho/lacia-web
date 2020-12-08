@@ -1,4 +1,4 @@
-<div class="row">
+<div fxLayout="row">
     <div fxFlex='100%' fxLayoutGap='2rem'>
         <h2 mat-dialog-title>Adicionar Membros</h2>
     </div>
@@ -7,13 +7,18 @@
     </div>
 </div>
 <mat-divider></mat-divider>
-
-<div fxFlex fxLayout="column" class="scrumboard-members-menu" (click)="$event.stopPropagation()">
-    <mat-checkbox class="member px-16" [checked]="usuarios.indexOf(member) > -1"
-        *ngFor="let member of todosUsuarios">
-        <div fxLayout="row" fxLayoutAlign="start center">
-            <img [src]=" member.fotoPerfil" class="avatar" />
-            <p class="member-name">{{ member.nome }}</p>
-        </div>
-    </mat-checkbox>
-</div>
+<mat-dialog-content>
+    <div fxFlex fxLayout="column" class="scrumboard-members-menu" (click)="$event.stopPropagation()">
+        <mat-checkbox class="member px-16" (change)="adicionarMembro(member)" [checked]="checked(member)" *ngFor="let member of todosUsuarios">
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <img [src]="retornarImagem(member.fotoPerfil)" class="avatar" />
+                <p class="member-name">{{ member.nome }}</p>
+            </div>
+        </mat-checkbox>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button (click)="cadastrarMembros()" mat-raised-button class="btnAcao">
+        <mat-icon>check</mat-icon>&nbsp; Salvar
+    </button>
+</mat-dialog-actions>

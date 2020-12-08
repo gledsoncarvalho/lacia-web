@@ -25,6 +25,9 @@ import { MaskDirective } from './directives/mask';
 import { CurrencyMaskModule } from "ng2-currency-mask";
 import { AngularFileUploaderModule } from "angular-file-uploader";
 import { HttpClientModule } from '@angular/common/http';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { UsuarioService } from '../app/main/services/usuario.service';
+import { ProjetoService } from '../app/main/services/projeto.service';
 
 
 @NgModule({
@@ -51,6 +54,7 @@ import { HttpClientModule } from '@angular/common/http';
         FusePipesModule,
         RouterModule,
         MatCardModule,
+        MatCheckboxModule,
         MatButtonModule,
         MatDialogModule,
         MatSidenavModule,
@@ -71,7 +75,9 @@ import { HttpClientModule } from '@angular/common/http';
         AngularFileUploaderModule
     ],
     providers: [
-        AlertComponent
+        AlertComponent,
+        UsuarioService,
+        ProjetoService
     ]
 })
 export class FuseSharedModule {

@@ -47,5 +47,9 @@ export class ProjetoService {
         return this._http.get<Projeto[]>(environment.url + '/projeto/todos', httpOptions);
     }
 
+    cadastrarMembrosProjeto(projeto: Projeto) {
+        return this._http.post<boolean>(environment.url + '/projeto/usuario', JSON.stringify(projeto), httpOptions);
+    }
+
 }
 
