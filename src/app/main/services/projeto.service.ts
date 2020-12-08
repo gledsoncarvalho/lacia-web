@@ -51,5 +51,9 @@ export class ProjetoService {
         return this._http.post<boolean>(environment.url + '/projeto/usuario', JSON.stringify(projeto), httpOptions);
     }
 
+    obterProjetosPorMembros() {
+        return this._http.get<Projeto[]>(environment.url + `/projeto/membros/${sessionStorage.getItem('email')}`, httpOptions);
+    }
+
 }
 

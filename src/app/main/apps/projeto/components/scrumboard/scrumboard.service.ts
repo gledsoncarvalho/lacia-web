@@ -3,47 +3,38 @@ import { HttpClient } from '@angular/common/http';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Board } from './board.model';
+import { ProjetoService } from '../../../../services/projeto.service';
+import { Projeto } from '../../../../models/projeto.model';
+import { ListaTarefaService } from '../../../../services/lista-tarefa.service';
 
 @Injectable()
 export class ScrumboardService implements Resolve<any>
 {
-    boards: any[];
+    projetos: Projeto[];
     routeParams: any;
-    board: any;
+    projeto: any;
 
     onBoardsChanged: BehaviorSubject<any>;
     onBoardChanged: BehaviorSubject<any>;
 
     private URL: string = 'api/scrumboard-boards'; 
 
-    /**
-     * Constructor
-     *
-     * @param {HttpClient} _httpClient
-     */
     constructor(
-        private _httpClient: HttpClient
+        private _httpClient: HttpClient,
+        private projetoService: ProjetoService
     )
     {
-        // Set the defaults
         this.onBoardsChanged = new BehaviorSubject([]);
         this.onBoardChanged = new BehaviorSubject([]);
     }
 
-    /**
-     * Resolver
-     *
-     * @param {ActivatedRouteSnapshot} route
-     * @param {RouterStateSnapshot} state
-     * @returns {Observable<any> | Promise<any> | any}
-     */
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
     {
         this.routeParams = route.params;
 
         return new Promise((resolve, reject) => {
             Promise.all([
-                this.getBoards()
+                this.getProjetos()
             ]).then(
                 () => {
                     resolve();
@@ -53,84 +44,54 @@ export class ScrumboardService implements Resolve<any>
         });
     }
 
-    /**
-     * Get boards
-     *
-     * @returns {Promise<any>}
-     */
-    getBoards(): Promise<any>
+    getProjetos(): Promise<any>
     {
         return new Promise((resolve, reject) => {
-            this._httpClient.get<Board[]>(this.URL)
-                .subscribe((response: any) => {
-                    this.boards = response;
-                    this.onBoardsChanged.next(this.boards);
-                    resolve(this.boards);
+            this.projetoService.obterProjetosPorMembros()
+                .subscribe((response: Projeto[]) => {
+                    this.projetos = response;
+                    this.onBoardsChanged.next(this.projetos);
+                    resolve(this.projetos);
                 }, reject);
         });
     }
 
-    /**
-     * Get board
-     *
-     * @param boardId
-     * @returns {Promise<any>}
-     */
-    getBoard(boardId): Promise<any>
+    getProjeto(projetoId): Promise<any>
     {
         return new Promise((resolve, reject) => {
-            this._httpClient.get('api/scrumboard-boards/' + boardId)
+            this._httpClient.get('api/scrumboard-boards/')
                 .subscribe((response: any) => {
-                    this.board = response;
-                    this.onBoardChanged.next(this.board);
-                    resolve(this.board);
+                    this.projeto = response;
+                    this.onBoardChanged.next(this.projeto);
+                    resolve(this.projeto);
                 }, reject);
         });
     }
 
-    /**
-     * Add card
-     *
-     * @param listId
-     * @param newCard
-     * @returns {Promise<any>}
-     */
     addCard(listId, newCard): Promise<any>
     {
-        this.board.lists.map((list) => {
+        this.projeto.lists.map((list) => {
             if ( list.id === listId )
             {
                 return list.idCards.push(newCard.id);
             }
         });
 
-        this.board.cards.push(newCard);
+        this.projeto.cards.push(newCard);
 
         return this.updateBoard();
     }
 
-    /**
-     * Add list
-     *
-     * @param newList
-     * @returns {Promise<any>}
-     */
     addList(newList): Promise<any>
     {
-        this.board.lists.push(newList);
+        this.projeto.lists.push(newList);
 
         return this.updateBoard();
     }
 
-    /**
-     * Remove list
-     *
-     * @param listId
-     * @returns {Promise<any>}
-     */
     removeList(listId): Promise<any>
     {
-        const list = this.board.lists.find((_list) => {
+        const list = this.projeto.lists.find((_list) => {
             return _list.id === listId;
         });
 
@@ -139,62 +100,46 @@ export class ScrumboardService implements Resolve<any>
             this.removeCard(cardId);
         }
 
-        const index = this.board.lists.indexOf(list);
+        const index = this.projeto.lists.indexOf(list);
 
-        this.board.lists.splice(index, 1);
+        this.projeto.lists.splice(index, 1);
 
         return this.updateBoard();
     }
 
-    /**
-     * Remove card
-     *
-     * @param cardId
-     * @param listId
-     */
     removeCard(cardId, listId?): void
     {
-        const card = this.board.cards.find((_card) => {
+        const card = this.projeto.cards.find((_card) => {
             return _card.id === cardId;
         });
 
         if ( listId )
         {
-            const list = this.board.lists.find((_list) => {
+            const list = this.projeto.lists.find((_list) => {
                 return listId === _list.id;
             });
             list.idCards.splice(list.idCards.indexOf(cardId), 1);
         }
 
-        this.board.cards.splice(this.board.cards.indexOf(card), 1);
+        this.projeto.cards.splice(this.projeto.cards.indexOf(card), 1);
 
         this.updateBoard();
     }
 
-    /**
-     * Update board
-     *
-     * @returns {Promise<any>}
-     */
     updateBoard(): Promise<any>
     {
         return new Promise((resolve, reject) => {
-            this._httpClient.post('api/scrumboard-boards/' + this.board.id, this.board)
+            this._httpClient.post('api/scrumboard-boards/' + this.projeto.id, this.projeto)
                 .subscribe(response => {
-                    this.onBoardChanged.next(this.board);
-                    resolve(this.board);
+                    this.onBoardChanged.next(this.projeto);
+                    resolve(this.projeto);
                 }, reject);
         });
     }
 
-    /**
-     * Update card
-     *
-     * @param newCard
-     */
     updateCard(newCard): void
     {
-        this.board.cards.map((_card) => {
+        this.projeto.cards.map((_card) => {
             if ( _card.id === newCard.id )
             {
                 return newCard;
@@ -204,12 +149,6 @@ export class ScrumboardService implements Resolve<any>
         this.updateBoard();
     }
 
-    /**
-     * Create new board
-     *
-     * @param board
-     * @returns {Promise<any>}
-     */
     createNewBoard(board): Promise<any>
     {
         return new Promise((resolve, reject) => {
@@ -224,25 +163,15 @@ export class ScrumboardService implements Resolve<any>
 @Injectable()
 export class BoardResolve implements Resolve<any>
 {
-    /**
-     * Constructor
-     *
-     * @param {ScrumboardService} _scrumboardService
-     */
     constructor(
-        private _scrumboardService: ScrumboardService
+        private _scrumboardService: ScrumboardService,
+        private _listaTarefaService: ListaTarefaService
     )
     {
     }
 
-    /**
-     * Resolver
-     *
-     * @param {ActivatedRouteSnapshot} route
-     * @returns {Promise<any>}
-     */
     resolve(route: ActivatedRouteSnapshot): Promise<any>
     {
-        return this._scrumboardService.getBoard(route.paramMap.get('boardId'));
+        return this._listaTarefaService.obterListas(+route.paramMap.get('boardId')).toPromise();
     }
 }

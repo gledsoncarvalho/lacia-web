@@ -24,8 +24,8 @@ export class ListaTarefaService {
         httpOptions.headers.set('Access-Control-Allow-Headers', '*');
     }
 
-    obterListas(idLista: any){
-      return this._http.get<any[]>(environment.url + `/listaTarefa/todos/${idLista}`, httpOptions);
+    obterListas(idProjeto: number){
+      return this._http.get<any[]>(environment.url + `/listaTarefa/todos/${idProjeto}`, httpOptions);
     }
 
     atualizarListaTarefa(lista: any){

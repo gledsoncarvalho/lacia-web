@@ -8,6 +8,8 @@ import { fuseAnimations } from '@fuse/animations';
 
 import { ScrumboardService } from './scrumboard.service';
 import { Board } from './board.model';
+import { Projeto } from '../../../../models/projeto.model';
+import { AlertComponent } from '../../../../../../@fuse/components/alert/alert.component';
 
 @Component({
     selector     : 'scrumboard',
@@ -18,7 +20,7 @@ import { Board } from './board.model';
 })
 export class ScrumboardComponent implements OnInit, OnDestroy
 {
-    boards: any[];
+    projetos: Projeto[];
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -32,46 +34,29 @@ export class ScrumboardComponent implements OnInit, OnDestroy
     constructor(
         private  _router: Router,
         private _scrumboardService: ScrumboardService,
-        private projetoService: ProjetoService
+        private projetoService: ProjetoService,
+        private alert: AlertComponent
     )
     {
-        // Set the private defaults
         this._unsubscribeAll = new Subject();
     }
 
-    // -----------------------------------------------------------------------------------------------------
-    // @ Lifecycle hooks
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * On init
-     */
     ngOnInit(): void
     {
-        this._scrumboardService.onBoardsChanged
-            .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe(boards => {
-                this.boards = boards;
-            });
+        this.obterProjetosPorUsuario();
+        //this._scrumboardService.onBoardsChanged
+          //  .pipe(takeUntil(this._unsubscribeAll))
+            //.subscribe(boards => {
+              //  this.projetos = boards;
+            //});
     }
 
-    /**
-     * On destroy
-     */
     ngOnDestroy(): void
     {
-        // Unsubscribe from all subscriptions
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
     }
 
-    // -----------------------------------------------------------------------------------------------------
-    // @ Public methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * New board
-     */
     newBoard(): void
     {
         const newBoard = new Board({});
@@ -81,6 +66,9 @@ export class ScrumboardComponent implements OnInit, OnDestroy
     }
 
     obterProjetosPorUsuario(){
-        
+        this.projetoService.obterProjetosPorMembros()
+            .subscribe(projetos => {
+                this.projetos = projetos;
+            }, error => this.alert.show('Erro','Não foi possível obter os projetos!', 'error'));
     }
 }
