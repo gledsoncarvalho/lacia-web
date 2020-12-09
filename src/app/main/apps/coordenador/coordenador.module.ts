@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FuseSharedModule } from '../../../../@fuse/shared.module';
 import { CoordenadorPesquisarComponent } from './components/coordenador-pesquisar/coordenador-pesquisar.component';
 import { CoordenadorRoutingModule } from './coordenador-routing.module';
@@ -18,6 +18,7 @@ import { PermissaoGuard } from '../../guards/permissao.guard';
     ],
     providers: [
         PermissaoGuard
-    ]
+    ],
+    schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class CoordenadorModule { }

@@ -72,7 +72,8 @@ import { ProjetoService } from '../app/main/services/projeto.service';
         MatExpansionModule,
         NgBrazil,
         CurrencyMaskModule,
-        AngularFileUploaderModule
+        AngularFileUploaderModule,
+        AlertComponent
     ],
     providers: [
         AlertComponent,

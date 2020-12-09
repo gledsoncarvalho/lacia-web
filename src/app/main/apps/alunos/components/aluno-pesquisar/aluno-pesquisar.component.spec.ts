@@ -1,4 +1,7 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FuseSharedModule } from '@fuse/shared.module';
 
 import { AlunoPesquisarComponent } from './aluno-pesquisar.component';
 
@@ -8,7 +11,8 @@ describe('AlunoPesquisarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AlunoPesquisarComponent ]
+      declarations: [ AlunoPesquisarComponent ],
+      imports: [ FormsModule, ReactiveFormsModule, FuseSharedModule, BrowserAnimationsModule ]
     })
     .compileComponents();
   }));

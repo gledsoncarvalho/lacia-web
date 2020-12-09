@@ -1,4 +1,7 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FuseSharedModule } from '@fuse/shared.module';
+import { ProjetoService } from 'app/main/services/projeto.service';
 
 import { ProjetoCadastradoComponent } from './projeto-cadastrado.component';
 
@@ -8,7 +11,9 @@ describe('ProjetoCadastradoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProjetoCadastradoComponent ]
+      declarations: [ ProjetoCadastradoComponent ],
+      imports: [ FuseSharedModule, BrowserAnimationsModule ],
+      providers: [ ProjetoService ]
     })
     .compileComponents();
   }));

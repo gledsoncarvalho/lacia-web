@@ -1,3 +1,5 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FuseSharedModule } from './../../../../../../@fuse/shared.module';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PesquisadorPesquisarComponent } from './pesquisador-pesquisar.component';
@@ -8,7 +10,8 @@ describe('PesquisadorPesquisarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PesquisadorPesquisarComponent ]
+      declarations: [ PesquisadorPesquisarComponent ],
+      imports: [ FuseSharedModule, BrowserAnimationsModule ]
     })
     .compileComponents();
   }));

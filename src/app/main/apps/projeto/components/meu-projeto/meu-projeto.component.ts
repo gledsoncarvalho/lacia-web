@@ -71,8 +71,8 @@ export class MeuProjetoComponent implements OnInit {
                 this.projetoService.cadastrarMembrosProjeto(projeto)
                     .subscribe(() => {
                         this.alert.show(
-                            "Submetido!",
-                            "O projeto foi submetido com sucesso!",
+                            "Adicionados!",
+                            "Membros adicionados com sucesso!",
                             "success"
                         );
                         this.projetos[indiceProjeto] = projeto;
