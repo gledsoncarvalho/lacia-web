@@ -22,15 +22,8 @@ export class ScrumboardComponent implements OnInit, OnDestroy
 {
     projetos: Projeto[];
 
-    // Private
     private _unsubscribeAll: Subject<any>;
 
-    /**
-     * Constructor
-     *
-     * @param {Router} _router
-     * @param {ScrumboardService} _scrumboardService
-     */
     constructor(
         private  _router: Router,
         private _scrumboardService: ScrumboardService,

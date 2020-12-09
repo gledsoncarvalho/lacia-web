@@ -20,7 +20,6 @@ export class ScrumboardBoardComponent implements OnInit, OnDestroy
 {
     board: any;
 
-    // Private
     private _unsubscribeAll: Subject<any>;
 
     constructor(
@@ -29,45 +28,22 @@ export class ScrumboardBoardComponent implements OnInit, OnDestroy
         private _scrumboardService: ScrumboardService
     )
     {
-        // Set the private defaults
         this._unsubscribeAll = new Subject();
     }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Lifecycle hooks
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * On init
-     */
     ngOnInit(): void
     {
         this._scrumboardService.onBoardChanged
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(board => {
-                this.board = board;
+               this.board = board;
             });
     }
 
-    /**
-     * On destroy
-     */
     ngOnDestroy(): void
     {
-        // Unsubscribe from all subscriptions
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
     }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Public methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * On list add
-     *
-     * @param newListName
-     */
     onListAdd(newListName): void
     {
         if ( newListName === '' )
@@ -78,22 +54,12 @@ export class ScrumboardBoardComponent implements OnInit, OnDestroy
         this._scrumboardService.addList(new List({name: newListName}));
     }
 
-    /**
-     * On board name changed
-     *
-     * @param newName
-     */
     onBoardNameChanged(newName): void
     {
-        this._scrumboardService.updateBoard();
-        this._location.go('/apps/scrumboard/boards/' + this.board.id + '/' + this.board.uri);
+        //this._scrumboardService.updateBoard();
+        this._location.go('/apps/scrumboard/boards/' + this.board.id + '/' );
     }
 
-    /**
-     * On drop
-     *
-     * @param ev
-     */
     onDrop(ev): void
     {
         this._scrumboardService.updateBoard();

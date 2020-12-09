@@ -21,7 +21,9 @@ export class ScrumboardService implements Resolve<any>
 
     constructor(
         private _httpClient: HttpClient,
-        private projetoService: ProjetoService
+        private projetoService: ProjetoService,
+        private _listaTarefaService: ListaTarefaService
+
     )
     {
         this.onBoardsChanged = new BehaviorSubject([]);
@@ -56,10 +58,10 @@ export class ScrumboardService implements Resolve<any>
         });
     }
 
-    getProjeto(projetoId): Promise<any>
+    getProjeto(projetoId: number): Promise<any>
     {
         return new Promise((resolve, reject) => {
-            this._httpClient.get('api/scrumboard-boards/')
+            this._listaTarefaService.obterListas(projetoId)
                 .subscribe((response: any) => {
                     this.projeto = response;
                     this.onBoardChanged.next(this.projeto);
@@ -165,13 +167,12 @@ export class BoardResolve implements Resolve<any>
 {
     constructor(
         private _scrumboardService: ScrumboardService,
-        private _listaTarefaService: ListaTarefaService
     )
     {
     }
 
     resolve(route: ActivatedRouteSnapshot): Promise<any>
     {
-        return this._listaTarefaService.obterListas(+route.paramMap.get('boardId')).toPromise();
+        return this._scrumboardService.getProjeto(+route.paramMap.get('boardId'));
     }
 }

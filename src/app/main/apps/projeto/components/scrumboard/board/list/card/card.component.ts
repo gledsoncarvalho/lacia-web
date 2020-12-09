@@ -3,13 +3,12 @@ import { ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
 
 @Component({
-    selector     : 'scrumboard-board-card',
-    templateUrl  : './card.component.html',
-    styleUrls    : ['./card.component.scss'],
+    selector: 'scrumboard-board-card',
+    templateUrl: './card.component.html',
+    styleUrls: ['./card.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class ScrumboardBoardCardComponent implements OnInit
-{
+export class ScrumboardBoardCardComponent implements OnInit {
     @Input()
     cardId;
 
@@ -17,44 +16,19 @@ export class ScrumboardBoardCardComponent implements OnInit
     board: any;
     myDate = new Date();
 
-    /**
-     * Constructor
-     *
-     * @param {ActivatedRoute} _activatedRoute
-     */
     constructor(
         private _activatedRoute: ActivatedRoute
-    )
-    {
+    ) {
     }
 
-    // -----------------------------------------------------------------------------------------------------
-    // @ Lifecycle hooks
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * On init
-     */
-    ngOnInit(): void
-    {
+    ngOnInit(): void {
         this.board = this._activatedRoute.snapshot.data.board;
-        this.card = this.board.cards.filter((card) => {
-            return this.cardId === card.id;
+        this.card = this.board[0].cartaoTarefaList.filter((card) => {
+            return this.cardId === card.idCartaoTarefa;
         })[0];
     }
 
-    // -----------------------------------------------------------------------------------------------------
-    // @ Public methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Is the card overdue?
-     *
-     * @param cardDate
-     * @returns {boolean}
-     */
-    isOverdue(cardDate): boolean
-    {
+    isOverdue(cardDate): boolean {
         return moment() > moment(new Date(cardDate));
     }
 }

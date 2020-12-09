@@ -1,5 +1,5 @@
 <div fxFlex="1 0 auto" *ngIf="!formActive" class="list-header-name" (click)="openForm()">
-    {{list.name}}
+    {{list.nome}}
 </div>
 
 <form [formGroup]="form" (ngSubmit)="onFormSubmit()"
