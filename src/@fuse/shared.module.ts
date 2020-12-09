@@ -28,6 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { UsuarioService } from '../app/main/services/usuario.service';
 import { ProjetoService } from '../app/main/services/projeto.service';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 @NgModule({
@@ -68,6 +69,7 @@ import { ProjetoService } from '../app/main/services/projeto.service';
         MatDatepickerModule,
         MatProgressSpinnerModule,
         MatDatepickerModule,
+        MatPaginatorModule,
         MatMenuModule,
         MatExpansionModule,
         NgBrazil,

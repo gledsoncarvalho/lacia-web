@@ -30,15 +30,16 @@
                                 {{ mapColunas.get(column) }}
                             </th>
                             <td style="cursor: pointer" mat-cell *matCellDef="let element">
-                                <div
-                                    *ngIf=" column === 'dataInicio' || column === 'dataFim'; else colunaSemData">
+                                <div *ngIf=" column === 'dataInicio' || column === 'dataFim'; else colunaSemData">
                                     {{ element[column] | date: "dd/MM/yyyy" }}
                                 </div>
                                 <ng-template #colunaSemData>
                                     {{ element[column] }}
                                 </ng-template>
                                 <div *ngIf=" column === 'acoes'">
-                                    <mat-icon>{{ element == expandedElement ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</mat-icon>
+                                    <mat-icon>
+                                        {{ element == expandedElement ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}
+                                    </mat-icon>
                                 </div>
                             </td>
                         </ng-container>
@@ -60,6 +61,8 @@
                         <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row">
                         </tr>
                     </table>
+                    <mat-paginator showFirstLastButtons [pageSizeOptions]="[5, 10, 25, 100]">
+                    </mat-paginator>
                 </div>
             </div>
         </div>

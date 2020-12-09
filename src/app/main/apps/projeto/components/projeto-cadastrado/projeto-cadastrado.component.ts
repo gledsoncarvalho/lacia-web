@@ -1,5 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { AlertComponent } from './../../../../../../@fuse/components/alert/alert.component';
 import { Projeto } from './../../../../models/projeto.model';
@@ -20,8 +21,9 @@ import { ProjetoService } from './../../../../services/projeto.service';
   ],
 })
 
-export class ProjetoCadastradoComponent implements OnInit {
+export class ProjetoCadastradoComponent implements OnInit, AfterViewInit {
 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   menuIsOpen: boolean = false;
   displayedColumns: string[] = ['titulo', 'orcamento', 'dataInicio', 'dataFim', 'acoes'];
   projetos: MatTableDataSource<Projeto> = new MatTableDataSource();
@@ -47,6 +49,11 @@ export class ProjetoCadastradoComponent implements OnInit {
     this.obterTodosProjetosCadastrados();
   }
 
+  ngAfterViewInit() {
+    this.paginator._intl.itemsPerPageLabel = 'Itens por página';
+    this.projetos.paginator = this.paginator;
+  }
+
   menuOpened() {
     this.menuIsOpen = true;
   }
@@ -55,12 +62,12 @@ export class ProjetoCadastradoComponent implements OnInit {
     this.menuIsOpen = false;
   }
 
-  obterTodosProjetosCadastrados(){
+  obterTodosProjetosCadastrados() {
     this.projetoService.obterTodosProjetosCadastrados()
-    .subscribe(projetos => {
-      this.projetos.data = projetos;
-    },
-    error => this.alert.show("Erro!", "Não foi possível obter todos os projetos cadastrados", "error"));
+      .subscribe(projetos => {
+        this.projetos.data = projetos;
+      },
+        error => this.alert.show("Erro!", "Não foi possível obter todos os projetos cadastrados", "error"));
   }
 
 }
