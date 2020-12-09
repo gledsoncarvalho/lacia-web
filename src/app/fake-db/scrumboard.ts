@@ -2,14 +2,9 @@ export class ScrumboardFakeDb
 {
     public static boards = [
         {
-            'id'      : '32gfhaf2',
-            'name'    : 'Lacia Frontend Aplicação',
-            'uri'     : 'acme-frontend-application',
-            'settings': {
-                'color'          : 'fuse-dark',
-                'subscribed'     : false,
-                'cardCoverImages': true
-            },
+            'id'      : '421',
+            'name'    : 'Smart Place',
+            'uri'     : 'smart-place',
             'lists'   : [
                 
             ],
@@ -54,14 +49,9 @@ export class ScrumboardFakeDb
             ]
         },
         {
-            'id'      : '27cfcbe1',
+            'id'      : '422',
             'name'    : 'Lacia Backend Aplicação',
             'uri'     : 'acme-backend-application',
-            'settings': {
-                'color'          : 'indigo',
-                'subscribed'     : false,
-                'cardCoverImages': true
-            },
             'lists'   : [
                 {
                     'id'     : '56027cf5a2ca3839a5d36103',
@@ -93,19 +83,6 @@ export class ScrumboardFakeDb
                         '5640635e19ad3a5dc21416b2'
                     ],
                     'attachments'      : [
-                        /*{
-                            'id'  : '56027cfcbe1b72ecf1fc452a',
-                            'name': 'calendar-app-design.jpg',
-                            'src' : 'assets/images/scrumboard/calendar.jpg',
-                            'time': 'Nov 1 at 12:34PM',
-                            'type': 'image'
-                        },
-                        {
-                            'id'  : '67027cahbe3b52ecf2dc631c',
-                            'url' : 'assets/images/scrumboard/calendar.jpg',
-                            'time': 'Nov 3 at 15:22AM',
-                            'type': 'link'
-                        }*/
                     ],
                     'subscribed'       : true,
                     'checklists'       : [

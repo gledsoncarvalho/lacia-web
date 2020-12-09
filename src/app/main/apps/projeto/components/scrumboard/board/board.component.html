@@ -16,7 +16,7 @@
         </div>
         <div fxFlex class="board-content-wrapper p-16 p-md-24">
             <div class="board-content ngx-dnd-container p-16 p-md-24" fxLayout="row" ngxDroppable="list" [model]="board.lists" (out)="onDrop($event)" [@animateStagger]="{value:'50'}">
-                <scrumboard-board-list class="scrumboard-board-list list-wrapper ngx-dnd-item" ngxDraggable *ngFor="let list of board" [model]="list" [list]="list" [@animate]="{value:'*',params:{duration:'350ms',x:'100%'}}"></scrumboard-board-list>
+                <scrumboard-board-list class="scrumboard-board-list list-wrapper ngx-dnd-item" ngxDraggable *ngFor="let list of board.lists" [model]="list" [list]="list" [@animate]="{value:'*',params:{duration:'350ms',x:'100%'}}"></scrumboard-board-list>
                 <scrumboard-board-add-list class="new-list-wrapper" (listAdded)="onListAdd($event)" ngxDraggable [moves]="false" [@animate]="{value:'*',params:{duration:'350ms',x:'100%'}}"></scrumboard-board-add-list>
             </div>
         </div>

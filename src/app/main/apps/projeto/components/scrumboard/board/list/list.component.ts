@@ -12,12 +12,13 @@ import { Card } from '../../card.model';
 import { ScrumboardCardDialogComponent } from '../dialogs/card/card.component';
 
 @Component({
-    selector: 'scrumboard-board-list',
-    templateUrl: './list.component.html',
-    styleUrls: ['./list.component.scss'],
+    selector     : 'scrumboard-board-list',
+    templateUrl  : './list.component.html',
+    styleUrls    : ['./list.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class ScrumboardBoardListComponent implements OnInit, OnDestroy {
+export class ScrumboardBoardListComponent implements OnInit, OnDestroy
+{
     board: any;
     dialogRef: any;
 
@@ -29,17 +30,35 @@ export class ScrumboardBoardListComponent implements OnInit, OnDestroy {
 
     confirmDialogRef: MatDialogRef<FuseConfirmDialogComponent>;
 
+    // Private
     private _unsubscribeAll: Subject<any>;
 
+    /**
+     * Constructor
+     *
+     * @param {ActivatedRoute} _activatedRoute
+     * @param {ScrumboardService} _scrumboardService
+     * @param {MatDialog} _matDialog
+     */
     constructor(
         private _activatedRoute: ActivatedRoute,
         private _scrumboardService: ScrumboardService,
         private _matDialog: MatDialog
-    ) {
+    )
+    {
+        // Set the private defaults
         this._unsubscribeAll = new Subject();
     }
 
-    ngOnInit(): void {
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
+    {
         this._scrumboardService.onBoardChanged
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(board => {
@@ -47,28 +66,56 @@ export class ScrumboardBoardListComponent implements OnInit, OnDestroy {
             });
     }
 
-    ngOnDestroy(): void {
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
+    {
+        // Unsubscribe from all subscriptions
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
     }
 
-    onListNameChanged(newListName): void {
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On list name changed
+     *
+     * @param newListName
+     */
+    onListNameChanged(newListName): void
+    {
         this.list.name = newListName;
     }
 
-    onCardAdd(newCardName): void {
-        if (newCardName === '') {
+    /**
+     * On card added
+     *
+     * @param newCardName
+     */
+    onCardAdd(newCardName): void
+    {
+        if ( newCardName === '' )
+        {
             return;
         }
 
-        this._scrumboardService.addCard(this.list.id, new Card({ name: newCardName }));
+        this._scrumboardService.addCard(this.list.id, new Card({name: newCardName}));
 
         setTimeout(() => {
             this.listScroll.scrollToBottom(0, 400);
         });
     }
 
-    removeList(listId): void {
+    /**
+     * Remove list
+     *
+     * @param listId
+     */
+    removeList(listId): void
+    {
         this.confirmDialogRef = this._matDialog.open(FuseConfirmDialogComponent, {
             disableClose: false
         });
@@ -76,18 +123,25 @@ export class ScrumboardBoardListComponent implements OnInit, OnDestroy {
         this.confirmDialogRef.componentInstance.confirmMessage = 'Você tem certeza que quer remover esta lista e todos os cartões dela?';
 
         this.confirmDialogRef.afterClosed().subscribe(result => {
-            if (result) {
+            if ( result )
+            {
                 this._scrumboardService.removeList(listId);
             }
         });
     }
 
-    openCardDialog(cardId): void {
+    /**
+     * Open card dialog
+     *
+     * @param cardId
+     */
+    openCardDialog(cardId): void
+    {
         this.dialogRef = this._matDialog.open(ScrumboardCardDialogComponent, {
             panelClass: 'scrumboard-card-dialog',
-            data: {
-                cardId: cardId.idCartaoTarefa,
-                listId: this.list.idCartaoTarefa
+            data      : {
+                cardId: cardId,
+                listId: this.list.id
             }
         });
         this.dialogRef.afterClosed()
@@ -96,7 +150,13 @@ export class ScrumboardBoardListComponent implements OnInit, OnDestroy {
             });
     }
 
-    onDrop(ev): void {
+    /**
+     * On drop
+     *
+     * @param ev
+     */
+    onDrop(ev): void
+    {
         this._scrumboardService.updateBoard();
     }
 }

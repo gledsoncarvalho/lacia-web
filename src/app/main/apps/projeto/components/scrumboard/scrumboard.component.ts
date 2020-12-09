@@ -64,4 +64,9 @@ export class ScrumboardComponent implements OnInit, OnDestroy
                 this.projetos = projetos;
             }, error => this.alert.show('Erro','Não foi possível obter os projetos!', 'error'));
     }
+
+    irParaTarefas(idProjeto: number) {
+        console.log(idProjeto);
+        this._router.navigateByUrl("/apps/projetos/tarefas/boards/teste");
+    }
 }

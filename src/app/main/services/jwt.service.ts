@@ -44,6 +44,7 @@ export class JwtService {
     logout() {
         sessionStorage.clear();
         this._router.navigateByUrl('pages/auth/login');
+        location.reload();
     }
 
     isAutenticado(): boolean {

@@ -12,6 +12,8 @@ import { locale as navigationTurkish } from 'app/navigation/i18n/tr';
 import { navigation } from 'app/navigation/navigation';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { navigationAluno } from './navigation/navigation-aluno';
+import { navigationPesquisador } from './navigation/navigation-pesquisador';
 
 
 
@@ -53,7 +55,7 @@ export class AppComponent implements OnInit, OnDestroy
     )
     {
         // Get default navigation
-        this.navigation = navigation;
+        this.navigation = this.selecionarMenu();
 
         // Register the navigation to the service
         this._fuseNavigationService.register('main', this.navigation);
@@ -186,5 +188,16 @@ export class AppComponent implements OnInit, OnDestroy
     
       menuClosed() {
         this.menuIsOpen = false;
+      }
+
+      selecionarMenu() {
+          switch(sessionStorage.getItem('tipoUsuario')){
+              case 'A':
+                  return navigationAluno;
+              case 'P':
+                  return navigationPesquisador;
+              default:
+                  return navigation;
+          }
       }
 }

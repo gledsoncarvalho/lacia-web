@@ -35,8 +35,17 @@ export class ScrumboardCardDialogComponent implements OnInit, OnDestroy {
     @ViewChild('newCheckListTitleField')
     newCheckListTitleField;
 
+    // Private
     private _unsubscribeAll: Subject<any>;
 
+    /**
+     * Constructor
+     *
+     * @param {MatDialogRef<ScrumboardCardDialogComponent>} matDialogRef
+     * @param _data
+     * @param {MatDialog} _matDialog
+     * @param {ScrumboardService} _scrumboardService
+     */
     constructor(
         private _sanitizer: DomSanitizer,
         public matDialogRef: MatDialogRef<ScrumboardCardDialogComponent>,
@@ -48,14 +57,21 @@ export class ScrumboardCardDialogComponent implements OnInit, OnDestroy {
         this._unsubscribeAll = new Subject();
     }
 
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
     ngOnInit(): void {
         this._scrumboardService.onBoardChanged
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(board => {
                 this.board = board;
 
-                this.card = this.board.cartaoTarefaList.find((_card) => {
-                    return this._data.cardId === _card.idCartaoTarefa;
+                this.card = this.board.cards.find((_card) => {
+                    return this._data.cardId === _card.id;
                 });
 
                 this.list = this.board.lists.find((_list) => {
@@ -64,12 +80,22 @@ export class ScrumboardCardDialogComponent implements OnInit, OnDestroy {
             });
     }
 
+    /**
+     * On destroy
+     */
     ngOnDestroy(): void {
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
     }
 
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Remove due date
+     */
     removeDueDate(): void {
         this.card.due = '';
         this.updateCard();
@@ -79,12 +105,20 @@ export class ScrumboardCardDialogComponent implements OnInit, OnDestroy {
         this.card.due = new Date();
     }
 
+    /**
+     * Toggle subscribe
+     */
     toggleSubscribe(): void {
         this.card.subscribed = !this.card.subscribed;
 
         this.updateCard();
     }
 
+    /**
+     * Toggle cover image
+     *
+     * @param attachmentId
+     */
     toggleCoverImage(attachmentId): void {
         if (this.card.idAttachmentCover === attachmentId) {
             this.card.idAttachmentCover = '';
@@ -96,6 +130,11 @@ export class ScrumboardCardDialogComponent implements OnInit, OnDestroy {
         this.updateCard();
     }
 
+    /**
+     * Remove attachment
+     *
+     * @param attachment
+     */
     removeAttachment(attachment): void {
         if (attachment.id === this.card.idAttachmentCover) {
             this.card.idAttachmentCover = '';
@@ -106,12 +145,22 @@ export class ScrumboardCardDialogComponent implements OnInit, OnDestroy {
         this.updateCard();
     }
 
+    /**
+     * Remove checklist
+     *
+     * @param checklist
+     */
     removeChecklist(checklist): void {
         this.card.checklists.splice(this.card.checklists.indexOf(checklist), 1);
 
         this.updateCard();
     }
 
+    /**
+     * Update checked count
+     *
+     * @param list
+     */
     updateCheckedCount(list): void {
         const checkItems = list.checkItems;
         let checkedItems = 0;
@@ -137,6 +186,12 @@ export class ScrumboardCardDialogComponent implements OnInit, OnDestroy {
         this.updateCard();
     }
 
+    /**
+     * Remove checklist item
+     *
+     * @param checkItem
+     * @param checklist
+     */
     removeChecklistItem(checkItem, checklist): void {
         checklist.checkItems.splice(checklist.checkItems.indexOf(checkItem), 1);
 
@@ -145,6 +200,12 @@ export class ScrumboardCardDialogComponent implements OnInit, OnDestroy {
         this.updateCard();
     }
 
+    /**
+     * Add check item
+     *
+     * @param {NgForm} form
+     * @param checkList
+     */
     addCheckItem(form: NgForm, checkList): void {
         const checkItemVal = form.value.checkItem;
 
@@ -166,6 +227,11 @@ export class ScrumboardCardDialogComponent implements OnInit, OnDestroy {
         this.updateCard();
     }
 
+    /**
+     * Add checklist
+     *
+     * @param {NgForm} form
+     */
     addChecklist(form: NgForm): void {
         this.card.checklists.push({
             id: FuseUtils.generateGUID(),
@@ -180,12 +246,20 @@ export class ScrumboardCardDialogComponent implements OnInit, OnDestroy {
         this.updateCard();
     }
 
+    /**
+     * On checklist menu open
+     */
     onChecklistMenuOpen(): void {
         setTimeout(() => {
             this.newCheckListTitleField.nativeElement.focus();
         });
     }
 
+    /**
+     * Add new comment
+     *
+     * @param {NgForm} form
+     */
     addNewComment(form: NgForm): void {
         const newCommentText = form.value.newComment;
 
@@ -202,6 +276,9 @@ export class ScrumboardCardDialogComponent implements OnInit, OnDestroy {
         this.updateCard();
     }
 
+    /**
+     * Remove card
+     */
     removeCard(): void {
         this.confirmDialogRef = this._matDialog.open(FuseConfirmDialogComponent, {
             disableClose: false
@@ -217,6 +294,9 @@ export class ScrumboardCardDialogComponent implements OnInit, OnDestroy {
         });
     }
 
+    /**
+     * Update card
+     */
     updateCard(): void {
         this._scrumboardService.updateCard(this.card);
     }

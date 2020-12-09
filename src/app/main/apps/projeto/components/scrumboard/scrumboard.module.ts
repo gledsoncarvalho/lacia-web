@@ -19,8 +19,6 @@ import { FuseConfirmDialogModule } from '@fuse/components';
 import { FuseMaterialColorPickerModule } from '@fuse/components/material-color-picker/material-color-picker.module';
 import { FuseSharedModule } from '@fuse/shared.module';
 import { NgxDnDModule } from '@swimlane/ngx-dnd';
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { FakeDbService } from '../../../../../fake-db/fake-db.service';
 import { ScrumboardBoardAddListComponent } from './board/add-list/add-list.component';
 import { ScrumboardBoardComponent } from './board/board.component';
 import { ScrumboardCardDialogComponent } from './board/dialogs/card/card.component';
@@ -32,6 +30,8 @@ import { ScrumboardBoardEditListNameComponent } from './board/list/edit-list-nam
 import { ScrumboardBoardListComponent } from './board/list/list.component';
 import { ScrumboardComponent } from './scrumboard.component';
 import { BoardResolve, ScrumboardService } from './scrumboard.service';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { FakeDbService } from '../../../../../fake-db/fake-db.service';
 
 
 const routes: Routes = [
@@ -67,11 +67,13 @@ const routes: Routes = [
         ScrumboardCardDialogComponent,
         ScrumboardLabelSelectorComponent,
         ScrumboardEditBoardNameComponent,
-      
     ],
     imports: [
         RouterModule.forChild(routes),
-
+        InMemoryWebApiModule.forRoot(FakeDbService, {
+            delay: 0,
+            passThruUnknownUrl: true
+        }),
         MatButtonModule,
         MatCheckboxModule,
         MatChipsModule,
@@ -92,11 +94,7 @@ const routes: Routes = [
 
         FuseSharedModule,
         FuseConfirmDialogModule,
-        FuseMaterialColorPickerModule,
-        InMemoryWebApiModule.forRoot(FakeDbService, {
-            delay: 0,
-            passThruUnknownUrl: true
-        }),
+        FuseMaterialColorPickerModule
     ],
     providers: [
         ScrumboardService,

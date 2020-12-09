@@ -9,12 +9,9 @@ import * as moment from 'moment';
     encapsulation: ViewEncapsulation.None
 })
 export class ScrumboardBoardCardComponent implements OnInit {
-    @Input()
-    cardId;
-
+    @Input() cardId;
     card: any;
     board: any;
-    myDate = new Date();
 
     constructor(
         private _activatedRoute: ActivatedRoute
@@ -23,8 +20,8 @@ export class ScrumboardBoardCardComponent implements OnInit {
 
     ngOnInit(): void {
         this.board = this._activatedRoute.snapshot.data.board;
-        this.card = this.board[0].cartaoTarefaList.filter((card) => {
-            return this.cardId === card.idCartaoTarefa;
+        this.card = this.board.cards.filter((card) => {
+            return this.cardId === card.id;
         })[0];
     }
 
