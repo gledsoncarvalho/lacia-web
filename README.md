@@ -1,32 +1,59 @@
-# LACIA 
+# Projeto WEB LACIA 
+Desenvolvimento de um sistema de gerenciamento de projetos do LACIA (Laboratório avançado de computação e inteligência artificial) de recomendação da disciplina Laboratório de Engenharia de Software ministrada pelo professor Fábio Gomes Rocha na Universidade Tiradentes - UNIT.  
 
-## The Community
+Equipe:
 
-Share your ideas, discuss Fuse and help each other.
+* Vinícius José Santana de Mendonça  - Product Owner
+* Gledson de Carvalho Santos - Scrum Master
+* Brenno Santos Oliveira - Desenvolvedor
+* Diego Alves Ribeiro - Desenvolvedor
+* Francisco José dos Santos Santana - Desenvolvedor
 
-[Click here](http://fusetheme.com/community) to see our Community page.
+## Especificações do projeto
+* Front-End: Angular
+* Back-End: Java
+* Banco de dados: MySQL
 
-## Development server
+## Instalação dos requisitos
+Para a instalação dos requisitos do front-end do projeto LACIA através do promp de comando, navegue até a pasta do projeto e insira o seguinte comando: 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+```
+npm i
+```
 
-## Code scaffolding
+O comando npm i instalará todas as dependências necessárias para o funcionamento do sistema.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Inicialização do sistema
+Para a inicialização da interface do sistema, navegue até a pasta do projeto e insira o seguinte comando: 
 
-## Build
+```
+ng s
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+O comando ng s buildará o projeto e o servidor poderá ser acessado através do link http://localhost:4200 no browser.
 
-## Running unit tests
+O deploy do projeto foi feito no Heroku e pode ser acessado no browser pelo link: XXXXXXXXXXXXXXXX
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Páginas
+<b>Seguem imagens de algumas páginas:</b>
 
-## Running end-to-end tests
+<b>Página Login</b>
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+![Login](https://i.imgur.com/lAZK6hk.jpg)
 
-## Further help
+<b>Página Meu Perfil</b>
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+![MeuPerfil](https://i.imgur.com/Gu21frI.jpg)
+
+<b>Página Coordenadores</b>
+
+![Coordenadores](https://i.imgur.com/6ItlvKE.jpg)
+
+<b>Página Submeter Projeto</b>
+
+![SubmeterProjeto](https://i.imgur.com/K5Ds2RM.jpg)
+
+<b>Página Tarefas</b>
+
+![Tarefas](https://i.imgur.com/zn0KSHZ.jpg)
 
