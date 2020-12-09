@@ -1,3 +1,4 @@
+import { SessionService } from './session.service';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
@@ -17,13 +18,22 @@ const httpOptions = {
 })
 export class CoordenadorService {
 
-    constructor(private _http: HttpClient, private alert: AlertComponent) {
-        httpOptions.headers.set('Access-Control-Allow-Origin', 'http://localhost:4200');
-        httpOptions.headers.set('Access-Control-Allow-Methods', 'POST, GET, DELETE, PUT');
-        httpOptions.headers.set('Access-Control-Allow-Headers', '*');
+    httpOptions: any;
+
+    constructor(private _http: HttpClient, private alert: AlertComponent, private sessionService: SessionService ) {
+        this.httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + this.sessionService.get('token'),
+                'Access-Control-Allow-Origin': 'http://localhost:4200',
+                'Access-Control-Allow-Methods': 'POST, GET, DELETE, PUT',
+                'Access-Control-Allow-Headers': '*'
+
+            })
+        };
     }
 
     obterCoordenadores(){
-      return this._http.get<Coordenador[]>(environment.url + '/coordenadores', httpOptions);
+      return this._http.get<Coordenador[]>(environment.url + '/coordenadores', this.httpOptions);
     }
 }

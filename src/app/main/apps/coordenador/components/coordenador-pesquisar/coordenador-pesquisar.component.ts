@@ -32,7 +32,7 @@ export class CoordenadorPesquisarComponent implements OnInit {
     obterCoordenadores() {
         this.coordenadorService.obterCoordenadores()
             .subscribe(coordenadores => {
-                this.coordenadores.data = coordenadores;
+                this.coordenadores.data = coordenadores as any;
             }, erro => this.alert.show('Erro', 'Não foi possível obter os coordenadores!', 'error')
             );
     }

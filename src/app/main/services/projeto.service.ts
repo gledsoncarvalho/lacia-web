@@ -34,31 +34,31 @@ export class ProjetoService {
     }
 
     cadastrarProjeto(projeto: Projeto) {
-        return this._http.post<boolean>(environment.url + '/projeto/cadastrar', JSON.stringify(projeto), httpOptions);
+        return this._http.post<boolean>(environment.url + '/projeto/cadastrar', JSON.stringify(projeto), this.httpOptions);
     }
 
     obterProjetosPorUsuario(email: string) {
-        return this._http.get<Projeto[]>(environment.url + `/projeto/meus/${email}`, httpOptions);
+        return this._http.get<Projeto[]>(environment.url + `/projeto/meus/${email}`, this.httpOptions);
     }
 
     obterProjetos(email: string) {
-        return this._http.get<Projeto[]>(environment.url + `/projeto/todos/${email}`, httpOptions);
+        return this._http.get<Projeto[]>(environment.url + `/projeto/todos/${email}`, this.httpOptions);
     }
 
     aprovarProjeto(idProjeto: number) {
-        return this._http.put<boolean>(environment.url + `/projeto/aprovar/${idProjeto}`, null, httpOptions)
+        return this._http.put<boolean>(environment.url + `/projeto/aprovar/${idProjeto}`, null, this.httpOptions)
     }
 
     reprovarProjeto(idProjeto: number) {
-        return this._http.put<boolean>(environment.url + `/projeto/reprovar/${idProjeto}`, null, httpOptions)
+        return this._http.put<boolean>(environment.url + `/projeto/reprovar/${idProjeto}`, null, this.httpOptions)
     }
 
     obterTodosProjetosCadastrados() {
-        return this._http.get<Projeto[]>(environment.url + '/projeto/todos', httpOptions);
+        return this._http.get<Projeto[]>(environment.url + '/projeto/todos', this.httpOptions);
     }
 
     cadastrarMembrosProjeto(projeto: Projeto) {
-        return this._http.post<boolean>(environment.url + '/projeto/usuario', JSON.stringify(projeto), httpOptions);
+        return this._http.post<boolean>(environment.url + '/projeto/usuario', JSON.stringify(projeto), this.httpOptions);
     }
 
     obterProjetosPorMembros() {

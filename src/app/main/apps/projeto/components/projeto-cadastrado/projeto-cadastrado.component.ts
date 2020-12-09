@@ -65,7 +65,7 @@ export class ProjetoCadastradoComponent implements OnInit, AfterViewInit {
   obterTodosProjetosCadastrados() {
     this.projetoService.obterTodosProjetosCadastrados()
       .subscribe(projetos => {
-        this.projetos.data = projetos;
+        this.projetos.data = projetos as any;
       },
         error => this.alert.show("Erro!", "Não foi possível obter todos os projetos cadastrados", "error"));
   }

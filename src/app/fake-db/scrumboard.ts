@@ -3,8 +3,8 @@ export class ScrumboardFakeDb
     public static boards = [
         {
             'id'      : '421',
-            'name'    : 'Smart Place',
-            'uri'     : 'smart-place',
+            'name'    : 'Engenharia de Software',
+            'uri'     : 'Engenharia-Software',
             'lists'   : [
                 
             ],
@@ -49,8 +49,8 @@ export class ScrumboardFakeDb
             ]
         },
         {
-            'id'      : '422',
-            'name'    : 'Lacia Backend Aplicação',
+            'id'      : '431',
+            'name'    : 'Cidades Inteligentes',
             'uri'     : 'acme-backend-application',
             'lists'   : [
                 {

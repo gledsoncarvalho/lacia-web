@@ -14,7 +14,7 @@ import { AprovarProjetoModalComponent } from './components/aprovar-projeto-modal
 })
 export class AprovarProjetoComponent implements OnInit {
     displayedColumns: string[] = ['nomeAprovarProjeto', 'orcamentoAprovarProjeto', 'dtInicioAprovarProjeto', 'dtFimAprovarProjeto', 'acoes'];
-    projetos: MatTableDataSource<Projeto> = new MatTableDataSource();
+    projetos: MatTableDataSource<any> = new MatTableDataSource();
     status = Status;
 
     constructor(
@@ -43,7 +43,7 @@ export class AprovarProjetoComponent implements OnInit {
     obterProjetos() {
         this.projetoService.obterProjetos(sessionStorage.getItem("email"))
             .subscribe(projetos => {
-                this.projetos.data = projetos;
+                this.projetos.data = projetos as any;
             }, error => this.alert.show("Erro!", "Não foi possível obter os projetos", "error"))
     }
 

@@ -45,7 +45,7 @@ export class MeuProjetoComponent implements OnInit {
     obterProjetos() {
         this.projetoService.obterProjetosPorUsuario(sessionStorage.getItem("email"))
             .subscribe(projetos => {
-                this.projetos.data = projetos;
+                this.projetos.data = projetos as any;
             }, error => this.alert.show("Erro!", "Não foi possível obter seus projetos", "error"))
     }
 
