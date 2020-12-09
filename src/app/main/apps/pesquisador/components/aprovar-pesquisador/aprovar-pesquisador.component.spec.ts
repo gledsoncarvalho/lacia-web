@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { AlertComponent } from '@fuse/components/alert/alert.component';
+import { FuseSharedModule } from '@fuse/shared.module';
 
 import { AprovarPesquisadorComponent } from './aprovar-pesquisador.component';
 
@@ -8,7 +10,9 @@ describe('AprovarPesquisadorComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AprovarPesquisadorComponent ]
+      declarations: [ AprovarPesquisadorComponent, AlertComponent ],
+      providers: [ AlertComponent ],
+      imports: [ FuseSharedModule ]
     })
     .compileComponents();
   }));

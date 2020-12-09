@@ -1,6 +1,8 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FuseSharedModule } from '@fuse/shared.module';
 import { MeuProjetoComponent } from './meu-projeto.component';
+
 
 describe('MeuProjetoComponent', () => {
   let component: MeuProjetoComponent;
@@ -8,7 +10,8 @@ describe('MeuProjetoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MeuProjetoComponent ]
+      declarations: [ MeuProjetoComponent ],
+      imports: [ FuseSharedModule, BrowserAnimationsModule ]
     })
     .compileComponents();
   }));

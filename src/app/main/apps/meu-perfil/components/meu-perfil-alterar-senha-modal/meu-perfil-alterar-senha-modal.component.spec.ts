@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MeuPerfilService } from 'app/main/services/meu-perfil.service';
 import { MeuPerfilAlterarSenhaModalComponent } from './meu-perfil-alterar-senha-modal.component';
+
 
 describe('MeuPerfilAlterarSenhaModalComponent', () => {
   let component: MeuPerfilAlterarSenhaModalComponent;
@@ -8,9 +11,11 @@ describe('MeuPerfilAlterarSenhaModalComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MeuPerfilAlterarSenhaModalComponent ]
+      declarations: [ MeuPerfilAlterarSenhaModalComponent ],
+      imports: [ FormsModule, ReactiveFormsModule, MatDialogModule, MatDialogRef ],
+      providers: [ MeuPerfilService ]
     })
-    .compileComponents();
+  .compileComponents();
   }));
 
   beforeEach(() => {

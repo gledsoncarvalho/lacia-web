@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialogModule } from '@angular/material/dialog';
+import { FuseSharedModule } from '@fuse/shared.module';
 
 import { AprovarProjetoComponent } from './aprovar-projeto.component';
 
@@ -8,7 +10,8 @@ describe('AprovarProjetoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AprovarProjetoComponent ]
+      declarations: [ AprovarProjetoComponent ],
+      imports: [ FuseSharedModule, MatDialogModule ]
     })
     .compileComponents();
   }));

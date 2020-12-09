@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FuseSharedModule } from '@fuse/shared.module';
 
 import { CoordenadorComponent } from './coordenador.component';
 
@@ -8,7 +9,8 @@ describe('CoordenadorComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CoordenadorComponent ]
+      declarations: [ CoordenadorComponent ],
+      providers: [ FuseSharedModule ]
     })
     .compileComponents();
   }));

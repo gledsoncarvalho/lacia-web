@@ -1,4 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FuseSharedModule } from '@fuse/shared.module';
 
 import { AlunoCadastrarComponent } from './aluno-cadastrar.component';
 
@@ -8,7 +11,8 @@ describe('AlunoCadastrarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AlunoCadastrarComponent ]
+      declarations: [ AlunoCadastrarComponent ],
+      imports: [ FormsModule, ReactiveFormsModule, FuseSharedModule, BrowserAnimationsModule]
     })
     .compileComponents();
   }));
