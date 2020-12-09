@@ -20,7 +20,7 @@ import { AlertComponent } from '../../../../../../@fuse/components/alert/alert.c
 })
 export class ScrumboardComponent implements OnInit, OnDestroy
 {
-    projetos: Projeto[];
+    projetos: any;
 
     private _unsubscribeAll: Subject<any>;
 

@@ -1,10 +1,9 @@
-import { SessionService } from './session.service';
-import { httpOptions } from './../constantes/HttpOptions';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { AlertComponent } from './../../../@fuse/components/alert/alert.component';
 import { Projeto } from './../models/projeto.model';
+import { SessionService } from './session.service';
 
 const httpOptions = {
     headers: new HttpHeaders({
