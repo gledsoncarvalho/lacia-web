@@ -1,3 +1,5 @@
+import { SessionService } from './session.service';
+import { httpOptions } from './../constantes/HttpOptions';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
@@ -7,7 +9,7 @@ import { Projeto } from './../models/projeto.model';
 const httpOptions = {
     headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + sessionStorage.getItem('token') 
+        'Authorization': 'Bearer ' + sessionStorage.getItem('token')
     }),
     params: new HttpParams()
 };
@@ -17,33 +19,42 @@ const httpOptions = {
 })
 export class ProjetoService {
 
-    constructor(private _http: HttpClient, private alert: AlertComponent) {
-        httpOptions.headers.set('Access-Control-Allow-Origin', 'http://localhost:4200');
-        httpOptions.headers.set('Access-Control-Allow-Methods', 'POST, GET, DELETE, PUT');
-        httpOptions.headers.set('Access-Control-Allow-Headers', '*');
+    httpOptions: any;
+
+    constructor(private _http: HttpClient, private alert: AlertComponent, private sessionService: SessionService) {
+        this.httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + this.sessionService.get('token'),
+                'Access-Control-Allow-Origin': 'http://localhost:4200',
+                'Access-Control-Allow-Methods': 'POST, GET, DELETE, PUT',
+                'Access-Control-Allow-Headers': '*'
+
+            })
+        };
     }
 
-    cadastrarProjeto(projeto: Projeto){
-      return this._http.post<boolean>(environment.url + '/projeto/cadastrar', JSON.stringify(projeto), httpOptions);
+    cadastrarProjeto(projeto: Projeto) {
+        return this._http.post<boolean>(environment.url + '/projeto/cadastrar', JSON.stringify(projeto), httpOptions);
     }
 
-    obterProjetosPorUsuario(email: string){
+    obterProjetosPorUsuario(email: string) {
         return this._http.get<Projeto[]>(environment.url + `/projeto/meus/${email}`, httpOptions);
     }
 
-    obterProjetos(email: string){
+    obterProjetos(email: string) {
         return this._http.get<Projeto[]>(environment.url + `/projeto/todos/${email}`, httpOptions);
     }
-  
-    aprovarProjeto(idProjeto: number){
+
+    aprovarProjeto(idProjeto: number) {
         return this._http.put<boolean>(environment.url + `/projeto/aprovar/${idProjeto}`, null, httpOptions)
     }
-  
-    reprovarProjeto(idProjeto: number){
+
+    reprovarProjeto(idProjeto: number) {
         return this._http.put<boolean>(environment.url + `/projeto/reprovar/${idProjeto}`, null, httpOptions)
     }
 
-    obterTodosProjetosCadastrados(){
+    obterTodosProjetosCadastrados() {
         return this._http.get<Projeto[]>(environment.url + '/projeto/todos', httpOptions);
     }
 
@@ -52,7 +63,7 @@ export class ProjetoService {
     }
 
     obterProjetosPorMembros() {
-        return this._http.get<Projeto[]>(environment.url + `/projeto/membros/${sessionStorage.getItem('email')}`, httpOptions);
+        return this._http.get<Projeto[]>(environment.url + `/projeto/membros/${sessionStorage.getItem('email')}`, this.httpOptions);
     }
 
 }

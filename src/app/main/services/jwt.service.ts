@@ -1,3 +1,4 @@
+import { SessionService } from './session.service';
 import { PesquisadorSolicitacao } from './../models/pesquisador-solicitacao.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -5,7 +6,8 @@ import { UserLogin } from '../models/User.model';
 import { environment } from '../../../environments/environment';
 import { UserResponse } from '../models/user-response.model';
 import { AlertComponent } from '../../../@fuse/components/alert/alert.component';
-import { Router } from '@angular/router';
+import { Router } from '@angular/router'; 
+import { TokenService } from './token.service';
 
 
 const httpOptions = {
@@ -22,6 +24,8 @@ export class JwtService {
     constructor(
         private _http: HttpClient, 
         private _alert: AlertComponent,
+        private tokenService: TokenService,
+        private sessionService: SessionService,
         private _router: Router) {
         httpOptions.headers.set('Access-Control-Allow-Origin', '*');
     }
@@ -30,6 +34,7 @@ export class JwtService {
         this._http.post<UserResponse>(environment.url + '/login', JSON.stringify(usuario), httpOptions)
             .subscribe(response => {
                 sessionStorage.setItem('token', response.token);
+                this.sessionService.set('token', response.token);
                 sessionStorage.setItem('email', response.email);
                 sessionStorage.setItem('tipoUsuario', response.tipoUsuario);
                 sessionStorage.setItem('fotoPerfil', atob(response.fotoPerfil));
@@ -43,6 +48,7 @@ export class JwtService {
 
     logout() {
         sessionStorage.clear();
+        this.sessionService.clear();
         this._router.navigateByUrl('pages/auth/login');
         location.reload();
     }
