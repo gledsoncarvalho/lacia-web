@@ -32,7 +32,14 @@ ng s
 
 O comando ng s buildará o projeto e o servidor poderá ser acessado através do link http://localhost:4200 no browser.
 
-O deploy do projeto foi feito no Heroku e pode ser acessado no browser pelo link: https://lacia-web.web.app/
+O deploy do projeto foi feito no Firebase e pode ser acessado no browser pelo link: https://lacia-web.web.app/
+
+Para se conectar com uma conta de coordenador, insira as seguintes informações
+
+```
+Email: fabio@souunit.com.br
+Senha: 1
+```
 
 ## Páginas
 <b>Seguem imagens de algumas páginas:</b>
